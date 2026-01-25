@@ -1,0 +1,104 @@
+name: Regenerate SDK
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: regenerate-sdk
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Resolve latest upstream tag
+        id: latest_tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          latest_tag=$(./scripts/resolve_latest_tag.sh "anomalyco/opencode")
+          echo "latest_tag=${latest_tag}" >> "$GITHUB_OUTPUT"
+
+      - name: Read last processed tag
+        id: last_tag
+        run: |
+          if [ -f .github/last-upstream-tag.txt ]; then
+            last_tag=$(cat .github/last-upstream-tag.txt)
+          else
+            last_tag=""
+          fi
+          echo "last_tag=${last_tag}" >> "$GITHUB_OUTPUT"
+
+      - name: Skip if no new tag
+        id: skip
+        run: |
+          if [ "${{ steps.latest_tag.outputs.latest_tag }}" = "${{ steps.last_tag.outputs.last_tag }}" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set tag-derived vars
+        if: steps.skip.outputs.skip != 'true'
+        id: tag_vars
+        run: |
+          tag="${{ steps.latest_tag.outputs.latest_tag }}"
+          version="${tag#v}"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "spec_url=https://raw.githubusercontent.com/anomalyco/opencode/${tag}/packages/sdk/openapi.json" >> "$GITHUB_OUTPUT"
+
+      - name: Generate SDK
+        if: steps.skip.outputs.skip != 'true'
+        env:
+          GENERATOR_IMAGE: openapitools/openapi-generator-cli:latest
+        run: |
+          ./scripts/set_package_version.sh openapi-generator-config.json "${{ steps.tag_vars.outputs.version }}"
+          ./scripts/generate_sdk.sh "${{ steps.tag_vars.outputs.spec_url }}" . "$GENERATOR_IMAGE" openapi-generator-config.json
+
+      - name: Sync crate version
+        if: steps.skip.outputs.skip != 'true'
+        run: |
+          ./scripts/set_version.sh Cargo.toml "${{ steps.tag_vars.outputs.version }}"
+
+      - name: Update last processed tag
+        if: steps.skip.outputs.skip != 'true'
+        run: |
+          echo "${{ steps.tag_vars.outputs.tag }}" > .github/last-upstream-tag.txt
+
+      - name: Build crate
+        if: steps.skip.outputs.skip != 'true'
+        run: cargo build --locked
+
+      - name: Create PR
+        if: steps.skip.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          branch="sdk/regenerate-${{ steps.tag_vars.outputs.tag }}"
+          git checkout -b "$branch"
+          git add -A
+          git commit -m "chore(sdk): regenerate from opencode ${{ steps.tag_vars.outputs.tag }}"
+          git push -u origin "$branch"
+          pr_url=$(gh pr create --title "chore(sdk): regenerate from opencode ${{ steps.tag_vars.outputs.tag }}" --body "Automated regeneration from opencode ${{ steps.tag_vars.outputs.tag }}." --base "${{ github.ref_name }}")
+          gh pr merge --auto --squash "$pr_url"

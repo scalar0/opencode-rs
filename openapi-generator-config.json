@@ -1,0 +1,9 @@
+{
+  "packageName": "openapi",
+  "packageVersion": "1.0.0",
+  "apiNameSuffix": "Api",
+  "enumNameSuffix": "Enum",
+  "modelPropertyNaming": "original",
+  "useSingleRequestParameter": true,
+  "licenseName": "Unlicense"
+}

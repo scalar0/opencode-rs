@@ -1,0 +1,3 @@
+[submodule "hooks"]
+	path = .config/hooks
+	url = git@github.com:scalar0/hooks.git

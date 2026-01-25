@@ -1,0 +1,46 @@
+source_dir = ".config/hooks/"
+
+[templates]
+f = "--workspace --all-targets --all-features --color=never"
+
+[pre-commit]
+parallel = false
+
+[pre-commit.commands.prettier-formating]
+priority    = 0
+run         = "echo {staged_files} | xargs npx prettier --ignore-unknown --write"
+stage_fixed = true
+
+[pre-commit.commands.cargo-clippy-fmt]
+glob        = "*.rs"
+priority    = 1
+run         = "cargo fmt --all && cargo clippy --fix {f} --keep-going --allow-dirty -- -D warnings"
+stage_fixed = true
+
+[pre-commit.commands.ruff-lint-fmt]
+glob        = "*.py"
+priority    = 2
+run         = "uvx ruff check {staged_files} --fix && uvx ruff format"
+stage_fixed = true
+
+[commit-msg.commands.conventional-commit]
+run = "uv run --script .config/hooks/commit_msg/commit_msg.py {1}"
+
+[post-commit]
+parallel = true
+
+[post-commit.commands.update-index]
+run = "git update-index -g --verbose --refresh"
+
+[pre-push]
+parallel = false
+
+[pre-push.commands.cargo-clean]
+glob     = "*.rs"
+priority = 1
+run      = 'cargo clean'
+
+[pre-push.commands.cargo-build]
+glob     = "*.rs"
+priority = 2
+run      = 'cargo b {f}'
