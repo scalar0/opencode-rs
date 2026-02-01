@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
 **description** | Option<**String**> |  | [optional]
-**mode** | **Mode** |  (enum: subagent, primary, all) | 
+**mode** | **ModeEnum** |  (enum: subagent, primary, all) | 
 **native** | Option<**bool**> |  | [optional]
 **hidden** | Option<**bool**> |  | [optional]
 **top_p** | Option<**f64**> |  | [optional]

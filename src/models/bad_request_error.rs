@@ -18,11 +18,11 @@ pub struct BadRequestError {
     #[serde(rename = "errors")]
     pub errors: Vec<std::collections::HashMap<String, serde_json::Value>>,
     #[serde(rename = "success")]
-    pub success: Success,
+    pub success: SuccessEnum,
 }
 
 impl BadRequestError {
-    pub fn new(data: Option<serde_json::Value>, errors: Vec<std::collections::HashMap<String, serde_json::Value>>, success: Success) -> BadRequestError {
+    pub fn new(data: Option<serde_json::Value>, errors: Vec<std::collections::HashMap<String, serde_json::Value>>, success: SuccessEnum) -> BadRequestError {
         BadRequestError {
             data,
             errors,
@@ -32,13 +32,13 @@ impl BadRequestError {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Success {
+pub enum SuccessEnum {
     #[serde(rename = "false")]
     False,
 }
 
-impl Default for Success {
-    fn default() -> Success {
+impl Default for SuccessEnum {
+    fn default() -> SuccessEnum {
         Self::False
     }
 }

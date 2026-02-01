@@ -18,7 +18,7 @@ pub struct Project {
     #[serde(rename = "worktree")]
     pub worktree: String,
     #[serde(rename = "vcs", skip_serializing_if = "Option::is_none")]
-    pub vcs: Option<Vcs>,
+    pub vcs: Option<VcsEnum>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
     #[serde(rename = "icon", skip_serializing_if = "Option::is_none")]
@@ -47,13 +47,13 @@ impl Project {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Vcs {
+pub enum VcsEnum {
     #[serde(rename = "git")]
     Git,
 }
 
-impl Default for Vcs {
-    fn default() -> Vcs {
+impl Default for VcsEnum {
+    fn default() -> VcsEnum {
         Self::Git
     }
 }

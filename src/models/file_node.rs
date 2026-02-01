@@ -20,13 +20,13 @@ pub struct FileNode {
     #[serde(rename = "absolute")]
     pub absolute: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "ignored")]
     pub ignored: bool,
 }
 
 impl FileNode {
-    pub fn new(name: String, path: String, absolute: String, r#type: Type, ignored: bool) -> FileNode {
+    pub fn new(name: String, path: String, absolute: String, r#type: TypeEnum, ignored: bool) -> FileNode {
         FileNode {
             name,
             path,
@@ -38,15 +38,15 @@ impl FileNode {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "file")]
     File,
     #[serde(rename = "directory")]
     Directory,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::File
     }
 }

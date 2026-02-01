@@ -18,7 +18,7 @@ pub struct Agent {
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(rename = "mode")]
-    pub mode: Mode,
+    pub mode: ModeEnum,
     #[serde(rename = "native", skip_serializing_if = "Option::is_none")]
     pub native: Option<bool>,
     #[serde(rename = "hidden", skip_serializing_if = "Option::is_none")]
@@ -42,7 +42,7 @@ pub struct Agent {
 }
 
 impl Agent {
-    pub fn new(name: String, mode: Mode, permission: Vec<models::PermissionRule>, options: std::collections::HashMap<String, serde_json::Value>) -> Agent {
+    pub fn new(name: String, mode: ModeEnum, permission: Vec<models::PermissionRule>, options: std::collections::HashMap<String, serde_json::Value>) -> Agent {
         Agent {
             name,
             description: None,
@@ -62,7 +62,7 @@ impl Agent {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Mode {
+pub enum ModeEnum {
     #[serde(rename = "subagent")]
     Subagent,
     #[serde(rename = "primary")]
@@ -71,8 +71,8 @@ pub enum Mode {
     All,
 }
 
-impl Default for Mode {
-    fn default() -> Mode {
+impl Default for ModeEnum {
+    fn default() -> ModeEnum {
         Self::Subagent
     }
 }

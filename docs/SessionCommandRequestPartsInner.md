@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> |  | [optional]
-**r#type** | **Type** |  (enum: file) | 
+**r#type** | **TypeEnum** |  (enum: file) | 
 **mime** | **String** |  | 
 **filename** | Option<**String**> |  | [optional]
 **url** | **String** |  | 

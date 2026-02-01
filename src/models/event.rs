@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Event {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::UnknownErrorData>,
 }
 
 impl Event {
-    pub fn new(r#type: Type, properties: models::UnknownErrorData) -> Event {
+    pub fn new(r#type: TypeEnum, properties: models::UnknownErrorData) -> Event {
         Event {
             r#type,
             properties: Box::new(properties),
@@ -29,7 +29,7 @@ impl Event {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "installation.updated")]
     InstallationUpdated,
     #[serde(rename = "installation.update-available")]
@@ -72,10 +72,10 @@ pub enum Type {
     QuestionRejected,
     #[serde(rename = "session.compacted")]
     SessionCompacted,
-    #[serde(rename = "todo.updated")]
-    TodoUpdated,
     #[serde(rename = "file.watcher.updated")]
     FileWatcherUpdated,
+    #[serde(rename = "todo.updated")]
+    TodoUpdated,
     #[serde(rename = "tui.prompt.append")]
     TuiPromptAppend,
     #[serde(rename = "tui.command.execute")]
@@ -116,8 +116,8 @@ pub enum Type {
     WorktreeFailed,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::InstallationUpdated
     }
 }

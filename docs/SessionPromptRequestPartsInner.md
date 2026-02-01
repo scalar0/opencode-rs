@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> |  | [optional]
-**r#type** | **Type** |  (enum: text, file, agent, subtask) | 
+**r#type** | **TypeEnum** |  (enum: text, file, agent, subtask) | 
 **text** | **String** |  | 
 **synthetic** | Option<**bool**> |  | [optional]
 **ignored** | Option<**bool**> |  | [optional]

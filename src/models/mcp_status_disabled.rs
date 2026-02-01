@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct McpStatusDisabled {
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
 }
 
 impl McpStatusDisabled {
-    pub fn new(status: Status) -> McpStatusDisabled {
+    pub fn new(status: StatusEnum) -> McpStatusDisabled {
         McpStatusDisabled {
             status,
         }
@@ -26,13 +26,13 @@ impl McpStatusDisabled {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "disabled")]
     Disabled,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Disabled
     }
 }

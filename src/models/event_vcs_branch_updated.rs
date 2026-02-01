@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventVcsBranchUpdated {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventVcsBranchUpdatedProperties>,
 }
 
 impl EventVcsBranchUpdated {
-    pub fn new(r#type: Type, properties: models::EventVcsBranchUpdatedProperties) -> EventVcsBranchUpdated {
+    pub fn new(r#type: TypeEnum, properties: models::EventVcsBranchUpdatedProperties) -> EventVcsBranchUpdated {
         EventVcsBranchUpdated {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventVcsBranchUpdated {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "vcs.branch.updated")]
     VcsBranchUpdated,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::VcsBranchUpdated
     }
 }

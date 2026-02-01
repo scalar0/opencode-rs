@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventServerInstanceDisposed {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventServerInstanceDisposedProperties>,
 }
 
 impl EventServerInstanceDisposed {
-    pub fn new(r#type: Type, properties: models::EventServerInstanceDisposedProperties) -> EventServerInstanceDisposed {
+    pub fn new(r#type: TypeEnum, properties: models::EventServerInstanceDisposedProperties) -> EventServerInstanceDisposed {
         EventServerInstanceDisposed {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventServerInstanceDisposed {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "server.instance.disposed")]
     ServerInstanceDisposed,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::ServerInstanceDisposed
     }
 }

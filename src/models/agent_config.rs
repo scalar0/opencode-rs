@@ -30,7 +30,7 @@ pub struct AgentConfig {
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(rename = "mode", skip_serializing_if = "Option::is_none")]
-    pub mode: Option<Mode>,
+    pub mode: Option<ModeEnum>,
     /// Hide this subagent from the @ autocomplete menu (default: false, only applies to mode: subagent)
     #[serde(rename = "hidden", skip_serializing_if = "Option::is_none")]
     pub hidden: Option<bool>,
@@ -71,7 +71,7 @@ impl AgentConfig {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Mode {
+pub enum ModeEnum {
     #[serde(rename = "subagent")]
     Subagent,
     #[serde(rename = "primary")]
@@ -80,8 +80,8 @@ pub enum Mode {
     All,
 }
 
-impl Default for Mode {
-    fn default() -> Mode {
+impl Default for ModeEnum {
+    fn default() -> ModeEnum {
         Self::Subagent
     }
 }

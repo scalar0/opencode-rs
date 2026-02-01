@@ -20,7 +20,7 @@ pub struct Part {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "text")]
     pub text: String,
     #[serde(rename = "synthetic", skip_serializing_if = "Option::is_none")]
@@ -78,7 +78,7 @@ pub struct Part {
 }
 
 impl Part {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, text: String, time: models::UserMessageTime, prompt: String, description: String, agent: String, mime: String, url: String, call_id: String, tool: String, state: models::ToolState, snapshot: String, reason: String, cost: f64, tokens: models::AssistantMessageTokens, hash: String, files: Vec<String>, name: String, attempt: f64, error: models::ApiError, auto: bool) -> Part {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, text: String, time: models::UserMessageTime, prompt: String, description: String, agent: String, mime: String, url: String, call_id: String, tool: String, state: models::ToolState, snapshot: String, reason: String, cost: f64, tokens: models::AssistantMessageTokens, hash: String, files: Vec<String>, name: String, attempt: f64, error: models::ApiError, auto: bool) -> Part {
         Part {
             id,
             session_id,
@@ -116,7 +116,7 @@ impl Part {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "text")]
     Text,
     #[serde(rename = "subtask")]
@@ -143,8 +143,8 @@ pub enum Type {
     Compaction,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Text
     }
 }

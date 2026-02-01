@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ToolStateRunning {
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
     #[serde(rename = "input")]
     pub input: std::collections::HashMap<String, serde_json::Value>,
     #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
@@ -26,7 +26,7 @@ pub struct ToolStateRunning {
 }
 
 impl ToolStateRunning {
-    pub fn new(status: Status, input: std::collections::HashMap<String, serde_json::Value>, time: models::ToolStateRunningTime) -> ToolStateRunning {
+    pub fn new(status: StatusEnum, input: std::collections::HashMap<String, serde_json::Value>, time: models::ToolStateRunningTime) -> ToolStateRunning {
         ToolStateRunning {
             status,
             input,
@@ -38,13 +38,13 @@ impl ToolStateRunning {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "running")]
     Running,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Running
     }
 }

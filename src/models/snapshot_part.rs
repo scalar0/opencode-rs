@@ -20,13 +20,13 @@ pub struct SnapshotPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "snapshot")]
     pub snapshot: String,
 }
 
 impl SnapshotPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, snapshot: String) -> SnapshotPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, snapshot: String) -> SnapshotPart {
         SnapshotPart {
             id,
             session_id,
@@ -38,13 +38,13 @@ impl SnapshotPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "snapshot")]
     Snapshot,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Snapshot
     }
 }

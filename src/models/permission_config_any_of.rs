@@ -47,6 +47,8 @@ pub struct PermissionConfigAnyOf {
     pub lsp: Option<Box<models::PermissionRuleConfig>>,
     #[serde(rename = "doom_loop", skip_serializing_if = "Option::is_none")]
     pub doom_loop: Option<models::PermissionActionConfig>,
+    #[serde(rename = "skill", skip_serializing_if = "Option::is_none")]
+    pub skill: Option<Box<models::PermissionRuleConfig>>,
 }
 
 impl PermissionConfigAnyOf {
@@ -69,6 +71,7 @@ impl PermissionConfigAnyOf {
             codesearch: None,
             lsp: None,
             doom_loop: None,
+            skill: None,
         }
     }
 }

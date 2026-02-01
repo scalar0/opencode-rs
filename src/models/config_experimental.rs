@@ -13,11 +13,6 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ConfigExperimental {
-    #[serde(rename = "hook", skip_serializing_if = "Option::is_none")]
-    pub hook: Option<Box<models::ConfigExperimentalHook>>,
-    /// Number of retries for chat completions on failure
-    #[serde(rename = "chatMaxRetries", skip_serializing_if = "Option::is_none")]
-    pub chat_max_retries: Option<f64>,
     #[serde(rename = "disable_paste_summary", skip_serializing_if = "Option::is_none")]
     pub disable_paste_summary: Option<bool>,
     /// Enable the batch tool
@@ -40,8 +35,6 @@ pub struct ConfigExperimental {
 impl ConfigExperimental {
     pub fn new() -> ConfigExperimental {
         ConfigExperimental {
-            hook: None,
-            chat_max_retries: None,
             disable_paste_summary: None,
             batch_tool: None,
             open_telemetry: None,

@@ -30,6 +30,8 @@ pub struct Config {
     /// Command configuration, see https://opencode.ai/docs/commands
     #[serde(rename = "command", skip_serializing_if = "Option::is_none")]
     pub command: Option<std::collections::HashMap<String, models::ConfigCommandValue>>,
+    #[serde(rename = "skills", skip_serializing_if = "Option::is_none")]
+    pub skills: Option<Box<models::ConfigSkills>>,
     #[serde(rename = "watcher", skip_serializing_if = "Option::is_none")]
     pub watcher: Option<Box<models::ConfigWatcher>>,
     #[serde(rename = "plugin", skip_serializing_if = "Option::is_none")]
@@ -38,7 +40,7 @@ pub struct Config {
     pub snapshot: Option<bool>,
     /// Control sharing behavior:'manual' allows manual sharing via commands, 'auto' enables automatic sharing, 'disabled' disables all sharing
     #[serde(rename = "share", skip_serializing_if = "Option::is_none")]
-    pub share: Option<Share>,
+    pub share: Option<ShareEnum>,
     /// @deprecated Use 'share' field instead. Share newly created sessions automatically
     #[serde(rename = "autoshare", skip_serializing_if = "Option::is_none")]
     pub autoshare: Option<bool>,
@@ -103,6 +105,7 @@ impl Config {
             tui: None,
             server: None,
             command: None,
+            skills: None,
             watcher: None,
             plugin: None,
             snapshot: None,
@@ -133,7 +136,7 @@ impl Config {
 }
 /// Control sharing behavior:'manual' allows manual sharing via commands, 'auto' enables automatic sharing, 'disabled' disables all sharing
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Share {
+pub enum ShareEnum {
     #[serde(rename = "manual")]
     Manual,
     #[serde(rename = "auto")]
@@ -142,8 +145,8 @@ pub enum Share {
     Disabled,
 }
 
-impl Default for Share {
-    fn default() -> Share {
+impl Default for ShareEnum {
+    fn default() -> ShareEnum {
         Self::Manual
     }
 }

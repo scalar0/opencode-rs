@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ConfigLspAnyOfValueAnyOf {
     #[serde(rename = "disabled")]
-    pub disabled: Disabled,
+    pub disabled: DisabledEnum,
 }
 
 impl ConfigLspAnyOfValueAnyOf {
-    pub fn new(disabled: Disabled) -> ConfigLspAnyOfValueAnyOf {
+    pub fn new(disabled: DisabledEnum) -> ConfigLspAnyOfValueAnyOf {
         ConfigLspAnyOfValueAnyOf {
             disabled,
         }
@@ -26,13 +26,13 @@ impl ConfigLspAnyOfValueAnyOf {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Disabled {
+pub enum DisabledEnum {
     #[serde(rename = "true")]
     True,
 }
 
-impl Default for Disabled {
-    fn default() -> Disabled {
+impl Default for DisabledEnum {
+    fn default() -> DisabledEnum {
         Self::True
     }
 }

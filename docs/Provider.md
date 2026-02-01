@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **name** | **String** |  | 
-**source** | **Source** |  (enum: env, config, custom, api) | 
+**source** | **SourceEnum** |  (enum: env, config, custom, api) | 
 **env** | **Vec<String>** |  | 
 **key** | Option<**String**> |  | [optional]
 **options** | **std::collections::HashMap<String, serde_json::Value>** |  | 

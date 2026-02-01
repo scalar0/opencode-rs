@@ -16,7 +16,7 @@ pub struct SessionPromptRequestPartsInner {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "text")]
     pub text: String,
     #[serde(rename = "synthetic", skip_serializing_if = "Option::is_none")]
@@ -50,7 +50,7 @@ pub struct SessionPromptRequestPartsInner {
 }
 
 impl SessionPromptRequestPartsInner {
-    pub fn new(r#type: Type, text: String, mime: String, url: String, name: String, prompt: String, description: String, agent: String) -> SessionPromptRequestPartsInner {
+    pub fn new(r#type: TypeEnum, text: String, mime: String, url: String, name: String, prompt: String, description: String, agent: String) -> SessionPromptRequestPartsInner {
         SessionPromptRequestPartsInner {
             id: None,
             r#type,
@@ -74,7 +74,7 @@ impl SessionPromptRequestPartsInner {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "text")]
     Text,
     #[serde(rename = "file")]
@@ -85,8 +85,8 @@ pub enum Type {
     Subtask,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Text
     }
 }

@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ApiError {
     #[serde(rename = "name")]
-    pub name: Name,
+    pub name: NameEnum,
     #[serde(rename = "data")]
     pub data: Box<models::ApiErrorData>,
 }
 
 impl ApiError {
-    pub fn new(name: Name, data: models::ApiErrorData) -> ApiError {
+    pub fn new(name: NameEnum, data: models::ApiErrorData) -> ApiError {
         ApiError {
             name,
             data: Box::new(data),
@@ -29,13 +29,13 @@ impl ApiError {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Name {
+pub enum NameEnum {
     #[serde(rename = "APIError")]
     ApiError,
 }
 
-impl Default for Name {
-    fn default() -> Name {
+impl Default for NameEnum {
+    fn default() -> NameEnum {
         Self::ApiError
     }
 }

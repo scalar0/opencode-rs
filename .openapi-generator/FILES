@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 Cargo.toml
 README.md
@@ -31,8 +30,6 @@ docs/ConfigCommandValue.md
 docs/ConfigCompaction.md
 docs/ConfigEnterprise.md
 docs/ConfigExperimental.md
-docs/ConfigExperimentalHook.md
-docs/ConfigExperimentalHookFileEditedValueInner.md
 docs/ConfigFormatter.md
 docs/ConfigFormatterAnyOfValue.md
 docs/ConfigLsp.md
@@ -43,6 +40,7 @@ docs/ConfigMcpValue.md
 docs/ConfigMcpValueAnyOf.md
 docs/ConfigMode.md
 docs/ConfigProviders200Response.md
+docs/ConfigSkills.md
 docs/ConfigTui.md
 docs/ConfigTuiScrollAcceleration.md
 docs/ConfigWatcher.md
@@ -169,7 +167,6 @@ docs/ModelCostExperimentalOver200K.md
 docs/NotFoundError.md
 docs/OAuth.md
 docs/Part.md
-docs/PartAnyOf.md
 docs/PatchPart.md
 docs/Path.md
 docs/PermissionAction.md
@@ -253,6 +250,7 @@ docs/SessionUpdateRequestTime.md
 docs/SnapshotPart.md
 docs/StepFinishPart.md
 docs/StepStartPart.md
+docs/SubtaskPart.md
 docs/SubtaskPartInput.md
 docs/Symbol.md
 docs/SymbolLocation.md
@@ -321,8 +319,6 @@ src/models/config_command_value.rs
 src/models/config_compaction.rs
 src/models/config_enterprise.rs
 src/models/config_experimental.rs
-src/models/config_experimental_hook.rs
-src/models/config_experimental_hook_file_edited_value_inner.rs
 src/models/config_formatter.rs
 src/models/config_formatter_any_of_value.rs
 src/models/config_lsp.rs
@@ -333,6 +329,7 @@ src/models/config_mcp_value.rs
 src/models/config_mcp_value_any_of.rs
 src/models/config_mode.rs
 src/models/config_providers_200_response.rs
+src/models/config_skills.rs
 src/models/config_tui.rs
 src/models/config_tui_scroll_acceleration.rs
 src/models/config_watcher.rs
@@ -459,7 +456,6 @@ src/models/model_cost_experimental_over200_k.rs
 src/models/not_found_error.rs
 src/models/o_auth.rs
 src/models/part.rs
-src/models/part_any_of.rs
 src/models/patch_part.rs
 src/models/path.rs
 src/models/permission_action.rs
@@ -542,6 +538,7 @@ src/models/session_update_request_time.rs
 src/models/snapshot_part.rs
 src/models/step_finish_part.rs
 src/models/step_start_part.rs
+src/models/subtask_part.rs
 src/models/subtask_part_input.rs
 src/models/symbol.rs
 src/models/symbol_location.rs

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **Status** |  (enum: pending) | 
+**status** | **StatusEnum** |  (enum: pending) | 
 **input** | **std::collections::HashMap<String, serde_json::Value>** |  | 
 **raw** | **String** |  | 
 

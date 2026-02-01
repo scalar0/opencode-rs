@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProviderList200ResponseAllInnerModelsValueModalities {
     #[serde(rename = "input")]
-    pub input: Vec<Input>,
+    pub input: Vec<InputEnum>,
     #[serde(rename = "output")]
-    pub output: Vec<Output>,
+    pub output: Vec<OutputEnum>,
 }
 
 impl ProviderList200ResponseAllInnerModelsValueModalities {
-    pub fn new(input: Vec<Input>, output: Vec<Output>) -> ProviderList200ResponseAllInnerModelsValueModalities {
+    pub fn new(input: Vec<InputEnum>, output: Vec<OutputEnum>) -> ProviderList200ResponseAllInnerModelsValueModalities {
         ProviderList200ResponseAllInnerModelsValueModalities {
             input,
             output,
@@ -29,7 +29,7 @@ impl ProviderList200ResponseAllInnerModelsValueModalities {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Input {
+pub enum InputEnum {
     #[serde(rename = "text")]
     Text,
     #[serde(rename = "audio")]
@@ -42,14 +42,14 @@ pub enum Input {
     Pdf,
 }
 
-impl Default for Input {
-    fn default() -> Input {
+impl Default for InputEnum {
+    fn default() -> InputEnum {
         Self::Text
     }
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Output {
+pub enum OutputEnum {
     #[serde(rename = "text")]
     Text,
     #[serde(rename = "audio")]
@@ -62,8 +62,8 @@ pub enum Output {
     Pdf,
 }
 
-impl Default for Output {
-    fn default() -> Output {
+impl Default for OutputEnum {
+    fn default() -> OutputEnum {
         Self::Text
     }
 }

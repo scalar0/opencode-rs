@@ -16,11 +16,11 @@ pub struct EventFileWatcherUpdatedProperties {
     #[serde(rename = "file")]
     pub file: String,
     #[serde(rename = "event")]
-    pub event: Event,
+    pub event: EventEnum,
 }
 
 impl EventFileWatcherUpdatedProperties {
-    pub fn new(file: String, event: Event) -> EventFileWatcherUpdatedProperties {
+    pub fn new(file: String, event: EventEnum) -> EventFileWatcherUpdatedProperties {
         EventFileWatcherUpdatedProperties {
             file,
             event,
@@ -29,7 +29,7 @@ impl EventFileWatcherUpdatedProperties {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Event {
+pub enum EventEnum {
     #[serde(rename = "add")]
     Add,
     #[serde(rename = "change")]
@@ -38,8 +38,8 @@ pub enum Event {
     Unlink,
 }
 
-impl Default for Event {
-    fn default() -> Event {
+impl Default for EventEnum {
+    fn default() -> EventEnum {
         Self::Add
     }
 }

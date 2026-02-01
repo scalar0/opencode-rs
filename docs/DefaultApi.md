@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**app_agents**](DefaultApi.md#app_agents) | **GET** /agent | List agents
 [**app_log**](DefaultApi.md#app_log) | **POST** /log | Write log
 [**app_skills**](DefaultApi.md#app_skills) | **GET** /skill | List skills
+[**auth_remove**](DefaultApi.md#auth_remove) | **DELETE** /auth/{providerID} | Remove auth credentials
 [**auth_set**](DefaultApi.md#auth_set) | **PUT** /auth/{providerID} | Set auth credentials
 [**command_list**](DefaultApi.md#command_list) | **GET** /command | List commands
 [**config_get**](DefaultApi.md#config_get) | **GET** /config | Get configuration
@@ -21,6 +22,8 @@ Method | HTTP request | Description
 [**find_symbols**](DefaultApi.md#find_symbols) | **GET** /find/symbol | Find symbols
 [**find_text**](DefaultApi.md#find_text) | **GET** /find | Find text
 [**formatter_status**](DefaultApi.md#formatter_status) | **GET** /formatter | Get formatter status
+[**global_config_get**](DefaultApi.md#global_config_get) | **GET** /global/config | Get global configuration
+[**global_config_update**](DefaultApi.md#global_config_update) | **PATCH** /global/config | Update global configuration
 [**global_dispose**](DefaultApi.md#global_dispose) | **POST** /global/dispose | Dispose instance
 [**global_event**](DefaultApi.md#global_event) | **GET** /global/event | Get global events
 [**global_health**](DefaultApi.md#global_health) | **GET** /global/health | Get health
@@ -191,9 +194,39 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## auth_remove
+
+> bool auth_remove(provider_id)
+Remove auth credentials
+
+Remove authentication credentials
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**provider_id** | **String** |  | [required] |
+
+### Return type
+
+**bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## auth_set
 
-> bool auth_set(provider_id, directory, auth)
+> bool auth_set(provider_id, auth)
 Set auth credentials
 
 Set authentication credentials
@@ -204,7 +237,6 @@ Set authentication credentials
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **provider_id** | **String** |  | [required] |
-**directory** | Option<**String**> |  |  |
 **auth** | Option<[**Auth**](Auth.md)> |  |  |
 
 ### Return type
@@ -617,6 +649,63 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## global_config_get
+
+> models::Config global_config_get()
+Get global configuration
+
+Retrieve the current global OpenCode configuration settings and preferences.
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::Config**](Config.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## global_config_update
+
+> models::Config global_config_update(config)
+Update global configuration
+
+Update global OpenCode configuration settings and preferences.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**config** | Option<[**Config**](Config.md)> |  |  |
+
+### Return type
+
+[**models::Config**](Config.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

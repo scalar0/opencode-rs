@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProviderConfigModelsValueInterleavedAnyOf {
     #[serde(rename = "field")]
-    pub field: Field,
+    pub field: FieldEnum,
 }
 
 impl ProviderConfigModelsValueInterleavedAnyOf {
-    pub fn new(field: Field) -> ProviderConfigModelsValueInterleavedAnyOf {
+    pub fn new(field: FieldEnum) -> ProviderConfigModelsValueInterleavedAnyOf {
         ProviderConfigModelsValueInterleavedAnyOf {
             field,
         }
@@ -26,15 +26,15 @@ impl ProviderConfigModelsValueInterleavedAnyOf {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Field {
+pub enum FieldEnum {
     #[serde(rename = "reasoning_content")]
     ReasoningContent,
     #[serde(rename = "reasoning_details")]
     ReasoningDetails,
 }
 
-impl Default for Field {
-    fn default() -> Field {
+impl Default for FieldEnum {
+    fn default() -> FieldEnum {
         Self::ReasoningContent
     }
 }

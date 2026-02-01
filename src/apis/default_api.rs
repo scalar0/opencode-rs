@@ -14,6 +14,673 @@ use serde::{Deserialize, Serialize, de::Error as _};
 use crate::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
+/// struct for passing parameters to the method [`app_agents`]
+#[derive(Clone, Debug)]
+pub struct AppAgentsParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`app_log`]
+#[derive(Clone, Debug)]
+pub struct AppLogParams {
+    pub directory: Option<String>,
+    pub app_log_request: Option<models::AppLogRequest>
+}
+
+/// struct for passing parameters to the method [`app_skills`]
+#[derive(Clone, Debug)]
+pub struct AppSkillsParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`auth_remove`]
+#[derive(Clone, Debug)]
+pub struct AuthRemoveParams {
+    pub provider_id: String
+}
+
+/// struct for passing parameters to the method [`auth_set`]
+#[derive(Clone, Debug)]
+pub struct AuthSetParams {
+    pub provider_id: String,
+    pub auth: Option<models::Auth>
+}
+
+/// struct for passing parameters to the method [`command_list`]
+#[derive(Clone, Debug)]
+pub struct CommandListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`config_get`]
+#[derive(Clone, Debug)]
+pub struct ConfigGetParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`config_providers`]
+#[derive(Clone, Debug)]
+pub struct ConfigProvidersParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`config_update`]
+#[derive(Clone, Debug)]
+pub struct ConfigUpdateParams {
+    pub directory: Option<String>,
+    pub config: Option<models::Config>
+}
+
+/// struct for passing parameters to the method [`event_subscribe`]
+#[derive(Clone, Debug)]
+pub struct EventSubscribeParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`experimental_resource_list`]
+#[derive(Clone, Debug)]
+pub struct ExperimentalResourceListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`file_list`]
+#[derive(Clone, Debug)]
+pub struct FileListParams {
+    pub path: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`file_read`]
+#[derive(Clone, Debug)]
+pub struct FileReadParams {
+    pub path: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`file_status`]
+#[derive(Clone, Debug)]
+pub struct FileStatusParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`find_files`]
+#[derive(Clone, Debug)]
+pub struct FindFilesParams {
+    pub query: String,
+    pub directory: Option<String>,
+    pub dirs: Option<String>,
+    pub r#type: Option<String>,
+    pub limit: Option<i32>
+}
+
+/// struct for passing parameters to the method [`find_symbols`]
+#[derive(Clone, Debug)]
+pub struct FindSymbolsParams {
+    pub query: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`find_text`]
+#[derive(Clone, Debug)]
+pub struct FindTextParams {
+    pub pattern: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`formatter_status`]
+#[derive(Clone, Debug)]
+pub struct FormatterStatusParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`global_config_update`]
+#[derive(Clone, Debug)]
+pub struct GlobalConfigUpdateParams {
+    pub config: Option<models::Config>
+}
+
+/// struct for passing parameters to the method [`instance_dispose`]
+#[derive(Clone, Debug)]
+pub struct InstanceDisposeParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`lsp_status`]
+#[derive(Clone, Debug)]
+pub struct LspStatusParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`mcp_add`]
+#[derive(Clone, Debug)]
+pub struct McpAddParams {
+    pub directory: Option<String>,
+    pub mcp_add_request: Option<models::McpAddRequest>
+}
+
+/// struct for passing parameters to the method [`mcp_auth_authenticate`]
+#[derive(Clone, Debug)]
+pub struct McpAuthAuthenticateParams {
+    pub name: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`mcp_auth_callback`]
+#[derive(Clone, Debug)]
+pub struct McpAuthCallbackParams {
+    pub name: String,
+    pub directory: Option<String>,
+    pub mcp_auth_callback_request: Option<models::McpAuthCallbackRequest>
+}
+
+/// struct for passing parameters to the method [`mcp_auth_remove`]
+#[derive(Clone, Debug)]
+pub struct McpAuthRemoveParams {
+    pub name: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`mcp_auth_start`]
+#[derive(Clone, Debug)]
+pub struct McpAuthStartParams {
+    pub name: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`mcp_connect`]
+#[derive(Clone, Debug)]
+pub struct McpConnectParams {
+    pub name: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`mcp_disconnect`]
+#[derive(Clone, Debug)]
+pub struct McpDisconnectParams {
+    pub name: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`mcp_status`]
+#[derive(Clone, Debug)]
+pub struct McpStatusParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`part_delete`]
+#[derive(Clone, Debug)]
+pub struct PartDeleteParams {
+    /// Session ID
+    pub session_id: String,
+    /// Message ID
+    pub message_id: String,
+    /// Part ID
+    pub part_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`part_update`]
+#[derive(Clone, Debug)]
+pub struct PartUpdateParams {
+    /// Session ID
+    pub session_id: String,
+    /// Message ID
+    pub message_id: String,
+    /// Part ID
+    pub part_id: String,
+    pub directory: Option<String>,
+    pub part: Option<models::Part>
+}
+
+/// struct for passing parameters to the method [`path_get`]
+#[derive(Clone, Debug)]
+pub struct PathGetParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`permission_list`]
+#[derive(Clone, Debug)]
+pub struct PermissionListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`permission_reply`]
+#[derive(Clone, Debug)]
+pub struct PermissionReplyParams {
+    pub request_id: String,
+    pub directory: Option<String>,
+    pub permission_reply_request: Option<models::PermissionReplyRequest>
+}
+
+/// struct for passing parameters to the method [`permission_respond`]
+#[derive(Clone, Debug)]
+pub struct PermissionRespondParams {
+    pub session_id: String,
+    pub permission_id: String,
+    pub directory: Option<String>,
+    pub permission_respond_request: Option<models::PermissionRespondRequest>
+}
+
+/// struct for passing parameters to the method [`project_current`]
+#[derive(Clone, Debug)]
+pub struct ProjectCurrentParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`project_list`]
+#[derive(Clone, Debug)]
+pub struct ProjectListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`project_update`]
+#[derive(Clone, Debug)]
+pub struct ProjectUpdateParams {
+    pub project_id: String,
+    pub directory: Option<String>,
+    pub project_update_request: Option<models::ProjectUpdateRequest>
+}
+
+/// struct for passing parameters to the method [`provider_auth`]
+#[derive(Clone, Debug)]
+pub struct ProviderAuthParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`provider_list`]
+#[derive(Clone, Debug)]
+pub struct ProviderListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`provider_oauth_authorize`]
+#[derive(Clone, Debug)]
+pub struct ProviderOauthAuthorizeParams {
+    /// Provider ID
+    pub provider_id: String,
+    pub directory: Option<String>,
+    pub provider_oauth_authorize_request: Option<models::ProviderOauthAuthorizeRequest>
+}
+
+/// struct for passing parameters to the method [`provider_oauth_callback`]
+#[derive(Clone, Debug)]
+pub struct ProviderOauthCallbackParams {
+    /// Provider ID
+    pub provider_id: String,
+    pub directory: Option<String>,
+    pub provider_oauth_callback_request: Option<models::ProviderOauthCallbackRequest>
+}
+
+/// struct for passing parameters to the method [`pty_connect`]
+#[derive(Clone, Debug)]
+pub struct PtyConnectParams {
+    pub pty_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`pty_create`]
+#[derive(Clone, Debug)]
+pub struct PtyCreateParams {
+    pub directory: Option<String>,
+    pub pty_create_request: Option<models::PtyCreateRequest>
+}
+
+/// struct for passing parameters to the method [`pty_get`]
+#[derive(Clone, Debug)]
+pub struct PtyGetParams {
+    pub pty_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`pty_list`]
+#[derive(Clone, Debug)]
+pub struct PtyListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`pty_remove`]
+#[derive(Clone, Debug)]
+pub struct PtyRemoveParams {
+    pub pty_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`pty_update`]
+#[derive(Clone, Debug)]
+pub struct PtyUpdateParams {
+    pub pty_id: String,
+    pub directory: Option<String>,
+    pub pty_update_request: Option<models::PtyUpdateRequest>
+}
+
+/// struct for passing parameters to the method [`question_list`]
+#[derive(Clone, Debug)]
+pub struct QuestionListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`question_reject`]
+#[derive(Clone, Debug)]
+pub struct QuestionRejectParams {
+    pub request_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`question_reply`]
+#[derive(Clone, Debug)]
+pub struct QuestionReplyParams {
+    pub request_id: String,
+    pub directory: Option<String>,
+    pub question_reply_request: Option<models::QuestionReplyRequest>
+}
+
+/// struct for passing parameters to the method [`session_abort`]
+#[derive(Clone, Debug)]
+pub struct SessionAbortParams {
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_command`]
+#[derive(Clone, Debug)]
+pub struct SessionCommandParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_command_request: Option<models::SessionCommandRequest>
+}
+
+/// struct for passing parameters to the method [`session_create`]
+#[derive(Clone, Debug)]
+pub struct SessionCreateParams {
+    pub directory: Option<String>,
+    pub session_create_request: Option<models::SessionCreateRequest>
+}
+
+/// struct for passing parameters to the method [`session_delete`]
+#[derive(Clone, Debug)]
+pub struct SessionDeleteParams {
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_diff`]
+#[derive(Clone, Debug)]
+pub struct SessionDiffParams {
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub message_id: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_fork`]
+#[derive(Clone, Debug)]
+pub struct SessionForkParams {
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_fork_request: Option<models::SessionForkRequest>
+}
+
+/// struct for passing parameters to the method [`session_init`]
+#[derive(Clone, Debug)]
+pub struct SessionInitParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_init_request: Option<models::SessionInitRequest>
+}
+
+/// struct for passing parameters to the method [`session_list`]
+#[derive(Clone, Debug)]
+pub struct SessionListParams {
+    /// Filter sessions by project directory
+    pub directory: Option<String>,
+    /// Only return root sessions (no parentID)
+    pub roots: Option<bool>,
+    /// Filter sessions updated on or after this timestamp (milliseconds since epoch)
+    pub start: Option<f64>,
+    /// Filter sessions by title (case-insensitive)
+    pub search: Option<String>,
+    /// Maximum number of sessions to return
+    pub limit: Option<f64>
+}
+
+/// struct for passing parameters to the method [`session_message`]
+#[derive(Clone, Debug)]
+pub struct SessionMessageParams {
+    /// Session ID
+    pub session_id: String,
+    /// Message ID
+    pub message_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_messages`]
+#[derive(Clone, Debug)]
+pub struct SessionMessagesParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub limit: Option<f64>
+}
+
+/// struct for passing parameters to the method [`session_prompt`]
+#[derive(Clone, Debug)]
+pub struct SessionPromptParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_prompt_request: Option<models::SessionPromptRequest>
+}
+
+/// struct for passing parameters to the method [`session_prompt_async`]
+#[derive(Clone, Debug)]
+pub struct SessionPromptAsyncParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_prompt_request: Option<models::SessionPromptRequest>
+}
+
+/// struct for passing parameters to the method [`session_revert`]
+#[derive(Clone, Debug)]
+pub struct SessionRevertParams {
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_revert_request: Option<models::SessionRevertRequest>
+}
+
+/// struct for passing parameters to the method [`session_share`]
+#[derive(Clone, Debug)]
+pub struct SessionShareParams {
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_shell`]
+#[derive(Clone, Debug)]
+pub struct SessionShellParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_shell_request: Option<models::SessionShellRequest>
+}
+
+/// struct for passing parameters to the method [`session_status`]
+#[derive(Clone, Debug)]
+pub struct SessionStatusParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_summarize`]
+#[derive(Clone, Debug)]
+pub struct SessionSummarizeParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_summarize_request: Option<models::SessionSummarizeRequest>
+}
+
+/// struct for passing parameters to the method [`session_todo`]
+#[derive(Clone, Debug)]
+pub struct SessionTodoParams {
+    /// Session ID
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_unrevert`]
+#[derive(Clone, Debug)]
+pub struct SessionUnrevertParams {
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_unshare`]
+#[derive(Clone, Debug)]
+pub struct SessionUnshareParams {
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_update`]
+#[derive(Clone, Debug)]
+pub struct SessionUpdateParams {
+    pub session_id: String,
+    pub directory: Option<String>,
+    pub session_update_request: Option<models::SessionUpdateRequest>
+}
+
+/// struct for passing parameters to the method [`tool_ids`]
+#[derive(Clone, Debug)]
+pub struct ToolIdsParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tool_list`]
+#[derive(Clone, Debug)]
+pub struct ToolListParams {
+    pub provider: String,
+    pub model: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tui_append_prompt`]
+#[derive(Clone, Debug)]
+pub struct TuiAppendPromptParams {
+    pub directory: Option<String>,
+    pub find_text200_response_inner_path: Option<models::FindText200ResponseInnerPath>
+}
+
+/// struct for passing parameters to the method [`tui_clear_prompt`]
+#[derive(Clone, Debug)]
+pub struct TuiClearPromptParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tui_control_next`]
+#[derive(Clone, Debug)]
+pub struct TuiControlNextParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tui_control_response`]
+#[derive(Clone, Debug)]
+pub struct TuiControlResponseParams {
+    pub directory: Option<String>,
+    pub body: Option<serde_json::Value>
+}
+
+/// struct for passing parameters to the method [`tui_execute_command`]
+#[derive(Clone, Debug)]
+pub struct TuiExecuteCommandParams {
+    pub directory: Option<String>,
+    pub tui_execute_command_request: Option<models::TuiExecuteCommandRequest>
+}
+
+/// struct for passing parameters to the method [`tui_open_help`]
+#[derive(Clone, Debug)]
+pub struct TuiOpenHelpParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tui_open_models`]
+#[derive(Clone, Debug)]
+pub struct TuiOpenModelsParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tui_open_sessions`]
+#[derive(Clone, Debug)]
+pub struct TuiOpenSessionsParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tui_open_themes`]
+#[derive(Clone, Debug)]
+pub struct TuiOpenThemesParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`tui_publish`]
+#[derive(Clone, Debug)]
+pub struct TuiPublishParams {
+    pub directory: Option<String>,
+    pub tui_publish_request: Option<models::TuiPublishRequest>
+}
+
+/// struct for passing parameters to the method [`tui_select_session`]
+#[derive(Clone, Debug)]
+pub struct TuiSelectSessionParams {
+    pub directory: Option<String>,
+    pub tui_select_session_request: Option<models::TuiSelectSessionRequest>
+}
+
+/// struct for passing parameters to the method [`tui_show_toast`]
+#[derive(Clone, Debug)]
+pub struct TuiShowToastParams {
+    pub directory: Option<String>,
+    pub tui_show_toast_request: Option<models::TuiShowToastRequest>
+}
+
+/// struct for passing parameters to the method [`tui_submit_prompt`]
+#[derive(Clone, Debug)]
+pub struct TuiSubmitPromptParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`vcs_get`]
+#[derive(Clone, Debug)]
+pub struct VcsGetParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`worktree_create`]
+#[derive(Clone, Debug)]
+pub struct WorktreeCreateParams {
+    pub directory: Option<String>,
+    pub worktree_create_input: Option<models::WorktreeCreateInput>
+}
+
+/// struct for passing parameters to the method [`worktree_list`]
+#[derive(Clone, Debug)]
+pub struct WorktreeListParams {
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`worktree_remove`]
+#[derive(Clone, Debug)]
+pub struct WorktreeRemoveParams {
+    pub directory: Option<String>,
+    pub worktree_remove_input: Option<models::WorktreeRemoveInput>
+}
+
+/// struct for passing parameters to the method [`worktree_reset`]
+#[derive(Clone, Debug)]
+pub struct WorktreeResetParams {
+    pub directory: Option<String>,
+    pub worktree_reset_input: Option<models::WorktreeResetInput>
+}
+
 
 /// struct for typed errors of method [`app_agents`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -34,6 +701,14 @@ pub enum AppLogError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum AppSkillsError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`auth_remove`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum AuthRemoveError {
+    Status400(models::BadRequestError),
     UnknownValue(serde_json::Value),
 }
 
@@ -134,6 +809,21 @@ pub enum FindTextError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum FormatterStatusError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`global_config_get`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GlobalConfigGetError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`global_config_update`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GlobalConfigUpdateError {
+    Status400(models::BadRequestError),
     UnknownValue(serde_json::Value),
 }
 
@@ -744,14 +1434,12 @@ pub enum WorktreeResetError {
 
 
 /// Get a list of all available AI agents in the OpenCode system.
-pub async fn app_agents(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::Agent>, Error<AppAgentsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn app_agents(configuration: &configuration::Configuration, params: AppAgentsParams) -> Result<Vec<models::Agent>, Error<AppAgentsError>> {
 
     let uri_str = format!("{}/agent", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -784,21 +1472,18 @@ pub async fn app_agents(configuration: &configuration::Configuration, directory:
 }
 
 /// Write a log entry to the server logs with specified level and metadata.
-pub async fn app_log(configuration: &configuration::Configuration, directory: Option<&str>, app_log_request: Option<models::AppLogRequest>) -> Result<bool, Error<AppLogError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_app_log_request = app_log_request;
+pub async fn app_log(configuration: &configuration::Configuration, params: AppLogParams) -> Result<bool, Error<AppLogError>> {
 
     let uri_str = format!("{}/log", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_app_log_request);
+    req_builder = req_builder.json(&params.app_log_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -826,14 +1511,12 @@ pub async fn app_log(configuration: &configuration::Configuration, directory: Op
 }
 
 /// Get a list of all available skills in the OpenCode system.
-pub async fn app_skills(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::AppSkills200ResponseInner>, Error<AppSkillsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn app_skills(configuration: &configuration::Configuration, params: AppSkillsParams) -> Result<Vec<models::AppSkills200ResponseInner>, Error<AppSkillsError>> {
 
     let uri_str = format!("{}/skill", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -865,23 +1548,51 @@ pub async fn app_skills(configuration: &configuration::Configuration, directory:
     }
 }
 
-/// Set authentication credentials
-pub async fn auth_set(configuration: &configuration::Configuration, provider_id: &str, directory: Option<&str>, auth: Option<models::Auth>) -> Result<bool, Error<AuthSetError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_provider_id = provider_id;
-    let p_query_directory = directory;
-    let p_body_auth = auth;
+/// Remove authentication credentials
+pub async fn auth_remove(configuration: &configuration::Configuration, params: AuthRemoveParams) -> Result<bool, Error<AuthRemoveError>> {
 
-    let uri_str = format!("{}/auth/{providerID}", configuration.base_path, providerID=crate::apis::urlencode(p_path_provider_id));
-    let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
+    let uri_str = format!("{}/auth/{providerID}", configuration.base_path, providerID=crate::apis::urlencode(params.provider_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
-        req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
-    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_auth);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `bool`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `bool`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<AuthRemoveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Set authentication credentials
+pub async fn auth_set(configuration: &configuration::Configuration, params: AuthSetParams) -> Result<bool, Error<AuthSetError>> {
+
+    let uri_str = format!("{}/auth/{providerID}", configuration.base_path, providerID=crate::apis::urlencode(params.provider_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    req_builder = req_builder.json(&params.auth);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -909,14 +1620,12 @@ pub async fn auth_set(configuration: &configuration::Configuration, provider_id:
 }
 
 /// Get a list of all available commands in the OpenCode system.
-pub async fn command_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::Command>, Error<CommandListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn command_list(configuration: &configuration::Configuration, params: CommandListParams) -> Result<Vec<models::Command>, Error<CommandListError>> {
 
     let uri_str = format!("{}/command", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -949,14 +1658,12 @@ pub async fn command_list(configuration: &configuration::Configuration, director
 }
 
 /// Retrieve the current OpenCode configuration settings and preferences.
-pub async fn config_get(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::Config, Error<ConfigGetError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn config_get(configuration: &configuration::Configuration, params: ConfigGetParams) -> Result<models::Config, Error<ConfigGetError>> {
 
     let uri_str = format!("{}/config", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -989,14 +1696,12 @@ pub async fn config_get(configuration: &configuration::Configuration, directory:
 }
 
 /// Get a list of all configured AI providers and their default models.
-pub async fn config_providers(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::ConfigProviders200Response, Error<ConfigProvidersError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn config_providers(configuration: &configuration::Configuration, params: ConfigProvidersParams) -> Result<models::ConfigProviders200Response, Error<ConfigProvidersError>> {
 
     let uri_str = format!("{}/config/providers", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1029,21 +1734,18 @@ pub async fn config_providers(configuration: &configuration::Configuration, dire
 }
 
 /// Update OpenCode configuration settings and preferences.
-pub async fn config_update(configuration: &configuration::Configuration, directory: Option<&str>, config: Option<models::Config>) -> Result<models::Config, Error<ConfigUpdateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_config = config;
+pub async fn config_update(configuration: &configuration::Configuration, params: ConfigUpdateParams) -> Result<models::Config, Error<ConfigUpdateError>> {
 
     let uri_str = format!("{}/config", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_config);
+    req_builder = req_builder.json(&params.config);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1071,14 +1773,12 @@ pub async fn config_update(configuration: &configuration::Configuration, directo
 }
 
 /// Get events
-pub async fn event_subscribe(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::Event, Error<EventSubscribeError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn event_subscribe(configuration: &configuration::Configuration, params: EventSubscribeParams) -> Result<models::Event, Error<EventSubscribeError>> {
 
     let uri_str = format!("{}/event", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1111,14 +1811,12 @@ pub async fn event_subscribe(configuration: &configuration::Configuration, direc
 }
 
 /// Get all available MCP resources from connected servers. Optionally filter by name.
-pub async fn experimental_resource_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<std::collections::HashMap<String, models::McpResource>, Error<ExperimentalResourceListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn experimental_resource_list(configuration: &configuration::Configuration, params: ExperimentalResourceListParams) -> Result<std::collections::HashMap<String, models::McpResource>, Error<ExperimentalResourceListError>> {
 
     let uri_str = format!("{}/experimental/resource", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1151,18 +1849,15 @@ pub async fn experimental_resource_list(configuration: &configuration::Configura
 }
 
 /// List files and directories in a specified path.
-pub async fn file_list(configuration: &configuration::Configuration, path: &str, directory: Option<&str>) -> Result<Vec<models::FileNode>, Error<FileListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_path = path;
-    let p_query_directory = directory;
+pub async fn file_list(configuration: &configuration::Configuration, params: FileListParams) -> Result<Vec<models::FileNode>, Error<FileListError>> {
 
     let uri_str = format!("{}/file", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("path", &p_query_path.to_string())]);
+    req_builder = req_builder.query(&[("path", &params.path.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1193,18 +1888,15 @@ pub async fn file_list(configuration: &configuration::Configuration, path: &str,
 }
 
 /// Read the content of a specified file.
-pub async fn file_read(configuration: &configuration::Configuration, path: &str, directory: Option<&str>) -> Result<models::FileContent, Error<FileReadError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_path = path;
-    let p_query_directory = directory;
+pub async fn file_read(configuration: &configuration::Configuration, params: FileReadParams) -> Result<models::FileContent, Error<FileReadError>> {
 
     let uri_str = format!("{}/file/content", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("path", &p_query_path.to_string())]);
+    req_builder = req_builder.query(&[("path", &params.path.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1235,14 +1927,12 @@ pub async fn file_read(configuration: &configuration::Configuration, path: &str,
 }
 
 /// Get the git status of all files in the project.
-pub async fn file_status(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::File>, Error<FileStatusError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn file_status(configuration: &configuration::Configuration, params: FileStatusParams) -> Result<Vec<models::File>, Error<FileStatusError>> {
 
     let uri_str = format!("{}/file/status", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1275,28 +1965,22 @@ pub async fn file_status(configuration: &configuration::Configuration, directory
 }
 
 /// Search for files or directories by name or pattern in the project directory.
-pub async fn find_files(configuration: &configuration::Configuration, query: &str, directory: Option<&str>, dirs: Option<&str>, r#type: Option<&str>, limit: Option<i32>) -> Result<Vec<String>, Error<FindFilesError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_query = query;
-    let p_query_directory = directory;
-    let p_query_dirs = dirs;
-    let p_query_type = r#type;
-    let p_query_limit = limit;
+pub async fn find_files(configuration: &configuration::Configuration, params: FindFilesParams) -> Result<Vec<String>, Error<FindFilesError>> {
 
     let uri_str = format!("{}/find/file", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("query", &p_query_query.to_string())]);
-    if let Some(ref param_value) = p_query_dirs {
+    req_builder = req_builder.query(&[("query", &params.query.to_string())]);
+    if let Some(ref param_value) = params.dirs {
         req_builder = req_builder.query(&[("dirs", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_type {
+    if let Some(ref param_value) = params.r#type {
         req_builder = req_builder.query(&[("type", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_limit {
+    if let Some(ref param_value) = params.limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1329,18 +2013,15 @@ pub async fn find_files(configuration: &configuration::Configuration, query: &st
 }
 
 /// Search for workspace symbols like functions, classes, and variables using LSP.
-pub async fn find_symbols(configuration: &configuration::Configuration, query: &str, directory: Option<&str>) -> Result<Vec<models::Symbol>, Error<FindSymbolsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_query = query;
-    let p_query_directory = directory;
+pub async fn find_symbols(configuration: &configuration::Configuration, params: FindSymbolsParams) -> Result<Vec<models::Symbol>, Error<FindSymbolsError>> {
 
     let uri_str = format!("{}/find/symbol", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("query", &p_query_query.to_string())]);
+    req_builder = req_builder.query(&[("query", &params.query.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1371,18 +2052,15 @@ pub async fn find_symbols(configuration: &configuration::Configuration, query: &
 }
 
 /// Search for text patterns across files in the project using ripgrep.
-pub async fn find_text(configuration: &configuration::Configuration, pattern: &str, directory: Option<&str>) -> Result<Vec<models::FindText200ResponseInner>, Error<FindTextError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_pattern = pattern;
-    let p_query_directory = directory;
+pub async fn find_text(configuration: &configuration::Configuration, params: FindTextParams) -> Result<Vec<models::FindText200ResponseInner>, Error<FindTextError>> {
 
     let uri_str = format!("{}/find", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("pattern", &p_query_pattern.to_string())]);
+    req_builder = req_builder.query(&[("pattern", &params.pattern.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1413,14 +2091,12 @@ pub async fn find_text(configuration: &configuration::Configuration, pattern: &s
 }
 
 /// Get formatter status
-pub async fn formatter_status(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::FormatterStatus>, Error<FormatterStatusError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn formatter_status(configuration: &configuration::Configuration, params: FormatterStatusParams) -> Result<Vec<models::FormatterStatus>, Error<FormatterStatusError>> {
 
     let uri_str = format!("{}/formatter", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1452,8 +2128,79 @@ pub async fn formatter_status(configuration: &configuration::Configuration, dire
     }
 }
 
+/// Retrieve the current global OpenCode configuration settings and preferences.
+pub async fn global_config_get(configuration: &configuration::Configuration) -> Result<models::Config, Error<GlobalConfigGetError>> {
+
+    let uri_str = format!("{}/global/config", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Config`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Config`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GlobalConfigGetError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Update global OpenCode configuration settings and preferences.
+pub async fn global_config_update(configuration: &configuration::Configuration, params: GlobalConfigUpdateParams) -> Result<models::Config, Error<GlobalConfigUpdateError>> {
+
+    let uri_str = format!("{}/global/config", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    req_builder = req_builder.json(&params.config);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Config`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Config`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GlobalConfigUpdateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// Clean up and dispose all OpenCode instances, releasing all resources.
-pub async fn global_dispose(configuration: &configuration::Configuration, ) -> Result<bool, Error<GlobalDisposeError>> {
+pub async fn global_dispose(configuration: &configuration::Configuration) -> Result<bool, Error<GlobalDisposeError>> {
 
     let uri_str = format!("{}/global/dispose", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -1488,7 +2235,7 @@ pub async fn global_dispose(configuration: &configuration::Configuration, ) -> R
 }
 
 /// Subscribe to global events from the OpenCode system using server-sent events.
-pub async fn global_event(configuration: &configuration::Configuration, ) -> Result<models::GlobalEvent, Error<GlobalEventError>> {
+pub async fn global_event(configuration: &configuration::Configuration) -> Result<models::GlobalEvent, Error<GlobalEventError>> {
 
     let uri_str = format!("{}/global/event", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
@@ -1523,7 +2270,7 @@ pub async fn global_event(configuration: &configuration::Configuration, ) -> Res
 }
 
 /// Get health information about the OpenCode server.
-pub async fn global_health(configuration: &configuration::Configuration, ) -> Result<models::GlobalHealth200Response, Error<GlobalHealthError>> {
+pub async fn global_health(configuration: &configuration::Configuration) -> Result<models::GlobalHealth200Response, Error<GlobalHealthError>> {
 
     let uri_str = format!("{}/global/health", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
@@ -1558,14 +2305,12 @@ pub async fn global_health(configuration: &configuration::Configuration, ) -> Re
 }
 
 /// Clean up and dispose the current OpenCode instance, releasing all resources.
-pub async fn instance_dispose(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<bool, Error<InstanceDisposeError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn instance_dispose(configuration: &configuration::Configuration, params: InstanceDisposeParams) -> Result<bool, Error<InstanceDisposeError>> {
 
     let uri_str = format!("{}/instance/dispose", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1598,14 +2343,12 @@ pub async fn instance_dispose(configuration: &configuration::Configuration, dire
 }
 
 /// Get LSP server status
-pub async fn lsp_status(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::LspStatus>, Error<LspStatusError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn lsp_status(configuration: &configuration::Configuration, params: LspStatusParams) -> Result<Vec<models::LspStatus>, Error<LspStatusError>> {
 
     let uri_str = format!("{}/lsp", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1638,21 +2381,18 @@ pub async fn lsp_status(configuration: &configuration::Configuration, directory:
 }
 
 /// Dynamically add a new Model Context Protocol (MCP) server to the system.
-pub async fn mcp_add(configuration: &configuration::Configuration, directory: Option<&str>, mcp_add_request: Option<models::McpAddRequest>) -> Result<std::collections::HashMap<String, models::McpStatus>, Error<McpAddError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_mcp_add_request = mcp_add_request;
+pub async fn mcp_add(configuration: &configuration::Configuration, params: McpAddParams) -> Result<std::collections::HashMap<String, models::McpStatus>, Error<McpAddError>> {
 
     let uri_str = format!("{}/mcp", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_mcp_add_request);
+    req_builder = req_builder.json(&params.mcp_add_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1680,15 +2420,12 @@ pub async fn mcp_add(configuration: &configuration::Configuration, directory: Op
 }
 
 /// Start OAuth flow and wait for callback (opens browser)
-pub async fn mcp_auth_authenticate(configuration: &configuration::Configuration, name: &str, directory: Option<&str>) -> Result<models::McpStatus, Error<McpAuthAuthenticateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_name = name;
-    let p_query_directory = directory;
+pub async fn mcp_auth_authenticate(configuration: &configuration::Configuration, params: McpAuthAuthenticateParams) -> Result<models::McpStatus, Error<McpAuthAuthenticateError>> {
 
-    let uri_str = format!("{}/mcp/{name}/auth/authenticate", configuration.base_path, name=crate::apis::urlencode(p_path_name));
+    let uri_str = format!("{}/mcp/{name}/auth/authenticate", configuration.base_path, name=crate::apis::urlencode(params.name));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1721,22 +2458,18 @@ pub async fn mcp_auth_authenticate(configuration: &configuration::Configuration,
 }
 
 /// Complete OAuth authentication for a Model Context Protocol (MCP) server using the authorization code.
-pub async fn mcp_auth_callback(configuration: &configuration::Configuration, name: &str, directory: Option<&str>, mcp_auth_callback_request: Option<models::McpAuthCallbackRequest>) -> Result<models::McpStatus, Error<McpAuthCallbackError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_name = name;
-    let p_query_directory = directory;
-    let p_body_mcp_auth_callback_request = mcp_auth_callback_request;
+pub async fn mcp_auth_callback(configuration: &configuration::Configuration, params: McpAuthCallbackParams) -> Result<models::McpStatus, Error<McpAuthCallbackError>> {
 
-    let uri_str = format!("{}/mcp/{name}/auth/callback", configuration.base_path, name=crate::apis::urlencode(p_path_name));
+    let uri_str = format!("{}/mcp/{name}/auth/callback", configuration.base_path, name=crate::apis::urlencode(params.name));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_mcp_auth_callback_request);
+    req_builder = req_builder.json(&params.mcp_auth_callback_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1764,15 +2497,12 @@ pub async fn mcp_auth_callback(configuration: &configuration::Configuration, nam
 }
 
 /// Remove OAuth credentials for an MCP server
-pub async fn mcp_auth_remove(configuration: &configuration::Configuration, name: &str, directory: Option<&str>) -> Result<models::McpAuthRemove200Response, Error<McpAuthRemoveError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_name = name;
-    let p_query_directory = directory;
+pub async fn mcp_auth_remove(configuration: &configuration::Configuration, params: McpAuthRemoveParams) -> Result<models::McpAuthRemove200Response, Error<McpAuthRemoveError>> {
 
-    let uri_str = format!("{}/mcp/{name}/auth", configuration.base_path, name=crate::apis::urlencode(p_path_name));
+    let uri_str = format!("{}/mcp/{name}/auth", configuration.base_path, name=crate::apis::urlencode(params.name));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1805,15 +2535,12 @@ pub async fn mcp_auth_remove(configuration: &configuration::Configuration, name:
 }
 
 /// Start OAuth authentication flow for a Model Context Protocol (MCP) server.
-pub async fn mcp_auth_start(configuration: &configuration::Configuration, name: &str, directory: Option<&str>) -> Result<models::McpAuthStart200Response, Error<McpAuthStartError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_name = name;
-    let p_query_directory = directory;
+pub async fn mcp_auth_start(configuration: &configuration::Configuration, params: McpAuthStartParams) -> Result<models::McpAuthStart200Response, Error<McpAuthStartError>> {
 
-    let uri_str = format!("{}/mcp/{name}/auth", configuration.base_path, name=crate::apis::urlencode(p_path_name));
+    let uri_str = format!("{}/mcp/{name}/auth", configuration.base_path, name=crate::apis::urlencode(params.name));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1846,15 +2573,12 @@ pub async fn mcp_auth_start(configuration: &configuration::Configuration, name: 
 }
 
 /// Connect an MCP server
-pub async fn mcp_connect(configuration: &configuration::Configuration, name: &str, directory: Option<&str>) -> Result<bool, Error<McpConnectError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_name = name;
-    let p_query_directory = directory;
+pub async fn mcp_connect(configuration: &configuration::Configuration, params: McpConnectParams) -> Result<bool, Error<McpConnectError>> {
 
-    let uri_str = format!("{}/mcp/{name}/connect", configuration.base_path, name=crate::apis::urlencode(p_path_name));
+    let uri_str = format!("{}/mcp/{name}/connect", configuration.base_path, name=crate::apis::urlencode(params.name));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1887,15 +2611,12 @@ pub async fn mcp_connect(configuration: &configuration::Configuration, name: &st
 }
 
 /// Disconnect an MCP server
-pub async fn mcp_disconnect(configuration: &configuration::Configuration, name: &str, directory: Option<&str>) -> Result<bool, Error<McpDisconnectError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_name = name;
-    let p_query_directory = directory;
+pub async fn mcp_disconnect(configuration: &configuration::Configuration, params: McpDisconnectParams) -> Result<bool, Error<McpDisconnectError>> {
 
-    let uri_str = format!("{}/mcp/{name}/disconnect", configuration.base_path, name=crate::apis::urlencode(p_path_name));
+    let uri_str = format!("{}/mcp/{name}/disconnect", configuration.base_path, name=crate::apis::urlencode(params.name));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1928,14 +2649,12 @@ pub async fn mcp_disconnect(configuration: &configuration::Configuration, name: 
 }
 
 /// Get the status of all Model Context Protocol (MCP) servers.
-pub async fn mcp_status(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<std::collections::HashMap<String, models::McpStatus>, Error<McpStatusError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn mcp_status(configuration: &configuration::Configuration, params: McpStatusParams) -> Result<std::collections::HashMap<String, models::McpStatus>, Error<McpStatusError>> {
 
     let uri_str = format!("{}/mcp", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1968,17 +2687,12 @@ pub async fn mcp_status(configuration: &configuration::Configuration, directory:
 }
 
 /// Delete a part from a message
-pub async fn part_delete(configuration: &configuration::Configuration, session_id: &str, message_id: &str, part_id: &str, directory: Option<&str>) -> Result<bool, Error<PartDeleteError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_path_message_id = message_id;
-    let p_path_part_id = part_id;
-    let p_query_directory = directory;
+pub async fn part_delete(configuration: &configuration::Configuration, params: PartDeleteParams) -> Result<bool, Error<PartDeleteError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/message/{messageID}/part/{partID}", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id), messageID=crate::apis::urlencode(p_path_message_id), partID=crate::apis::urlencode(p_path_part_id));
+    let uri_str = format!("{}/session/{sessionID}/message/{messageID}/part/{partID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id), messageID=crate::apis::urlencode(params.message_id), partID=crate::apis::urlencode(params.part_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2011,24 +2725,18 @@ pub async fn part_delete(configuration: &configuration::Configuration, session_i
 }
 
 /// Update a part in a message
-pub async fn part_update(configuration: &configuration::Configuration, session_id: &str, message_id: &str, part_id: &str, directory: Option<&str>, part: Option<models::Part>) -> Result<models::Part, Error<PartUpdateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_path_message_id = message_id;
-    let p_path_part_id = part_id;
-    let p_query_directory = directory;
-    let p_body_part = part;
+pub async fn part_update(configuration: &configuration::Configuration, params: PartUpdateParams) -> Result<models::Part, Error<PartUpdateError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/message/{messageID}/part/{partID}", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id), messageID=crate::apis::urlencode(p_path_message_id), partID=crate::apis::urlencode(p_path_part_id));
+    let uri_str = format!("{}/session/{sessionID}/message/{messageID}/part/{partID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id), messageID=crate::apis::urlencode(params.message_id), partID=crate::apis::urlencode(params.part_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_part);
+    req_builder = req_builder.json(&params.part);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2056,14 +2764,12 @@ pub async fn part_update(configuration: &configuration::Configuration, session_i
 }
 
 /// Retrieve the current working directory and related path information for the OpenCode instance.
-pub async fn path_get(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::Path, Error<PathGetError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn path_get(configuration: &configuration::Configuration, params: PathGetParams) -> Result<models::Path, Error<PathGetError>> {
 
     let uri_str = format!("{}/path", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2096,14 +2802,12 @@ pub async fn path_get(configuration: &configuration::Configuration, directory: O
 }
 
 /// Get all pending permission requests across all sessions.
-pub async fn permission_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::PermissionRequest>, Error<PermissionListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn permission_list(configuration: &configuration::Configuration, params: PermissionListParams) -> Result<Vec<models::PermissionRequest>, Error<PermissionListError>> {
 
     let uri_str = format!("{}/permission", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2136,22 +2840,18 @@ pub async fn permission_list(configuration: &configuration::Configuration, direc
 }
 
 /// Approve or deny a permission request from the AI assistant.
-pub async fn permission_reply(configuration: &configuration::Configuration, request_id: &str, directory: Option<&str>, permission_reply_request: Option<models::PermissionReplyRequest>) -> Result<bool, Error<PermissionReplyError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_request_id = request_id;
-    let p_query_directory = directory;
-    let p_body_permission_reply_request = permission_reply_request;
+pub async fn permission_reply(configuration: &configuration::Configuration, params: PermissionReplyParams) -> Result<bool, Error<PermissionReplyError>> {
 
-    let uri_str = format!("{}/permission/{requestID}/reply", configuration.base_path, requestID=crate::apis::urlencode(p_path_request_id));
+    let uri_str = format!("{}/permission/{requestID}/reply", configuration.base_path, requestID=crate::apis::urlencode(params.request_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_permission_reply_request);
+    req_builder = req_builder.json(&params.permission_reply_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2180,23 +2880,18 @@ pub async fn permission_reply(configuration: &configuration::Configuration, requ
 
 /// Approve or deny a permission request from the AI assistant.
 #[deprecated]
-pub async fn permission_respond(configuration: &configuration::Configuration, session_id: &str, permission_id: &str, directory: Option<&str>, permission_respond_request: Option<models::PermissionRespondRequest>) -> Result<bool, Error<PermissionRespondError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_path_permission_id = permission_id;
-    let p_query_directory = directory;
-    let p_body_permission_respond_request = permission_respond_request;
+pub async fn permission_respond(configuration: &configuration::Configuration, params: PermissionRespondParams) -> Result<bool, Error<PermissionRespondError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/permissions/{permissionID}", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id), permissionID=crate::apis::urlencode(p_path_permission_id));
+    let uri_str = format!("{}/session/{sessionID}/permissions/{permissionID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id), permissionID=crate::apis::urlencode(params.permission_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_permission_respond_request);
+    req_builder = req_builder.json(&params.permission_respond_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2224,14 +2919,12 @@ pub async fn permission_respond(configuration: &configuration::Configuration, se
 }
 
 /// Retrieve the currently active project that OpenCode is working with.
-pub async fn project_current(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::Project, Error<ProjectCurrentError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn project_current(configuration: &configuration::Configuration, params: ProjectCurrentParams) -> Result<models::Project, Error<ProjectCurrentError>> {
 
     let uri_str = format!("{}/project/current", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2264,14 +2957,12 @@ pub async fn project_current(configuration: &configuration::Configuration, direc
 }
 
 /// Get a list of projects that have been opened with OpenCode.
-pub async fn project_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::Project>, Error<ProjectListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn project_list(configuration: &configuration::Configuration, params: ProjectListParams) -> Result<Vec<models::Project>, Error<ProjectListError>> {
 
     let uri_str = format!("{}/project", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2304,22 +2995,18 @@ pub async fn project_list(configuration: &configuration::Configuration, director
 }
 
 /// Update project properties such as name, icon, and commands.
-pub async fn project_update(configuration: &configuration::Configuration, project_id: &str, directory: Option<&str>, project_update_request: Option<models::ProjectUpdateRequest>) -> Result<models::Project, Error<ProjectUpdateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_project_id = project_id;
-    let p_query_directory = directory;
-    let p_body_project_update_request = project_update_request;
+pub async fn project_update(configuration: &configuration::Configuration, params: ProjectUpdateParams) -> Result<models::Project, Error<ProjectUpdateError>> {
 
-    let uri_str = format!("{}/project/{projectID}", configuration.base_path, projectID=crate::apis::urlencode(p_path_project_id));
+    let uri_str = format!("{}/project/{projectID}", configuration.base_path, projectID=crate::apis::urlencode(params.project_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_project_update_request);
+    req_builder = req_builder.json(&params.project_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2347,14 +3034,12 @@ pub async fn project_update(configuration: &configuration::Configuration, projec
 }
 
 /// Retrieve available authentication methods for all AI providers.
-pub async fn provider_auth(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<std::collections::HashMap<String, Vec<models::ProviderAuthMethod>>, Error<ProviderAuthError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn provider_auth(configuration: &configuration::Configuration, params: ProviderAuthParams) -> Result<std::collections::HashMap<String, Vec<models::ProviderAuthMethod>>, Error<ProviderAuthError>> {
 
     let uri_str = format!("{}/provider/auth", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2387,14 +3072,12 @@ pub async fn provider_auth(configuration: &configuration::Configuration, directo
 }
 
 /// Get a list of all available AI providers, including both available and connected ones.
-pub async fn provider_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::ProviderList200Response, Error<ProviderListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn provider_list(configuration: &configuration::Configuration, params: ProviderListParams) -> Result<models::ProviderList200Response, Error<ProviderListError>> {
 
     let uri_str = format!("{}/provider", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2427,22 +3110,18 @@ pub async fn provider_list(configuration: &configuration::Configuration, directo
 }
 
 /// Initiate OAuth authorization for a specific AI provider to get an authorization URL.
-pub async fn provider_oauth_authorize(configuration: &configuration::Configuration, provider_id: &str, directory: Option<&str>, provider_oauth_authorize_request: Option<models::ProviderOauthAuthorizeRequest>) -> Result<models::ProviderAuthAuthorization, Error<ProviderOauthAuthorizeError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_provider_id = provider_id;
-    let p_query_directory = directory;
-    let p_body_provider_oauth_authorize_request = provider_oauth_authorize_request;
+pub async fn provider_oauth_authorize(configuration: &configuration::Configuration, params: ProviderOauthAuthorizeParams) -> Result<models::ProviderAuthAuthorization, Error<ProviderOauthAuthorizeError>> {
 
-    let uri_str = format!("{}/provider/{providerID}/oauth/authorize", configuration.base_path, providerID=crate::apis::urlencode(p_path_provider_id));
+    let uri_str = format!("{}/provider/{providerID}/oauth/authorize", configuration.base_path, providerID=crate::apis::urlencode(params.provider_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_provider_oauth_authorize_request);
+    req_builder = req_builder.json(&params.provider_oauth_authorize_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2470,22 +3149,18 @@ pub async fn provider_oauth_authorize(configuration: &configuration::Configurati
 }
 
 /// Handle the OAuth callback from a provider after user authorization.
-pub async fn provider_oauth_callback(configuration: &configuration::Configuration, provider_id: &str, directory: Option<&str>, provider_oauth_callback_request: Option<models::ProviderOauthCallbackRequest>) -> Result<bool, Error<ProviderOauthCallbackError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_provider_id = provider_id;
-    let p_query_directory = directory;
-    let p_body_provider_oauth_callback_request = provider_oauth_callback_request;
+pub async fn provider_oauth_callback(configuration: &configuration::Configuration, params: ProviderOauthCallbackParams) -> Result<bool, Error<ProviderOauthCallbackError>> {
 
-    let uri_str = format!("{}/provider/{providerID}/oauth/callback", configuration.base_path, providerID=crate::apis::urlencode(p_path_provider_id));
+    let uri_str = format!("{}/provider/{providerID}/oauth/callback", configuration.base_path, providerID=crate::apis::urlencode(params.provider_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_provider_oauth_callback_request);
+    req_builder = req_builder.json(&params.provider_oauth_callback_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2513,15 +3188,12 @@ pub async fn provider_oauth_callback(configuration: &configuration::Configuratio
 }
 
 /// Establish a WebSocket connection to interact with a pseudo-terminal (PTY) session in real-time.
-pub async fn pty_connect(configuration: &configuration::Configuration, pty_id: &str, directory: Option<&str>) -> Result<bool, Error<PtyConnectError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_pty_id = pty_id;
-    let p_query_directory = directory;
+pub async fn pty_connect(configuration: &configuration::Configuration, params: PtyConnectParams) -> Result<bool, Error<PtyConnectError>> {
 
-    let uri_str = format!("{}/pty/{ptyID}/connect", configuration.base_path, ptyID=crate::apis::urlencode(p_path_pty_id));
+    let uri_str = format!("{}/pty/{ptyID}/connect", configuration.base_path, ptyID=crate::apis::urlencode(params.pty_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2554,21 +3226,18 @@ pub async fn pty_connect(configuration: &configuration::Configuration, pty_id: &
 }
 
 /// Create a new pseudo-terminal (PTY) session for running shell commands and processes.
-pub async fn pty_create(configuration: &configuration::Configuration, directory: Option<&str>, pty_create_request: Option<models::PtyCreateRequest>) -> Result<models::Pty, Error<PtyCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_pty_create_request = pty_create_request;
+pub async fn pty_create(configuration: &configuration::Configuration, params: PtyCreateParams) -> Result<models::Pty, Error<PtyCreateError>> {
 
     let uri_str = format!("{}/pty", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_pty_create_request);
+    req_builder = req_builder.json(&params.pty_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2596,15 +3265,12 @@ pub async fn pty_create(configuration: &configuration::Configuration, directory:
 }
 
 /// Retrieve detailed information about a specific pseudo-terminal (PTY) session.
-pub async fn pty_get(configuration: &configuration::Configuration, pty_id: &str, directory: Option<&str>) -> Result<models::Pty, Error<PtyGetError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_pty_id = pty_id;
-    let p_query_directory = directory;
+pub async fn pty_get(configuration: &configuration::Configuration, params: PtyGetParams) -> Result<models::Pty, Error<PtyGetError>> {
 
-    let uri_str = format!("{}/pty/{ptyID}", configuration.base_path, ptyID=crate::apis::urlencode(p_path_pty_id));
+    let uri_str = format!("{}/pty/{ptyID}", configuration.base_path, ptyID=crate::apis::urlencode(params.pty_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2637,14 +3303,12 @@ pub async fn pty_get(configuration: &configuration::Configuration, pty_id: &str,
 }
 
 /// Get a list of all active pseudo-terminal (PTY) sessions managed by OpenCode.
-pub async fn pty_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::Pty>, Error<PtyListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn pty_list(configuration: &configuration::Configuration, params: PtyListParams) -> Result<Vec<models::Pty>, Error<PtyListError>> {
 
     let uri_str = format!("{}/pty", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2677,15 +3341,12 @@ pub async fn pty_list(configuration: &configuration::Configuration, directory: O
 }
 
 /// Remove and terminate a specific pseudo-terminal (PTY) session.
-pub async fn pty_remove(configuration: &configuration::Configuration, pty_id: &str, directory: Option<&str>) -> Result<bool, Error<PtyRemoveError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_pty_id = pty_id;
-    let p_query_directory = directory;
+pub async fn pty_remove(configuration: &configuration::Configuration, params: PtyRemoveParams) -> Result<bool, Error<PtyRemoveError>> {
 
-    let uri_str = format!("{}/pty/{ptyID}", configuration.base_path, ptyID=crate::apis::urlencode(p_path_pty_id));
+    let uri_str = format!("{}/pty/{ptyID}", configuration.base_path, ptyID=crate::apis::urlencode(params.pty_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2718,22 +3379,18 @@ pub async fn pty_remove(configuration: &configuration::Configuration, pty_id: &s
 }
 
 /// Update properties of an existing pseudo-terminal (PTY) session.
-pub async fn pty_update(configuration: &configuration::Configuration, pty_id: &str, directory: Option<&str>, pty_update_request: Option<models::PtyUpdateRequest>) -> Result<models::Pty, Error<PtyUpdateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_pty_id = pty_id;
-    let p_query_directory = directory;
-    let p_body_pty_update_request = pty_update_request;
+pub async fn pty_update(configuration: &configuration::Configuration, params: PtyUpdateParams) -> Result<models::Pty, Error<PtyUpdateError>> {
 
-    let uri_str = format!("{}/pty/{ptyID}", configuration.base_path, ptyID=crate::apis::urlencode(p_path_pty_id));
+    let uri_str = format!("{}/pty/{ptyID}", configuration.base_path, ptyID=crate::apis::urlencode(params.pty_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_pty_update_request);
+    req_builder = req_builder.json(&params.pty_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2761,14 +3418,12 @@ pub async fn pty_update(configuration: &configuration::Configuration, pty_id: &s
 }
 
 /// Get all pending question requests across all sessions.
-pub async fn question_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<models::QuestionRequest>, Error<QuestionListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn question_list(configuration: &configuration::Configuration, params: QuestionListParams) -> Result<Vec<models::QuestionRequest>, Error<QuestionListError>> {
 
     let uri_str = format!("{}/question", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2801,15 +3456,12 @@ pub async fn question_list(configuration: &configuration::Configuration, directo
 }
 
 /// Reject a question request from the AI assistant.
-pub async fn question_reject(configuration: &configuration::Configuration, request_id: &str, directory: Option<&str>) -> Result<bool, Error<QuestionRejectError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_request_id = request_id;
-    let p_query_directory = directory;
+pub async fn question_reject(configuration: &configuration::Configuration, params: QuestionRejectParams) -> Result<bool, Error<QuestionRejectError>> {
 
-    let uri_str = format!("{}/question/{requestID}/reject", configuration.base_path, requestID=crate::apis::urlencode(p_path_request_id));
+    let uri_str = format!("{}/question/{requestID}/reject", configuration.base_path, requestID=crate::apis::urlencode(params.request_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2842,22 +3494,18 @@ pub async fn question_reject(configuration: &configuration::Configuration, reque
 }
 
 /// Provide answers to a question request from the AI assistant.
-pub async fn question_reply(configuration: &configuration::Configuration, request_id: &str, directory: Option<&str>, question_reply_request: Option<models::QuestionReplyRequest>) -> Result<bool, Error<QuestionReplyError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_request_id = request_id;
-    let p_query_directory = directory;
-    let p_body_question_reply_request = question_reply_request;
+pub async fn question_reply(configuration: &configuration::Configuration, params: QuestionReplyParams) -> Result<bool, Error<QuestionReplyError>> {
 
-    let uri_str = format!("{}/question/{requestID}/reply", configuration.base_path, requestID=crate::apis::urlencode(p_path_request_id));
+    let uri_str = format!("{}/question/{requestID}/reply", configuration.base_path, requestID=crate::apis::urlencode(params.request_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_question_reply_request);
+    req_builder = req_builder.json(&params.question_reply_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2885,15 +3533,12 @@ pub async fn question_reply(configuration: &configuration::Configuration, reques
 }
 
 /// Abort an active session and stop any ongoing AI processing or command execution.
-pub async fn session_abort(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<bool, Error<SessionAbortError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_abort(configuration: &configuration::Configuration, params: SessionAbortParams) -> Result<bool, Error<SessionAbortError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/abort", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/abort", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -2926,22 +3571,18 @@ pub async fn session_abort(configuration: &configuration::Configuration, session
 }
 
 /// Send a new command to a session for execution by the AI assistant.
-pub async fn session_command(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_command_request: Option<models::SessionCommandRequest>) -> Result<models::SessionPrompt200Response, Error<SessionCommandError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_command_request = session_command_request;
+pub async fn session_command(configuration: &configuration::Configuration, params: SessionCommandParams) -> Result<models::SessionPrompt200Response, Error<SessionCommandError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/command", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/command", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_command_request);
+    req_builder = req_builder.json(&params.session_command_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2969,21 +3610,18 @@ pub async fn session_command(configuration: &configuration::Configuration, sessi
 }
 
 /// Create a new OpenCode session for interacting with AI assistants and managing conversations.
-pub async fn session_create(configuration: &configuration::Configuration, directory: Option<&str>, session_create_request: Option<models::SessionCreateRequest>) -> Result<models::Session, Error<SessionCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_session_create_request = session_create_request;
+pub async fn session_create(configuration: &configuration::Configuration, params: SessionCreateParams) -> Result<models::Session, Error<SessionCreateError>> {
 
     let uri_str = format!("{}/session", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_create_request);
+    req_builder = req_builder.json(&params.session_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3011,15 +3649,12 @@ pub async fn session_create(configuration: &configuration::Configuration, direct
 }
 
 /// Delete a session and permanently remove all associated data, including messages and history.
-pub async fn session_delete(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<bool, Error<SessionDeleteError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_delete(configuration: &configuration::Configuration, params: SessionDeleteParams) -> Result<bool, Error<SessionDeleteError>> {
 
-    let uri_str = format!("{}/session/{sessionID}", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3052,19 +3687,15 @@ pub async fn session_delete(configuration: &configuration::Configuration, sessio
 }
 
 /// Get the file changes (diff) that resulted from a specific user message in the session.
-pub async fn session_diff(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, message_id: Option<&str>) -> Result<Vec<models::FileDiff>, Error<SessionDiffError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_query_message_id = message_id;
+pub async fn session_diff(configuration: &configuration::Configuration, params: SessionDiffParams) -> Result<Vec<models::FileDiff>, Error<SessionDiffError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/diff", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/diff", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_message_id {
+    if let Some(ref param_value) = params.message_id {
         req_builder = req_builder.query(&[("messageID", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3097,22 +3728,18 @@ pub async fn session_diff(configuration: &configuration::Configuration, session_
 }
 
 /// Create a new session by forking an existing session at a specific message point.
-pub async fn session_fork(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_fork_request: Option<models::SessionForkRequest>) -> Result<models::Session, Error<SessionForkError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_fork_request = session_fork_request;
+pub async fn session_fork(configuration: &configuration::Configuration, params: SessionForkParams) -> Result<models::Session, Error<SessionForkError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/fork", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/fork", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_fork_request);
+    req_builder = req_builder.json(&params.session_fork_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3140,22 +3767,18 @@ pub async fn session_fork(configuration: &configuration::Configuration, session_
 }
 
 /// Analyze the current application and create an AGENTS.md file with project-specific agent configurations.
-pub async fn session_init(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_init_request: Option<models::SessionInitRequest>) -> Result<bool, Error<SessionInitError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_init_request = session_init_request;
+pub async fn session_init(configuration: &configuration::Configuration, params: SessionInitParams) -> Result<bool, Error<SessionInitError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/init", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/init", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_init_request);
+    req_builder = req_builder.json(&params.session_init_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3183,30 +3806,24 @@ pub async fn session_init(configuration: &configuration::Configuration, session_
 }
 
 /// Get a list of all OpenCode sessions, sorted by most recently updated.
-pub async fn session_list(configuration: &configuration::Configuration, directory: Option<&str>, roots: Option<bool>, start: Option<f64>, search: Option<&str>, limit: Option<f64>) -> Result<Vec<models::Session>, Error<SessionListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_query_roots = roots;
-    let p_query_start = start;
-    let p_query_search = search;
-    let p_query_limit = limit;
+pub async fn session_list(configuration: &configuration::Configuration, params: SessionListParams) -> Result<Vec<models::Session>, Error<SessionListError>> {
 
     let uri_str = format!("{}/session", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_roots {
+    if let Some(ref param_value) = params.roots {
         req_builder = req_builder.query(&[("roots", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_start {
+    if let Some(ref param_value) = params.start {
         req_builder = req_builder.query(&[("start", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_search {
+    if let Some(ref param_value) = params.search {
         req_builder = req_builder.query(&[("search", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_limit {
+    if let Some(ref param_value) = params.limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3239,16 +3856,12 @@ pub async fn session_list(configuration: &configuration::Configuration, director
 }
 
 /// Retrieve a specific message from a session by its message ID.
-pub async fn session_message(configuration: &configuration::Configuration, session_id: &str, message_id: &str, directory: Option<&str>) -> Result<models::SessionMessages200ResponseInner, Error<SessionMessageError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_path_message_id = message_id;
-    let p_query_directory = directory;
+pub async fn session_message(configuration: &configuration::Configuration, params: SessionMessageParams) -> Result<models::SessionMessages200ResponseInner, Error<SessionMessageError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/message/{messageID}", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id), messageID=crate::apis::urlencode(p_path_message_id));
+    let uri_str = format!("{}/session/{sessionID}/message/{messageID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id), messageID=crate::apis::urlencode(params.message_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3281,19 +3894,15 @@ pub async fn session_message(configuration: &configuration::Configuration, sessi
 }
 
 /// Retrieve all messages in a session, including user prompts and AI responses.
-pub async fn session_messages(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, limit: Option<f64>) -> Result<Vec<models::SessionMessages200ResponseInner>, Error<SessionMessagesError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_query_limit = limit;
+pub async fn session_messages(configuration: &configuration::Configuration, params: SessionMessagesParams) -> Result<Vec<models::SessionMessages200ResponseInner>, Error<SessionMessagesError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/message", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/message", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query_limit {
+    if let Some(ref param_value) = params.limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3326,22 +3935,18 @@ pub async fn session_messages(configuration: &configuration::Configuration, sess
 }
 
 /// Create and send a new message to a session, streaming the AI response.
-pub async fn session_prompt(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_prompt_request: Option<models::SessionPromptRequest>) -> Result<models::SessionPrompt200Response, Error<SessionPromptError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_prompt_request = session_prompt_request;
+pub async fn session_prompt(configuration: &configuration::Configuration, params: SessionPromptParams) -> Result<models::SessionPrompt200Response, Error<SessionPromptError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/message", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/message", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_prompt_request);
+    req_builder = req_builder.json(&params.session_prompt_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3369,22 +3974,18 @@ pub async fn session_prompt(configuration: &configuration::Configuration, sessio
 }
 
 /// Create and send a new message to a session asynchronously, starting the session if needed and returning immediately.
-pub async fn session_prompt_async(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_prompt_request: Option<models::SessionPromptRequest>) -> Result<(), Error<SessionPromptAsyncError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_prompt_request = session_prompt_request;
+pub async fn session_prompt_async(configuration: &configuration::Configuration, params: SessionPromptAsyncParams) -> Result<(), Error<SessionPromptAsyncError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/prompt_async", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/prompt_async", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_prompt_request);
+    req_builder = req_builder.json(&params.session_prompt_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3401,22 +4002,18 @@ pub async fn session_prompt_async(configuration: &configuration::Configuration, 
 }
 
 /// Revert a specific message in a session, undoing its effects and restoring the previous state.
-pub async fn session_revert(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_revert_request: Option<models::SessionRevertRequest>) -> Result<models::Session, Error<SessionRevertError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_revert_request = session_revert_request;
+pub async fn session_revert(configuration: &configuration::Configuration, params: SessionRevertParams) -> Result<models::Session, Error<SessionRevertError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/revert", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/revert", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_revert_request);
+    req_builder = req_builder.json(&params.session_revert_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3444,15 +4041,12 @@ pub async fn session_revert(configuration: &configuration::Configuration, sessio
 }
 
 /// Create a shareable link for a session, allowing others to view the conversation.
-pub async fn session_share(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<models::Session, Error<SessionShareError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_share(configuration: &configuration::Configuration, params: SessionShareParams) -> Result<models::Session, Error<SessionShareError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/share", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/share", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3485,22 +4079,18 @@ pub async fn session_share(configuration: &configuration::Configuration, session
 }
 
 /// Execute a shell command within the session context and return the AI's response.
-pub async fn session_shell(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_shell_request: Option<models::SessionShellRequest>) -> Result<models::AssistantMessage, Error<SessionShellError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_shell_request = session_shell_request;
+pub async fn session_shell(configuration: &configuration::Configuration, params: SessionShellParams) -> Result<models::AssistantMessage, Error<SessionShellError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/shell", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/shell", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_shell_request);
+    req_builder = req_builder.json(&params.session_shell_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3528,14 +4118,12 @@ pub async fn session_shell(configuration: &configuration::Configuration, session
 }
 
 /// Retrieve the current status of all sessions, including active, idle, and completed states.
-pub async fn session_status(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<std::collections::HashMap<String, models::SessionStatus>, Error<SessionStatusError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn session_status(configuration: &configuration::Configuration, params: SessionStatusParams) -> Result<std::collections::HashMap<String, models::SessionStatus>, Error<SessionStatusError>> {
 
     let uri_str = format!("{}/session/status", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3568,22 +4156,18 @@ pub async fn session_status(configuration: &configuration::Configuration, direct
 }
 
 /// Generate a concise summary of the session using AI compaction to preserve key information.
-pub async fn session_summarize(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_summarize_request: Option<models::SessionSummarizeRequest>) -> Result<bool, Error<SessionSummarizeError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_summarize_request = session_summarize_request;
+pub async fn session_summarize(configuration: &configuration::Configuration, params: SessionSummarizeParams) -> Result<bool, Error<SessionSummarizeError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/summarize", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/summarize", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_summarize_request);
+    req_builder = req_builder.json(&params.session_summarize_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3611,15 +4195,12 @@ pub async fn session_summarize(configuration: &configuration::Configuration, ses
 }
 
 /// Retrieve the todo list associated with a specific session, showing tasks and action items.
-pub async fn session_todo(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<Vec<models::Todo>, Error<SessionTodoError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_todo(configuration: &configuration::Configuration, params: SessionTodoParams) -> Result<Vec<models::Todo>, Error<SessionTodoError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/todo", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/todo", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3652,15 +4233,12 @@ pub async fn session_todo(configuration: &configuration::Configuration, session_
 }
 
 /// Restore all previously reverted messages in a session.
-pub async fn session_unrevert(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<models::Session, Error<SessionUnrevertError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_unrevert(configuration: &configuration::Configuration, params: SessionUnrevertParams) -> Result<models::Session, Error<SessionUnrevertError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/unrevert", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/unrevert", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3693,15 +4271,12 @@ pub async fn session_unrevert(configuration: &configuration::Configuration, sess
 }
 
 /// Remove the shareable link for a session, making it private again.
-pub async fn session_unshare(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<models::Session, Error<SessionUnshareError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_unshare(configuration: &configuration::Configuration, params: SessionUnshareParams) -> Result<models::Session, Error<SessionUnshareError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/share", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/share", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3734,22 +4309,18 @@ pub async fn session_unshare(configuration: &configuration::Configuration, sessi
 }
 
 /// Update properties of an existing session, such as title or other metadata.
-pub async fn session_update(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>, session_update_request: Option<models::SessionUpdateRequest>) -> Result<models::Session, Error<SessionUpdateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
-    let p_body_session_update_request = session_update_request;
+pub async fn session_update(configuration: &configuration::Configuration, params: SessionUpdateParams) -> Result<models::Session, Error<SessionUpdateError>> {
 
-    let uri_str = format!("{}/session/{sessionID}", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_session_update_request);
+    req_builder = req_builder.json(&params.session_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3777,14 +4348,12 @@ pub async fn session_update(configuration: &configuration::Configuration, sessio
 }
 
 /// Get a list of all available tool IDs, including both built-in tools and dynamically registered tools.
-pub async fn tool_ids(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<String>, Error<ToolIdsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tool_ids(configuration: &configuration::Configuration, params: ToolIdsParams) -> Result<Vec<String>, Error<ToolIdsError>> {
 
     let uri_str = format!("{}/experimental/tool/ids", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3817,20 +4386,16 @@ pub async fn tool_ids(configuration: &configuration::Configuration, directory: O
 }
 
 /// Get a list of available tools with their JSON schema parameters for a specific provider and model combination.
-pub async fn tool_list(configuration: &configuration::Configuration, provider: &str, model: &str, directory: Option<&str>) -> Result<Vec<models::ToolListItem>, Error<ToolListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_provider = provider;
-    let p_query_model = model;
-    let p_query_directory = directory;
+pub async fn tool_list(configuration: &configuration::Configuration, params: ToolListParams) -> Result<Vec<models::ToolListItem>, Error<ToolListError>> {
 
     let uri_str = format!("{}/experimental/tool", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("provider", &p_query_provider.to_string())]);
-    req_builder = req_builder.query(&[("model", &p_query_model.to_string())]);
+    req_builder = req_builder.query(&[("provider", &params.provider.to_string())]);
+    req_builder = req_builder.query(&[("model", &params.model.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3861,21 +4426,18 @@ pub async fn tool_list(configuration: &configuration::Configuration, provider: &
 }
 
 /// Append prompt to the TUI
-pub async fn tui_append_prompt(configuration: &configuration::Configuration, directory: Option<&str>, find_text200_response_inner_path: Option<models::FindText200ResponseInnerPath>) -> Result<bool, Error<TuiAppendPromptError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_find_text200_response_inner_path = find_text200_response_inner_path;
+pub async fn tui_append_prompt(configuration: &configuration::Configuration, params: TuiAppendPromptParams) -> Result<bool, Error<TuiAppendPromptError>> {
 
     let uri_str = format!("{}/tui/append-prompt", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_find_text200_response_inner_path);
+    req_builder = req_builder.json(&params.find_text200_response_inner_path);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3903,14 +4465,12 @@ pub async fn tui_append_prompt(configuration: &configuration::Configuration, dir
 }
 
 /// Clear the prompt
-pub async fn tui_clear_prompt(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<bool, Error<TuiClearPromptError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tui_clear_prompt(configuration: &configuration::Configuration, params: TuiClearPromptParams) -> Result<bool, Error<TuiClearPromptError>> {
 
     let uri_str = format!("{}/tui/clear-prompt", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3943,14 +4503,12 @@ pub async fn tui_clear_prompt(configuration: &configuration::Configuration, dire
 }
 
 /// Retrieve the next TUI (Terminal User Interface) request from the queue for processing.
-pub async fn tui_control_next(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::TuiControlNext200Response, Error<TuiControlNextError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tui_control_next(configuration: &configuration::Configuration, params: TuiControlNextParams) -> Result<models::TuiControlNext200Response, Error<TuiControlNextError>> {
 
     let uri_str = format!("{}/tui/control/next", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -3983,21 +4541,18 @@ pub async fn tui_control_next(configuration: &configuration::Configuration, dire
 }
 
 /// Submit a response to the TUI request queue to complete a pending request.
-pub async fn tui_control_response(configuration: &configuration::Configuration, directory: Option<&str>, body: Option<serde_json::Value>) -> Result<bool, Error<TuiControlResponseError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_body = body;
+pub async fn tui_control_response(configuration: &configuration::Configuration, params: TuiControlResponseParams) -> Result<bool, Error<TuiControlResponseError>> {
 
     let uri_str = format!("{}/tui/control/response", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_body);
+    req_builder = req_builder.json(&params.body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4025,21 +4580,18 @@ pub async fn tui_control_response(configuration: &configuration::Configuration, 
 }
 
 /// Execute a TUI command (e.g. agent_cycle)
-pub async fn tui_execute_command(configuration: &configuration::Configuration, directory: Option<&str>, tui_execute_command_request: Option<models::TuiExecuteCommandRequest>) -> Result<bool, Error<TuiExecuteCommandError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_tui_execute_command_request = tui_execute_command_request;
+pub async fn tui_execute_command(configuration: &configuration::Configuration, params: TuiExecuteCommandParams) -> Result<bool, Error<TuiExecuteCommandError>> {
 
     let uri_str = format!("{}/tui/execute-command", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_tui_execute_command_request);
+    req_builder = req_builder.json(&params.tui_execute_command_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4067,14 +4619,12 @@ pub async fn tui_execute_command(configuration: &configuration::Configuration, d
 }
 
 /// Open the help dialog in the TUI to display user assistance information.
-pub async fn tui_open_help(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<bool, Error<TuiOpenHelpError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tui_open_help(configuration: &configuration::Configuration, params: TuiOpenHelpParams) -> Result<bool, Error<TuiOpenHelpError>> {
 
     let uri_str = format!("{}/tui/open-help", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -4107,14 +4657,12 @@ pub async fn tui_open_help(configuration: &configuration::Configuration, directo
 }
 
 /// Open the model dialog
-pub async fn tui_open_models(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<bool, Error<TuiOpenModelsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tui_open_models(configuration: &configuration::Configuration, params: TuiOpenModelsParams) -> Result<bool, Error<TuiOpenModelsError>> {
 
     let uri_str = format!("{}/tui/open-models", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -4147,14 +4695,12 @@ pub async fn tui_open_models(configuration: &configuration::Configuration, direc
 }
 
 /// Open the session dialog
-pub async fn tui_open_sessions(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<bool, Error<TuiOpenSessionsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tui_open_sessions(configuration: &configuration::Configuration, params: TuiOpenSessionsParams) -> Result<bool, Error<TuiOpenSessionsError>> {
 
     let uri_str = format!("{}/tui/open-sessions", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -4187,14 +4733,12 @@ pub async fn tui_open_sessions(configuration: &configuration::Configuration, dir
 }
 
 /// Open the theme dialog
-pub async fn tui_open_themes(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<bool, Error<TuiOpenThemesError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tui_open_themes(configuration: &configuration::Configuration, params: TuiOpenThemesParams) -> Result<bool, Error<TuiOpenThemesError>> {
 
     let uri_str = format!("{}/tui/open-themes", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -4227,21 +4771,18 @@ pub async fn tui_open_themes(configuration: &configuration::Configuration, direc
 }
 
 /// Publish a TUI event
-pub async fn tui_publish(configuration: &configuration::Configuration, directory: Option<&str>, tui_publish_request: Option<models::TuiPublishRequest>) -> Result<bool, Error<TuiPublishError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_tui_publish_request = tui_publish_request;
+pub async fn tui_publish(configuration: &configuration::Configuration, params: TuiPublishParams) -> Result<bool, Error<TuiPublishError>> {
 
     let uri_str = format!("{}/tui/publish", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_tui_publish_request);
+    req_builder = req_builder.json(&params.tui_publish_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4269,21 +4810,18 @@ pub async fn tui_publish(configuration: &configuration::Configuration, directory
 }
 
 /// Navigate the TUI to display the specified session.
-pub async fn tui_select_session(configuration: &configuration::Configuration, directory: Option<&str>, tui_select_session_request: Option<models::TuiSelectSessionRequest>) -> Result<bool, Error<TuiSelectSessionError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_tui_select_session_request = tui_select_session_request;
+pub async fn tui_select_session(configuration: &configuration::Configuration, params: TuiSelectSessionParams) -> Result<bool, Error<TuiSelectSessionError>> {
 
     let uri_str = format!("{}/tui/select-session", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_tui_select_session_request);
+    req_builder = req_builder.json(&params.tui_select_session_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4311,21 +4849,18 @@ pub async fn tui_select_session(configuration: &configuration::Configuration, di
 }
 
 /// Show a toast notification in the TUI
-pub async fn tui_show_toast(configuration: &configuration::Configuration, directory: Option<&str>, tui_show_toast_request: Option<models::TuiShowToastRequest>) -> Result<bool, Error<TuiShowToastError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_tui_show_toast_request = tui_show_toast_request;
+pub async fn tui_show_toast(configuration: &configuration::Configuration, params: TuiShowToastParams) -> Result<bool, Error<TuiShowToastError>> {
 
     let uri_str = format!("{}/tui/show-toast", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_tui_show_toast_request);
+    req_builder = req_builder.json(&params.tui_show_toast_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4353,14 +4888,12 @@ pub async fn tui_show_toast(configuration: &configuration::Configuration, direct
 }
 
 /// Submit the prompt
-pub async fn tui_submit_prompt(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<bool, Error<TuiSubmitPromptError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn tui_submit_prompt(configuration: &configuration::Configuration, params: TuiSubmitPromptParams) -> Result<bool, Error<TuiSubmitPromptError>> {
 
     let uri_str = format!("{}/tui/submit-prompt", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -4393,14 +4926,12 @@ pub async fn tui_submit_prompt(configuration: &configuration::Configuration, dir
 }
 
 /// Retrieve version control system (VCS) information for the current project, such as git branch.
-pub async fn vcs_get(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<models::VcsInfo, Error<VcsGetError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn vcs_get(configuration: &configuration::Configuration, params: VcsGetParams) -> Result<models::VcsInfo, Error<VcsGetError>> {
 
     let uri_str = format!("{}/vcs", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -4433,21 +4964,18 @@ pub async fn vcs_get(configuration: &configuration::Configuration, directory: Op
 }
 
 /// Create a new git worktree for the current project and run any configured startup scripts.
-pub async fn worktree_create(configuration: &configuration::Configuration, directory: Option<&str>, worktree_create_input: Option<models::WorktreeCreateInput>) -> Result<models::Worktree, Error<WorktreeCreateError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_worktree_create_input = worktree_create_input;
+pub async fn worktree_create(configuration: &configuration::Configuration, params: WorktreeCreateParams) -> Result<models::Worktree, Error<WorktreeCreateError>> {
 
     let uri_str = format!("{}/experimental/worktree", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_worktree_create_input);
+    req_builder = req_builder.json(&params.worktree_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4475,14 +5003,12 @@ pub async fn worktree_create(configuration: &configuration::Configuration, direc
 }
 
 /// List all sandbox worktrees for the current project.
-pub async fn worktree_list(configuration: &configuration::Configuration, directory: Option<&str>) -> Result<Vec<String>, Error<WorktreeListError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
+pub async fn worktree_list(configuration: &configuration::Configuration, params: WorktreeListParams) -> Result<Vec<String>, Error<WorktreeListError>> {
 
     let uri_str = format!("{}/experimental/worktree", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -4515,21 +5041,18 @@ pub async fn worktree_list(configuration: &configuration::Configuration, directo
 }
 
 /// Remove a git worktree and delete its branch.
-pub async fn worktree_remove(configuration: &configuration::Configuration, directory: Option<&str>, worktree_remove_input: Option<models::WorktreeRemoveInput>) -> Result<bool, Error<WorktreeRemoveError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_worktree_remove_input = worktree_remove_input;
+pub async fn worktree_remove(configuration: &configuration::Configuration, params: WorktreeRemoveParams) -> Result<bool, Error<WorktreeRemoveError>> {
 
     let uri_str = format!("{}/experimental/worktree", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_worktree_remove_input);
+    req_builder = req_builder.json(&params.worktree_remove_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4557,21 +5080,18 @@ pub async fn worktree_remove(configuration: &configuration::Configuration, direc
 }
 
 /// Reset a worktree branch to the primary default branch.
-pub async fn worktree_reset(configuration: &configuration::Configuration, directory: Option<&str>, worktree_reset_input: Option<models::WorktreeResetInput>) -> Result<bool, Error<WorktreeResetError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_directory = directory;
-    let p_body_worktree_reset_input = worktree_reset_input;
+pub async fn worktree_reset(configuration: &configuration::Configuration, params: WorktreeResetParams) -> Result<bool, Error<WorktreeResetError>> {
 
     let uri_str = format!("{}/experimental/worktree/reset", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_body_worktree_reset_input);
+    req_builder = req_builder.json(&params.worktree_reset_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

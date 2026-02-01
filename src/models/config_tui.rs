@@ -21,7 +21,7 @@ pub struct ConfigTui {
     pub scroll_acceleration: Option<Box<models::ConfigTuiScrollAcceleration>>,
     /// Control diff rendering style: 'auto' adapts to terminal width, 'stacked' always shows single column
     #[serde(rename = "diff_style", skip_serializing_if = "Option::is_none")]
-    pub diff_style: Option<DiffStyle>,
+    pub diff_style: Option<DiffStyleEnum>,
 }
 
 impl ConfigTui {
@@ -36,15 +36,15 @@ impl ConfigTui {
 }
 /// Control diff rendering style: 'auto' adapts to terminal width, 'stacked' always shows single column
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum DiffStyle {
+pub enum DiffStyleEnum {
     #[serde(rename = "auto")]
     Auto,
     #[serde(rename = "stacked")]
     Stacked,
 }
 
-impl Default for DiffStyle {
-    fn default() -> DiffStyle {
+impl Default for DiffStyleEnum {
+    fn default() -> DiffStyleEnum {
         Self::Auto
     }
 }

@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventTuiPromptAppend {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::FindText200ResponseInnerPath>,
 }
 
 impl EventTuiPromptAppend {
-    pub fn new(r#type: Type, properties: models::FindText200ResponseInnerPath) -> EventTuiPromptAppend {
+    pub fn new(r#type: TypeEnum, properties: models::FindText200ResponseInnerPath) -> EventTuiPromptAppend {
         EventTuiPromptAppend {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventTuiPromptAppend {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "tui.prompt.append")]
     TuiPromptAppend,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::TuiPromptAppend
     }
 }

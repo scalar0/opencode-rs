@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GlobalHealth200Response {
     #[serde(rename = "healthy")]
-    pub healthy: Healthy,
+    pub healthy: HealthyEnum,
     #[serde(rename = "version")]
     pub version: String,
 }
 
 impl GlobalHealth200Response {
-    pub fn new(healthy: Healthy, version: String) -> GlobalHealth200Response {
+    pub fn new(healthy: HealthyEnum, version: String) -> GlobalHealth200Response {
         GlobalHealth200Response {
             healthy,
             version,
@@ -29,13 +29,13 @@ impl GlobalHealth200Response {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Healthy {
+pub enum HealthyEnum {
     #[serde(rename = "true")]
     True,
 }
 
-impl Default for Healthy {
-    fn default() -> Healthy {
+impl Default for HealthyEnum {
+    fn default() -> HealthyEnum {
         Self::True
     }
 }

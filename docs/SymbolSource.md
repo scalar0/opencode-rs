@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | [**models::FilePartSourceText**](FilePartSourceText.md) |  | 
-**r#type** | **Type** |  (enum: symbol) | 
+**r#type** | **TypeEnum** |  (enum: symbol) | 
 **path** | **String** |  | 
 **range** | [**models::Range**](Range.md) |  | 
 **name** | **String** |  | 

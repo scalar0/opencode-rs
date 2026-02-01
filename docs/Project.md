@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **worktree** | **String** |  | 
-**vcs** | Option<**Vcs**> |  (enum: git) | [optional]
+**vcs** | Option<**VcsEnum**> |  (enum: git) | [optional]
 **name** | Option<**String**> |  | [optional]
 **icon** | Option<[**models::ProjectUpdateRequestIcon**](ProjectUpdateRequestIcon.md)> |  | [optional]
 **commands** | Option<[**models::ProjectUpdateRequestCommands**](ProjectUpdateRequestCommands.md)> |  | [optional]

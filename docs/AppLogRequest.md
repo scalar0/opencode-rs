@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **service** | **String** | Service name for the log entry | 
-**level** | **Level** | Log level (enum: debug, info, error, warn) | 
+**level** | **LevelEnum** | Log level (enum: debug, info, error, warn) | 
 **message** | **String** | Log message | 
 **extra** | Option<**std::collections::HashMap<String, serde_json::Value>**> | Additional metadata for the log entry | [optional]
 

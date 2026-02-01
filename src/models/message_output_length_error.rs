@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MessageOutputLengthError {
     #[serde(rename = "name")]
-    pub name: Name,
+    pub name: NameEnum,
     #[serde(rename = "data")]
     pub data: serde_json::Value,
 }
 
 impl MessageOutputLengthError {
-    pub fn new(name: Name, data: serde_json::Value) -> MessageOutputLengthError {
+    pub fn new(name: NameEnum, data: serde_json::Value) -> MessageOutputLengthError {
         MessageOutputLengthError {
             name,
             data,
@@ -29,13 +29,13 @@ impl MessageOutputLengthError {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Name {
+pub enum NameEnum {
     #[serde(rename = "MessageOutputLengthError")]
     MessageOutputLengthError,
 }
 
-impl Default for Name {
-    fn default() -> Name {
+impl Default for NameEnum {
+    fn default() -> NameEnum {
         Self::MessageOutputLengthError
     }
 }
