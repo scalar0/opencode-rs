@@ -82,7 +82,7 @@ jobs:
 
       - name: Build crate
         if: steps.skip.outputs.skip != 'true'
-        run: cargo build --locked
+        run: cargo build
 
       - name: Create PR
         if: steps.skip.outputs.skip != 'true'
