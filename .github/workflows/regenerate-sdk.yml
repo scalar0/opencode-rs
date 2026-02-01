@@ -96,6 +96,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           branch="sdk/regenerate-${{ steps.tag_vars.outputs.tag }}"
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            git push origin --delete "$branch"
+          fi
           git checkout -b "$branch"
           git add -A
           git commit -m "chore(sdk): regenerate from opencode ${{ steps.tag_vars.outputs.tag }}"
