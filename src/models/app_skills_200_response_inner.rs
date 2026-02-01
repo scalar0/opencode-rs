@@ -19,14 +19,17 @@ pub struct AppSkills200ResponseInner {
     pub description: String,
     #[serde(rename = "location")]
     pub location: String,
+    #[serde(rename = "content")]
+    pub content: String,
 }
 
 impl AppSkills200ResponseInner {
-    pub fn new(name: String, description: String, location: String) -> AppSkills200ResponseInner {
+    pub fn new(name: String, description: String, location: String, content: String) -> AppSkills200ResponseInner {
         AppSkills200ResponseInner {
             name,
             description,
             location,
+            content,
         }
     }
 }

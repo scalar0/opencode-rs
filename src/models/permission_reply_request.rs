@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PermissionReplyRequest {
     #[serde(rename = "reply")]
-    pub reply: Reply,
+    pub reply: ReplyEnum,
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
 }
 
 impl PermissionReplyRequest {
-    pub fn new(reply: Reply) -> PermissionReplyRequest {
+    pub fn new(reply: ReplyEnum) -> PermissionReplyRequest {
         PermissionReplyRequest {
             reply,
             message: None,
@@ -29,7 +29,7 @@ impl PermissionReplyRequest {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Reply {
+pub enum ReplyEnum {
     #[serde(rename = "once")]
     Once,
     #[serde(rename = "always")]
@@ -38,8 +38,8 @@ pub enum Reply {
     Reject,
 }
 
-impl Default for Reply {
-    fn default() -> Reply {
+impl Default for ReplyEnum {
+    fn default() -> ReplyEnum {
         Self::Once
     }
 }

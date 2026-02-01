@@ -30,7 +30,7 @@ pub struct Model {
     #[serde(rename = "limit")]
     pub limit: Box<models::ProviderList200ResponseAllInnerModelsValueLimit>,
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
     #[serde(rename = "options")]
     pub options: std::collections::HashMap<String, serde_json::Value>,
     #[serde(rename = "headers")]
@@ -42,7 +42,7 @@ pub struct Model {
 }
 
 impl Model {
-    pub fn new(id: String, provider_id: String, api: models::ModelApi, name: String, capabilities: models::ModelCapabilities, cost: models::ModelCost, limit: models::ProviderList200ResponseAllInnerModelsValueLimit, status: Status, options: std::collections::HashMap<String, serde_json::Value>, headers: std::collections::HashMap<String, String>, release_date: String) -> Model {
+    pub fn new(id: String, provider_id: String, api: models::ModelApi, name: String, capabilities: models::ModelCapabilities, cost: models::ModelCost, limit: models::ProviderList200ResponseAllInnerModelsValueLimit, status: StatusEnum, options: std::collections::HashMap<String, serde_json::Value>, headers: std::collections::HashMap<String, String>, release_date: String) -> Model {
         Model {
             id,
             provider_id,
@@ -62,7 +62,7 @@ impl Model {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "alpha")]
     Alpha,
     #[serde(rename = "beta")]
@@ -73,8 +73,8 @@ pub enum Status {
     Active,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Alpha
     }
 }

@@ -18,7 +18,7 @@ pub struct UserMessage {
     #[serde(rename = "sessionID")]
     pub session_id: String,
     #[serde(rename = "role")]
-    pub role: Role,
+    pub role: RoleEnum,
     #[serde(rename = "time")]
     pub time: Box<models::UserMessageTime>,
     #[serde(rename = "summary", skip_serializing_if = "Option::is_none")]
@@ -36,7 +36,7 @@ pub struct UserMessage {
 }
 
 impl UserMessage {
-    pub fn new(id: String, session_id: String, role: Role, time: models::UserMessageTime, agent: String, model: models::SessionPromptRequestModel) -> UserMessage {
+    pub fn new(id: String, session_id: String, role: RoleEnum, time: models::UserMessageTime, agent: String, model: models::SessionPromptRequestModel) -> UserMessage {
         UserMessage {
             id,
             session_id,
@@ -53,13 +53,13 @@ impl UserMessage {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Role {
+pub enum RoleEnum {
     #[serde(rename = "user")]
     User,
 }
 
-impl Default for Role {
-    fn default() -> Role {
+impl Default for RoleEnum {
+    fn default() -> RoleEnum {
         Self::User
     }
 }

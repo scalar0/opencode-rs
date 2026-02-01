@@ -18,7 +18,7 @@ pub struct AppLogRequest {
     pub service: String,
     /// Log level
     #[serde(rename = "level")]
-    pub level: Level,
+    pub level: LevelEnum,
     /// Log message
     #[serde(rename = "message")]
     pub message: String,
@@ -28,7 +28,7 @@ pub struct AppLogRequest {
 }
 
 impl AppLogRequest {
-    pub fn new(service: String, level: Level, message: String) -> AppLogRequest {
+    pub fn new(service: String, level: LevelEnum, message: String) -> AppLogRequest {
         AppLogRequest {
             service,
             level,
@@ -39,7 +39,7 @@ impl AppLogRequest {
 }
 /// Log level
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Level {
+pub enum LevelEnum {
     #[serde(rename = "debug")]
     Debug,
     #[serde(rename = "info")]
@@ -50,8 +50,8 @@ pub enum Level {
     Warn,
 }
 
-impl Default for Level {
-    fn default() -> Level {
+impl Default for LevelEnum {
+    fn default() -> LevelEnum {
         Self::Debug
     }
 }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | **Type** |  (enum: idle, retry, busy) | 
+**r#type** | **TypeEnum** |  (enum: idle, retry, busy) | 
 **attempt** | **f64** |  | 
 **message** | **String** |  | 
 **next** | **f64** |  | 

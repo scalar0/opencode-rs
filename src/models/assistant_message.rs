@@ -18,7 +18,7 @@ pub struct AssistantMessage {
     #[serde(rename = "sessionID")]
     pub session_id: String,
     #[serde(rename = "role")]
-    pub role: Role,
+    pub role: RoleEnum,
     #[serde(rename = "time")]
     pub time: Box<models::AssistantMessageTime>,
     #[serde(rename = "error", skip_serializing_if = "Option::is_none")]
@@ -46,7 +46,7 @@ pub struct AssistantMessage {
 }
 
 impl AssistantMessage {
-    pub fn new(id: String, session_id: String, role: Role, time: models::AssistantMessageTime, parent_id: String, model_id: String, provider_id: String, mode: String, agent: String, path: models::AssistantMessagePath, cost: f64, tokens: models::AssistantMessageTokens) -> AssistantMessage {
+    pub fn new(id: String, session_id: String, role: RoleEnum, time: models::AssistantMessageTime, parent_id: String, model_id: String, provider_id: String, mode: String, agent: String, path: models::AssistantMessagePath, cost: f64, tokens: models::AssistantMessageTokens) -> AssistantMessage {
         AssistantMessage {
             id,
             session_id,
@@ -68,13 +68,13 @@ impl AssistantMessage {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Role {
+pub enum RoleEnum {
     #[serde(rename = "assistant")]
     Assistant,
 }
 
-impl Default for Role {
-    fn default() -> Role {
+impl Default for RoleEnum {
+    fn default() -> RoleEnum {
         Self::Assistant
     }
 }

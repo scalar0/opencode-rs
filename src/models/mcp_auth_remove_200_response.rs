@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct McpAuthRemove200Response {
     #[serde(rename = "success")]
-    pub success: Success,
+    pub success: SuccessEnum,
 }
 
 impl McpAuthRemove200Response {
-    pub fn new(success: Success) -> McpAuthRemove200Response {
+    pub fn new(success: SuccessEnum) -> McpAuthRemove200Response {
         McpAuthRemove200Response {
             success,
         }
@@ -26,13 +26,13 @@ impl McpAuthRemove200Response {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Success {
+pub enum SuccessEnum {
     #[serde(rename = "true")]
     True,
 }
 
-impl Default for Success {
-    fn default() -> Success {
+impl Default for SuccessEnum {
+    fn default() -> SuccessEnum {
         Self::True
     }
 }

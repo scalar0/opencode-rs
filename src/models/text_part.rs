@@ -20,7 +20,7 @@ pub struct TextPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "text")]
     pub text: String,
     #[serde(rename = "synthetic", skip_serializing_if = "Option::is_none")]
@@ -34,7 +34,7 @@ pub struct TextPart {
 }
 
 impl TextPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, text: String) -> TextPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, text: String) -> TextPart {
         TextPart {
             id,
             session_id,
@@ -50,13 +50,13 @@ impl TextPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "text")]
     Text,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Text
     }
 }

@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SessionStatus {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "attempt")]
     pub attempt: f64,
     #[serde(rename = "message")]
@@ -24,7 +24,7 @@ pub struct SessionStatus {
 }
 
 impl SessionStatus {
-    pub fn new(r#type: Type, attempt: f64, message: String, next: f64) -> SessionStatus {
+    pub fn new(r#type: TypeEnum, attempt: f64, message: String, next: f64) -> SessionStatus {
         SessionStatus {
             r#type,
             attempt,
@@ -35,7 +35,7 @@ impl SessionStatus {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "idle")]
     Idle,
     #[serde(rename = "retry")]
@@ -44,8 +44,8 @@ pub enum Type {
     Busy,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Idle
     }
 }

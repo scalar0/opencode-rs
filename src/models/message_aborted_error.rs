@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MessageAbortedError {
     #[serde(rename = "name")]
-    pub name: Name,
+    pub name: NameEnum,
     #[serde(rename = "data")]
     pub data: Box<models::UnknownErrorData>,
 }
 
 impl MessageAbortedError {
-    pub fn new(name: Name, data: models::UnknownErrorData) -> MessageAbortedError {
+    pub fn new(name: NameEnum, data: models::UnknownErrorData) -> MessageAbortedError {
         MessageAbortedError {
             name,
             data: Box::new(data),
@@ -29,13 +29,13 @@ impl MessageAbortedError {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Name {
+pub enum NameEnum {
     #[serde(rename = "MessageAbortedError")]
     MessageAbortedError,
 }
 
-impl Default for Name {
-    fn default() -> Name {
+impl Default for NameEnum {
+    fn default() -> NameEnum {
         Self::MessageAbortedError
     }
 }

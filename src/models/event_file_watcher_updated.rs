@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventFileWatcherUpdated {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventFileWatcherUpdatedProperties>,
 }
 
 impl EventFileWatcherUpdated {
-    pub fn new(r#type: Type, properties: models::EventFileWatcherUpdatedProperties) -> EventFileWatcherUpdated {
+    pub fn new(r#type: TypeEnum, properties: models::EventFileWatcherUpdatedProperties) -> EventFileWatcherUpdated {
         EventFileWatcherUpdated {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventFileWatcherUpdated {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "file.watcher.updated")]
     FileWatcherUpdated,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::FileWatcherUpdated
     }
 }

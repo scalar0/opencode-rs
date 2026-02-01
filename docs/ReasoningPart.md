@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: reasoning) | 
+**r#type** | **TypeEnum** |  (enum: reasoning) | 
 **text** | **String** |  | 
 **metadata** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
 **time** | [**models::TextPartTime**](TextPartTime.md) |  | 

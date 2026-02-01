@@ -20,11 +20,11 @@ pub struct File {
     #[serde(rename = "removed")]
     pub removed: i32,
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
 }
 
 impl File {
-    pub fn new(path: String, added: i32, removed: i32, status: Status) -> File {
+    pub fn new(path: String, added: i32, removed: i32, status: StatusEnum) -> File {
         File {
             path,
             added,
@@ -35,7 +35,7 @@ impl File {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "added")]
     Added,
     #[serde(rename = "deleted")]
@@ -44,8 +44,8 @@ pub enum Status {
     Modified,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Added
     }
 }

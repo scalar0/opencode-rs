@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> |  | [optional]
-**r#type** | **Type** |  (enum: agent) | 
+**r#type** | **TypeEnum** |  (enum: agent) | 
 **name** | **String** |  | 
 **source** | Option<[**models::AgentPartSource**](AgentPartSource.md)> |  | [optional]
 

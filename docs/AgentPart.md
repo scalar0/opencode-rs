@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: agent) | 
+**r#type** | **TypeEnum** |  (enum: agent) | 
 **name** | **String** |  | 
 **source** | Option<[**models::AgentPartSource**](AgentPartSource.md)> |  | [optional]
 

@@ -20,7 +20,7 @@ pub struct ToolPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "callID")]
     pub call_id: String,
     #[serde(rename = "tool")]
@@ -32,7 +32,7 @@ pub struct ToolPart {
 }
 
 impl ToolPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, call_id: String, tool: String, state: models::ToolState) -> ToolPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, call_id: String, tool: String, state: models::ToolState) -> ToolPart {
         ToolPart {
             id,
             session_id,
@@ -47,13 +47,13 @@ impl ToolPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "tool")]
     Tool,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Tool
     }
 }

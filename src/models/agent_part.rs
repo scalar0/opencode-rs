@@ -20,7 +20,7 @@ pub struct AgentPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "source", skip_serializing_if = "Option::is_none")]
@@ -28,7 +28,7 @@ pub struct AgentPart {
 }
 
 impl AgentPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, name: String) -> AgentPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, name: String) -> AgentPart {
         AgentPart {
             id,
             session_id,
@@ -41,13 +41,13 @@ impl AgentPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "agent")]
     Agent,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Agent
     }
 }

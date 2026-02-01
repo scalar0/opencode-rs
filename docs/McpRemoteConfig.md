@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | **Type** | Type of MCP server connection (enum: remote) | 
+**r#type** | **TypeEnum** | Type of MCP server connection (enum: remote) | 
 **url** | **String** | URL of the remote MCP server | 
 **enabled** | Option<**bool**> | Enable or disable the MCP server on startup | [optional]
 **headers** | Option<**std::collections::HashMap<String, String>**> | Headers to send with the request | [optional]

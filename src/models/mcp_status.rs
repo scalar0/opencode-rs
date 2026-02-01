@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct McpStatus {
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
     #[serde(rename = "error")]
     pub error: String,
 }
 
 impl McpStatus {
-    pub fn new(status: Status, error: String) -> McpStatus {
+    pub fn new(status: StatusEnum, error: String) -> McpStatus {
         McpStatus {
             status,
             error,
@@ -29,13 +29,13 @@ impl McpStatus {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "needs_client_registration")]
     NeedsClientRegistration,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::NeedsClientRegistration
     }
 }

@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventQuestionReplied {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventQuestionRepliedProperties>,
 }
 
 impl EventQuestionReplied {
-    pub fn new(r#type: Type, properties: models::EventQuestionRepliedProperties) -> EventQuestionReplied {
+    pub fn new(r#type: TypeEnum, properties: models::EventQuestionRepliedProperties) -> EventQuestionReplied {
         EventQuestionReplied {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventQuestionReplied {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "question.replied")]
     QuestionReplied,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::QuestionReplied
     }
 }

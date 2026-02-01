@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | **Type** |  (enum: retry) | 
+**r#type** | **TypeEnum** |  (enum: retry) | 
 **attempt** | **f64** |  | 
 **message** | **String** |  | 
 **next** | **f64** |  | 

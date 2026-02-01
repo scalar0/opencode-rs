@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 pub struct McpAddRequestConfig {
     /// Type of MCP server connection
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     /// Command and arguments to run the MCP server
     #[serde(rename = "command")]
     pub command: Vec<String>,
@@ -39,7 +39,7 @@ pub struct McpAddRequestConfig {
 }
 
 impl McpAddRequestConfig {
-    pub fn new(r#type: Type, command: Vec<String>, url: String) -> McpAddRequestConfig {
+    pub fn new(r#type: TypeEnum, command: Vec<String>, url: String) -> McpAddRequestConfig {
         McpAddRequestConfig {
             r#type,
             command,
@@ -54,15 +54,15 @@ impl McpAddRequestConfig {
 }
 /// Type of MCP server connection
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "local")]
     Local,
     #[serde(rename = "remote")]
     Remote,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Local
     }
 }

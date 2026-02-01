@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **tools** | Option<**std::collections::HashMap<String, bool>**> | @deprecated Use 'permission' field instead | [optional]
 **disable** | Option<**bool**> |  | [optional]
 **description** | Option<**String**> | Description of when to use the agent | [optional]
-**mode** | Option<**Mode**> |  (enum: subagent, primary, all) | [optional]
+**mode** | Option<**ModeEnum**> |  (enum: subagent, primary, all) | [optional]
 **hidden** | Option<**bool**> | Hide this subagent from the @ autocomplete menu (default: false, only applies to mode: subagent) | [optional]
 **options** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
 **color** | Option<**String**> | Hex color code for the agent (e.g., #FF5733) | [optional]

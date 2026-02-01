@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TuiPublishRequest {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::TuiSelectSessionRequest>,
 }
 
 impl TuiPublishRequest {
-    pub fn new(r#type: Type, properties: models::TuiSelectSessionRequest) -> TuiPublishRequest {
+    pub fn new(r#type: TypeEnum, properties: models::TuiSelectSessionRequest) -> TuiPublishRequest {
         TuiPublishRequest {
             r#type,
             properties: Box::new(properties),
@@ -29,7 +29,7 @@ impl TuiPublishRequest {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "tui.prompt.append")]
     TuiPromptAppend,
     #[serde(rename = "tui.command.execute")]
@@ -40,8 +40,8 @@ pub enum Type {
     TuiSessionSelect,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::TuiPromptAppend
     }
 }

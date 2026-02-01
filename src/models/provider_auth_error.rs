@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProviderAuthError {
     #[serde(rename = "name")]
-    pub name: Name,
+    pub name: NameEnum,
     #[serde(rename = "data")]
     pub data: Box<models::ProviderAuthErrorData>,
 }
 
 impl ProviderAuthError {
-    pub fn new(name: Name, data: models::ProviderAuthErrorData) -> ProviderAuthError {
+    pub fn new(name: NameEnum, data: models::ProviderAuthErrorData) -> ProviderAuthError {
         ProviderAuthError {
             name,
             data: Box::new(data),
@@ -29,13 +29,13 @@ impl ProviderAuthError {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Name {
+pub enum NameEnum {
     #[serde(rename = "ProviderAuthError")]
     ProviderAuthError,
 }
 
-impl Default for Name {
-    fn default() -> Name {
+impl Default for NameEnum {
+    fn default() -> NameEnum {
         Self::ProviderAuthError
     }
 }

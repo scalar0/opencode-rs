@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventTodoUpdated {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventTodoUpdatedProperties>,
 }
 
 impl EventTodoUpdated {
-    pub fn new(r#type: Type, properties: models::EventTodoUpdatedProperties) -> EventTodoUpdated {
+    pub fn new(r#type: TypeEnum, properties: models::EventTodoUpdatedProperties) -> EventTodoUpdated {
         EventTodoUpdated {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventTodoUpdated {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "todo.updated")]
     TodoUpdated,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::TodoUpdated
     }
 }

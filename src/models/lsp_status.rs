@@ -20,11 +20,11 @@ pub struct LspStatus {
     #[serde(rename = "root")]
     pub root: String,
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
 }
 
 impl LspStatus {
-    pub fn new(id: String, name: String, root: String, status: Status) -> LspStatus {
+    pub fn new(id: String, name: String, root: String, status: StatusEnum) -> LspStatus {
         LspStatus {
             id,
             name,
@@ -35,15 +35,15 @@ impl LspStatus {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "connected")]
     Connected,
     #[serde(rename = "error")]
     Error,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Connected
     }
 }

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: text, subtask, reasoning, file, tool, step-start, step-finish, snapshot, patch, agent, retry, compaction) | 
+**r#type** | **TypeEnum** |  (enum: text, subtask, reasoning, file, tool, step-start, step-finish, snapshot, patch, agent, retry, compaction) | 
 **text** | **String** |  | 
 **synthetic** | Option<**bool**> |  | [optional]
 **ignored** | Option<**bool**> |  | [optional]

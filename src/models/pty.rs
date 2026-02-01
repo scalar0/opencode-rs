@@ -24,13 +24,13 @@ pub struct Pty {
     #[serde(rename = "cwd")]
     pub cwd: String,
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
     #[serde(rename = "pid")]
     pub pid: f64,
 }
 
 impl Pty {
-    pub fn new(id: String, title: String, command: String, args: Vec<String>, cwd: String, status: Status, pid: f64) -> Pty {
+    pub fn new(id: String, title: String, command: String, args: Vec<String>, cwd: String, status: StatusEnum, pid: f64) -> Pty {
         Pty {
             id,
             title,
@@ -44,15 +44,15 @@ impl Pty {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "running")]
     Running,
     #[serde(rename = "exited")]
     Exited,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Running
     }
 }

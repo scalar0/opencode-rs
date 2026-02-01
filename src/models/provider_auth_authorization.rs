@@ -16,13 +16,13 @@ pub struct ProviderAuthAuthorization {
     #[serde(rename = "url")]
     pub url: String,
     #[serde(rename = "method")]
-    pub method: Method,
+    pub method: MethodEnum,
     #[serde(rename = "instructions")]
     pub instructions: String,
 }
 
 impl ProviderAuthAuthorization {
-    pub fn new(url: String, method: Method, instructions: String) -> ProviderAuthAuthorization {
+    pub fn new(url: String, method: MethodEnum, instructions: String) -> ProviderAuthAuthorization {
         ProviderAuthAuthorization {
             url,
             method,
@@ -32,15 +32,15 @@ impl ProviderAuthAuthorization {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Method {
+pub enum MethodEnum {
     #[serde(rename = "auto")]
     Auto,
     #[serde(rename = "code")]
     Code,
 }
 
-impl Default for Method {
-    fn default() -> Method {
+impl Default for MethodEnum {
+    fn default() -> MethodEnum {
         Self::Auto
     }
 }

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **limit** | Option<[**models::ProviderList200ResponseAllInnerModelsValueLimit**](ProviderList200ResponseAllInnerModelsValueLimit.md)> |  | [optional]
 **modalities** | Option<[**models::ProviderList200ResponseAllInnerModelsValueModalities**](ProviderList200ResponseAllInnerModelsValueModalities.md)> |  | [optional]
 **experimental** | Option<**bool**> |  | [optional]
-**status** | Option<**Status**> |  (enum: alpha, beta, deprecated) | [optional]
+**status** | Option<**StatusEnum**> |  (enum: alpha, beta, deprecated) | [optional]
 **options** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
 **headers** | Option<**std::collections::HashMap<String, String>**> |  | [optional]
 **provider** | Option<[**models::ProviderList200ResponseAllInnerModelsValueProvider**](ProviderList200ResponseAllInnerModelsValueProvider.md)> |  | [optional]
