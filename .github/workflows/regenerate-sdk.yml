@@ -101,4 +101,13 @@ jobs:
           git commit -m "chore(sdk): regenerate from opencode ${{ steps.tag_vars.outputs.tag }}"
           git push -u origin "$branch"
           pr_url=$(gh pr create --title "chore(sdk): regenerate from opencode ${{ steps.tag_vars.outputs.tag }}" --body "Automated regeneration from opencode ${{ steps.tag_vars.outputs.tag }}." --base "${{ github.ref_name }}")
-          gh pr merge --auto --squash "$pr_url"
+          if ! gh pr merge --auto --squash "$pr_url"; then
+            mergeable=$(gh pr view "$pr_url" --json mergeable --jq '.mergeable')
+            merge_state=$(gh pr view "$pr_url" --json mergeStateStatus --jq '.mergeStateStatus')
+            if [ "$mergeable" = "MERGEABLE" ] && [ "$merge_state" = "CLEAN" ]; then
+              gh pr merge --squash "$pr_url"
+            else
+              echo "Auto-merge failed or not enabled for this PR. Leaving it open: $pr_url"
+              echo "mergeable=$mergeable merge_state=$merge_state"
+            fi
+          fi
