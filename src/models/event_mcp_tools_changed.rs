@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventMcpToolsChanged {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventMcpToolsChangedProperties>,
 }
 
 impl EventMcpToolsChanged {
-    pub fn new(r#type: Type, properties: models::EventMcpToolsChangedProperties) -> EventMcpToolsChanged {
+    pub fn new(r#type: TypeEnum, properties: models::EventMcpToolsChangedProperties) -> EventMcpToolsChanged {
         EventMcpToolsChanged {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventMcpToolsChanged {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "mcp.tools.changed")]
     McpToolsChanged,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::McpToolsChanged
     }
 }

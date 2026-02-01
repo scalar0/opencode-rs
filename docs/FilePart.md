@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: file) | 
+**r#type** | **TypeEnum** |  (enum: file) | 
 **mime** | **String** |  | 
 **filename** | Option<**String**> |  | [optional]
 **url** | **String** |  | 

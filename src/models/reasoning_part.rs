@@ -20,7 +20,7 @@ pub struct ReasoningPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "text")]
     pub text: String,
     #[serde(rename = "metadata", skip_serializing_if = "Option::is_none")]
@@ -30,7 +30,7 @@ pub struct ReasoningPart {
 }
 
 impl ReasoningPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, text: String, time: models::TextPartTime) -> ReasoningPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, text: String, time: models::TextPartTime) -> ReasoningPart {
         ReasoningPart {
             id,
             session_id,
@@ -44,13 +44,13 @@ impl ReasoningPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "reasoning")]
     Reasoning,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Reasoning
     }
 }

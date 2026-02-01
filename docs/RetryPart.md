@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: retry) | 
+**r#type** | **TypeEnum** |  (enum: retry) | 
 **attempt** | **f64** |  | 
 **error** | [**models::ApiError**](APIError.md) |  | 
 **time** | [**models::UserMessageTime**](UserMessageTime.md) |  | 

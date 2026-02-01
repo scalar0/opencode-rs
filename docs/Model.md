@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **capabilities** | [**models::ModelCapabilities**](ModelCapabilities.md) |  | 
 **cost** | [**models::ModelCost**](ModelCost.md) |  | 
 **limit** | [**models::ProviderList200ResponseAllInnerModelsValueLimit**](ProviderList200ResponseAllInnerModelsValueLimit.md) |  | 
-**status** | **Status** |  (enum: alpha, beta, deprecated, active) | 
+**status** | **StatusEnum** |  (enum: alpha, beta, deprecated, active) | 
 **options** | **std::collections::HashMap<String, serde_json::Value>** |  | 
 **headers** | **std::collections::HashMap<String, String>** |  | 
 **release_date** | **String** |  | 

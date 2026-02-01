@@ -16,7 +16,7 @@ pub struct FilePartInput {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "mime")]
     pub mime: String,
     #[serde(rename = "filename", skip_serializing_if = "Option::is_none")]
@@ -28,7 +28,7 @@ pub struct FilePartInput {
 }
 
 impl FilePartInput {
-    pub fn new(r#type: Type, mime: String, url: String) -> FilePartInput {
+    pub fn new(r#type: TypeEnum, mime: String, url: String) -> FilePartInput {
         FilePartInput {
             id: None,
             r#type,
@@ -41,13 +41,13 @@ impl FilePartInput {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "file")]
     File,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::File
     }
 }

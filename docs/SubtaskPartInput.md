@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> |  | [optional]
-**r#type** | **Type** |  (enum: subtask) | 
+**r#type** | **TypeEnum** |  (enum: subtask) | 
 **prompt** | **String** |  | 
 **description** | **String** |  | 
 **agent** | **String** |  | 

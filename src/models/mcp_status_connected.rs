@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct McpStatusConnected {
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
 }
 
 impl McpStatusConnected {
-    pub fn new(status: Status) -> McpStatusConnected {
+    pub fn new(status: StatusEnum) -> McpStatusConnected {
         McpStatusConnected {
             status,
         }
@@ -26,13 +26,13 @@ impl McpStatusConnected {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "connected")]
     Connected,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Connected
     }
 }

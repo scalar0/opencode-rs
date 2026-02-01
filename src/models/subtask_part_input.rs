@@ -16,7 +16,7 @@ pub struct SubtaskPartInput {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "prompt")]
     pub prompt: String,
     #[serde(rename = "description")]
@@ -30,7 +30,7 @@ pub struct SubtaskPartInput {
 }
 
 impl SubtaskPartInput {
-    pub fn new(r#type: Type, prompt: String, description: String, agent: String) -> SubtaskPartInput {
+    pub fn new(r#type: TypeEnum, prompt: String, description: String, agent: String) -> SubtaskPartInput {
         SubtaskPartInput {
             id: None,
             r#type,
@@ -44,13 +44,13 @@ impl SubtaskPartInput {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "subtask")]
     Subtask,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Subtask
     }
 }

@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FileContent {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "content")]
     pub content: String,
     #[serde(rename = "diff", skip_serializing_if = "Option::is_none")]
@@ -22,13 +22,13 @@ pub struct FileContent {
     #[serde(rename = "patch", skip_serializing_if = "Option::is_none")]
     pub patch: Option<Box<models::FileContentPatch>>,
     #[serde(rename = "encoding", skip_serializing_if = "Option::is_none")]
-    pub encoding: Option<Encoding>,
+    pub encoding: Option<EncodingEnum>,
     #[serde(rename = "mimeType", skip_serializing_if = "Option::is_none")]
     pub mime_type: Option<String>,
 }
 
 impl FileContent {
-    pub fn new(r#type: Type, content: String) -> FileContent {
+    pub fn new(r#type: TypeEnum, content: String) -> FileContent {
         FileContent {
             r#type,
             content,
@@ -41,25 +41,25 @@ impl FileContent {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "text")]
     Text,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Text
     }
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Encoding {
+pub enum EncodingEnum {
     #[serde(rename = "base64")]
     Base64,
 }
 
-impl Default for Encoding {
-    fn default() -> Encoding {
+impl Default for EncodingEnum {
+    fn default() -> EncodingEnum {
         Self::Base64
     }
 }

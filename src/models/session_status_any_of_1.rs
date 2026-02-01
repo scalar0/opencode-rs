@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SessionStatusAnyOf1 {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "attempt")]
     pub attempt: f64,
     #[serde(rename = "message")]
@@ -24,7 +24,7 @@ pub struct SessionStatusAnyOf1 {
 }
 
 impl SessionStatusAnyOf1 {
-    pub fn new(r#type: Type, attempt: f64, message: String, next: f64) -> SessionStatusAnyOf1 {
+    pub fn new(r#type: TypeEnum, attempt: f64, message: String, next: f64) -> SessionStatusAnyOf1 {
         SessionStatusAnyOf1 {
             r#type,
             attempt,
@@ -35,13 +35,13 @@ impl SessionStatusAnyOf1 {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "retry")]
     Retry,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Retry
     }
 }

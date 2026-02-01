@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hook** | Option<[**models::ConfigExperimentalHook**](ConfigExperimentalHook.md)> |  | [optional]
-**chat_max_retries** | Option<**f64**> | Number of retries for chat completions on failure | [optional]
 **disable_paste_summary** | Option<**bool**> |  | [optional]
 **batch_tool** | Option<**bool**> | Enable the batch tool | [optional]
 **open_telemetry** | Option<**bool**> | Enable OpenTelemetry spans for AI SDK calls (using the 'experimental_telemetry' flag) | [optional]

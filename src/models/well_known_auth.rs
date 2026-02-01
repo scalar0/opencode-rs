@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct WellKnownAuth {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "key")]
     pub key: String,
     #[serde(rename = "token")]
@@ -22,7 +22,7 @@ pub struct WellKnownAuth {
 }
 
 impl WellKnownAuth {
-    pub fn new(r#type: Type, key: String, token: String) -> WellKnownAuth {
+    pub fn new(r#type: TypeEnum, key: String, token: String) -> WellKnownAuth {
         WellKnownAuth {
             r#type,
             key,
@@ -32,13 +32,13 @@ impl WellKnownAuth {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "wellknown")]
     Wellknown,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Wellknown
     }
 }

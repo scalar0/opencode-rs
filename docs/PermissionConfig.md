@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **codesearch** | Option<[**models::PermissionActionConfig**](PermissionActionConfig.md)> |  | [optional]
 **lsp** | Option<[**models::PermissionRuleConfig**](PermissionRuleConfig.md)> |  | [optional]
 **doom_loop** | Option<[**models::PermissionActionConfig**](PermissionActionConfig.md)> |  | [optional]
+**skill** | Option<[**models::PermissionRuleConfig**](PermissionRuleConfig.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,13 +20,13 @@ pub struct CompactionPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "auto")]
     pub auto: bool,
 }
 
 impl CompactionPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, auto: bool) -> CompactionPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, auto: bool) -> CompactionPart {
         CompactionPart {
             id,
             session_id,
@@ -38,13 +38,13 @@ impl CompactionPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "compaction")]
     Compaction,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Compaction
     }
 }

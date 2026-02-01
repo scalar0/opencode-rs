@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: step-finish) | 
+**r#type** | **TypeEnum** |  (enum: step-finish) | 
 **reason** | **String** |  | 
 **snapshot** | Option<**String**> |  | [optional]
 **cost** | **f64** |  | 

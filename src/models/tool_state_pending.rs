@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ToolStatePending {
     #[serde(rename = "status")]
-    pub status: Status,
+    pub status: StatusEnum,
     #[serde(rename = "input")]
     pub input: std::collections::HashMap<String, serde_json::Value>,
     #[serde(rename = "raw")]
@@ -22,7 +22,7 @@ pub struct ToolStatePending {
 }
 
 impl ToolStatePending {
-    pub fn new(status: Status, input: std::collections::HashMap<String, serde_json::Value>, raw: String) -> ToolStatePending {
+    pub fn new(status: StatusEnum, input: std::collections::HashMap<String, serde_json::Value>, raw: String) -> ToolStatePending {
         ToolStatePending {
             status,
             input,
@@ -32,13 +32,13 @@ impl ToolStatePending {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "pending")]
     Pending,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Pending
     }
 }

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | [**models::FilePartSourceText**](FilePartSourceText.md) |  | 
-**r#type** | **Type** |  (enum: resource) | 
+**r#type** | **TypeEnum** |  (enum: resource) | 
 **client_name** | **String** |  | 
 **uri** | **String** |  | 
 

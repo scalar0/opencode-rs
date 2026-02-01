@@ -16,7 +16,7 @@ pub struct FilePartSource {
     #[serde(rename = "text")]
     pub text: Box<models::FilePartSourceText>,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "path")]
     pub path: String,
     #[serde(rename = "range")]
@@ -32,7 +32,7 @@ pub struct FilePartSource {
 }
 
 impl FilePartSource {
-    pub fn new(text: models::FilePartSourceText, r#type: Type, path: String, range: models::Range, name: String, kind: i32, client_name: String, uri: String) -> FilePartSource {
+    pub fn new(text: models::FilePartSourceText, r#type: TypeEnum, path: String, range: models::Range, name: String, kind: i32, client_name: String, uri: String) -> FilePartSource {
         FilePartSource {
             text: Box::new(text),
             r#type,
@@ -47,7 +47,7 @@ impl FilePartSource {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "file")]
     File,
     #[serde(rename = "symbol")]
@@ -56,8 +56,8 @@ pub enum Type {
     Resource,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::File
     }
 }

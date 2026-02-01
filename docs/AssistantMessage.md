@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **session_id** | **String** |  | 
-**role** | **Role** |  (enum: assistant) | 
+**role** | **RoleEnum** |  (enum: assistant) | 
 **time** | [**models::AssistantMessageTime**](AssistantMessageTime.md) |  | 
 **error** | Option<[**models::AssistantMessageError**](AssistantMessageError.md)> |  | [optional]
 **parent_id** | **String** |  | 

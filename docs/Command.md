@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | Option<**String**> |  | [optional]
 **agent** | Option<**String**> |  | [optional]
 **model** | Option<**String**> |  | [optional]
-**mcp** | Option<**bool**> |  | [optional]
+**source** | Option<**SourceEnum**> |  (enum: command, mcp, skill) | [optional]
 **template** | [**models::CommandTemplate**](CommandTemplate.md) |  | 
 **subtask** | Option<**bool**> |  | [optional]
 **hints** | **Vec<String>** |  | 

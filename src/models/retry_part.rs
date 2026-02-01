@@ -20,7 +20,7 @@ pub struct RetryPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "attempt")]
     pub attempt: f64,
     #[serde(rename = "error")]
@@ -30,7 +30,7 @@ pub struct RetryPart {
 }
 
 impl RetryPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, attempt: f64, error: models::ApiError, time: models::UserMessageTime) -> RetryPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, attempt: f64, error: models::ApiError, time: models::UserMessageTime) -> RetryPart {
         RetryPart {
             id,
             session_id,
@@ -44,13 +44,13 @@ impl RetryPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "retry")]
     Retry,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Retry
     }
 }

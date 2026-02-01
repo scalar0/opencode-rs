@@ -18,11 +18,11 @@ pub struct EventPermissionRepliedProperties {
     #[serde(rename = "requestID")]
     pub request_id: String,
     #[serde(rename = "reply")]
-    pub reply: Reply,
+    pub reply: ReplyEnum,
 }
 
 impl EventPermissionRepliedProperties {
-    pub fn new(session_id: String, request_id: String, reply: Reply) -> EventPermissionRepliedProperties {
+    pub fn new(session_id: String, request_id: String, reply: ReplyEnum) -> EventPermissionRepliedProperties {
         EventPermissionRepliedProperties {
             session_id,
             request_id,
@@ -32,7 +32,7 @@ impl EventPermissionRepliedProperties {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Reply {
+pub enum ReplyEnum {
     #[serde(rename = "once")]
     Once,
     #[serde(rename = "always")]
@@ -41,8 +41,8 @@ pub enum Reply {
     Reject,
 }
 
-impl Default for Reply {
-    fn default() -> Reply {
+impl Default for ReplyEnum {
+    fn default() -> ReplyEnum {
         Self::Once
     }
 }

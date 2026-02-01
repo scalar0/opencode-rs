@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProviderList200ResponseAllInnerModelsValueInterleaved {
     #[serde(rename = "field")]
-    pub field: Field,
+    pub field: FieldEnum,
 }
 
 impl ProviderList200ResponseAllInnerModelsValueInterleaved {
-    pub fn new(field: Field) -> ProviderList200ResponseAllInnerModelsValueInterleaved {
+    pub fn new(field: FieldEnum) -> ProviderList200ResponseAllInnerModelsValueInterleaved {
         ProviderList200ResponseAllInnerModelsValueInterleaved {
             field,
         }
@@ -26,15 +26,15 @@ impl ProviderList200ResponseAllInnerModelsValueInterleaved {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Field {
+pub enum FieldEnum {
     #[serde(rename = "reasoning_content")]
     ReasoningContent,
     #[serde(rename = "reasoning_details")]
     ReasoningDetails,
 }
 
-impl Default for Field {
-    fn default() -> Field {
+impl Default for FieldEnum {
+    fn default() -> FieldEnum {
         Self::ReasoningContent
     }
 }

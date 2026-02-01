@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | **Type** | Type of MCP server connection (enum: local) | 
+**r#type** | **TypeEnum** | Type of MCP server connection (enum: local) | 
 **command** | **Vec<String>** | Command and arguments to run the MCP server | 
 **environment** | Option<**std::collections::HashMap<String, String>**> | Environment variables to set when running the MCP server | [optional]
 **enabled** | Option<**bool**> | Enable or disable the MCP server on startup | [optional]

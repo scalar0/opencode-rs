@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | **Type** |  (enum: oauth) | 
+**r#type** | **TypeEnum** |  (enum: oauth) | 
 **refresh** | **String** |  | 
 **access** | **String** |  | 
 **expires** | **f64** |  | 

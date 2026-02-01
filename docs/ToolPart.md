@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: tool) | 
+**r#type** | **TypeEnum** |  (enum: tool) | 
 **call_id** | **String** |  | 
 **tool** | **String** |  | 
 **state** | [**models::ToolState**](ToolState.md) |  | 

@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ApiAuth {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "key")]
     pub key: String,
 }
 
 impl ApiAuth {
-    pub fn new(r#type: Type, key: String) -> ApiAuth {
+    pub fn new(r#type: TypeEnum, key: String) -> ApiAuth {
         ApiAuth {
             r#type,
             key,
@@ -29,13 +29,13 @@ impl ApiAuth {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "api")]
     Api,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Api
     }
 }

@@ -40,7 +40,7 @@ pub struct ProviderConfigModelsValue {
     #[serde(rename = "experimental", skip_serializing_if = "Option::is_none")]
     pub experimental: Option<bool>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<Status>,
+    pub status: Option<StatusEnum>,
     #[serde(rename = "options", skip_serializing_if = "Option::is_none")]
     pub options: Option<std::collections::HashMap<String, serde_json::Value>>,
     #[serde(rename = "headers", skip_serializing_if = "Option::is_none")]
@@ -78,7 +78,7 @@ impl ProviderConfigModelsValue {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Status {
+pub enum StatusEnum {
     #[serde(rename = "alpha")]
     Alpha,
     #[serde(rename = "beta")]
@@ -87,8 +87,8 @@ pub enum Status {
     Deprecated,
 }
 
-impl Default for Status {
-    fn default() -> Status {
+impl Default for StatusEnum {
+    fn default() -> StatusEnum {
         Self::Alpha
     }
 }

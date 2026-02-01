@@ -14,6 +14,20 @@ use serde::{Deserialize, Serialize, de::Error as _};
 use crate::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
+/// struct for passing parameters to the method [`session_children`]
+#[derive(Clone, Debug)]
+pub struct SessionChildrenParams {
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
+/// struct for passing parameters to the method [`session_get`]
+#[derive(Clone, Debug)]
+pub struct SessionGetParams {
+    pub session_id: String,
+    pub directory: Option<String>
+}
+
 
 /// struct for typed errors of method [`session_children`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -35,15 +49,12 @@ pub enum SessionGetError {
 
 
 /// Retrieve all child sessions that were forked from the specified parent session.
-pub async fn session_children(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<Vec<models::Session>, Error<SessionChildrenError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_children(configuration: &configuration::Configuration, params: SessionChildrenParams) -> Result<Vec<models::Session>, Error<SessionChildrenError>> {
 
-    let uri_str = format!("{}/session/{sessionID}/children", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}/children", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -76,15 +87,12 @@ pub async fn session_children(configuration: &configuration::Configuration, sess
 }
 
 /// Retrieve detailed information about a specific OpenCode session.
-pub async fn session_get(configuration: &configuration::Configuration, session_id: &str, directory: Option<&str>) -> Result<models::Session, Error<SessionGetError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_session_id = session_id;
-    let p_query_directory = directory;
+pub async fn session_get(configuration: &configuration::Configuration, params: SessionGetParams) -> Result<models::Session, Error<SessionGetError>> {
 
-    let uri_str = format!("{}/session/{sessionID}", configuration.base_path, sessionID=crate::apis::urlencode(p_path_session_id));
+    let uri_str = format!("{}/session/{sessionID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query_directory {
+    if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

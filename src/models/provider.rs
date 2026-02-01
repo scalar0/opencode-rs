@@ -18,7 +18,7 @@ pub struct Provider {
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "source")]
-    pub source: Source,
+    pub source: SourceEnum,
     #[serde(rename = "env")]
     pub env: Vec<String>,
     #[serde(rename = "key", skip_serializing_if = "Option::is_none")]
@@ -30,7 +30,7 @@ pub struct Provider {
 }
 
 impl Provider {
-    pub fn new(id: String, name: String, source: Source, env: Vec<String>, options: std::collections::HashMap<String, serde_json::Value>, models: std::collections::HashMap<String, models::Model>) -> Provider {
+    pub fn new(id: String, name: String, source: SourceEnum, env: Vec<String>, options: std::collections::HashMap<String, serde_json::Value>, models: std::collections::HashMap<String, models::Model>) -> Provider {
         Provider {
             id,
             name,
@@ -44,7 +44,7 @@ impl Provider {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Source {
+pub enum SourceEnum {
     #[serde(rename = "env")]
     Env,
     #[serde(rename = "config")]
@@ -55,8 +55,8 @@ pub enum Source {
     Api,
 }
 
-impl Default for Source {
-    fn default() -> Source {
+impl Default for SourceEnum {
+    fn default() -> SourceEnum {
         Self::Env
     }
 }

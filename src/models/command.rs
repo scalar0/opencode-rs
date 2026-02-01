@@ -21,8 +21,8 @@ pub struct Command {
     pub agent: Option<String>,
     #[serde(rename = "model", skip_serializing_if = "Option::is_none")]
     pub model: Option<String>,
-    #[serde(rename = "mcp", skip_serializing_if = "Option::is_none")]
-    pub mcp: Option<bool>,
+    #[serde(rename = "source", skip_serializing_if = "Option::is_none")]
+    pub source: Option<SourceEnum>,
     #[serde(rename = "template")]
     pub template: Box<models::CommandTemplate>,
     #[serde(rename = "subtask", skip_serializing_if = "Option::is_none")]
@@ -38,11 +38,27 @@ impl Command {
             description: None,
             agent: None,
             model: None,
-            mcp: None,
+            source: None,
             template: Box::new(template),
             subtask: None,
             hints,
         }
+    }
+}
+/// 
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum SourceEnum {
+    #[serde(rename = "command")]
+    Command,
+    #[serde(rename = "mcp")]
+    Mcp,
+    #[serde(rename = "skill")]
+    Skill,
+}
+
+impl Default for SourceEnum {
+    fn default() -> SourceEnum {
+        Self::Command
     }
 }
 

@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventGlobalDisposed {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: serde_json::Value,
 }
 
 impl EventGlobalDisposed {
-    pub fn new(r#type: Type, properties: serde_json::Value) -> EventGlobalDisposed {
+    pub fn new(r#type: TypeEnum, properties: serde_json::Value) -> EventGlobalDisposed {
         EventGlobalDisposed {
             r#type,
             properties,
@@ -29,13 +29,13 @@ impl EventGlobalDisposed {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "global.disposed")]
     GlobalDisposed,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::GlobalDisposed
     }
 }

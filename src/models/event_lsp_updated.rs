@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventLspUpdated {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: serde_json::Value,
 }
 
 impl EventLspUpdated {
-    pub fn new(r#type: Type, properties: serde_json::Value) -> EventLspUpdated {
+    pub fn new(r#type: TypeEnum, properties: serde_json::Value) -> EventLspUpdated {
         EventLspUpdated {
             r#type,
             properties,
@@ -29,13 +29,13 @@ impl EventLspUpdated {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "lsp.updated")]
     LspUpdated,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::LspUpdated
     }
 }

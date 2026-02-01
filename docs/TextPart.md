@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **session_id** | **String** |  | 
 **message_id** | **String** |  | 
-**r#type** | **Type** |  (enum: text) | 
+**r#type** | **TypeEnum** |  (enum: text) | 
 **text** | **String** |  | 
 **synthetic** | Option<**bool**> |  | [optional]
 **ignored** | Option<**bool**> |  | [optional]

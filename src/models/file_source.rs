@@ -16,13 +16,13 @@ pub struct FileSource {
     #[serde(rename = "text")]
     pub text: Box<models::FilePartSourceText>,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "path")]
     pub path: String,
 }
 
 impl FileSource {
-    pub fn new(text: models::FilePartSourceText, r#type: Type, path: String) -> FileSource {
+    pub fn new(text: models::FilePartSourceText, r#type: TypeEnum, path: String) -> FileSource {
         FileSource {
             text: Box::new(text),
             r#type,
@@ -32,13 +32,13 @@ impl FileSource {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "file")]
     File,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::File
     }
 }

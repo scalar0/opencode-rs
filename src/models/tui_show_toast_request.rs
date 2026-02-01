@@ -18,14 +18,14 @@ pub struct TuiShowToastRequest {
     #[serde(rename = "message")]
     pub message: String,
     #[serde(rename = "variant")]
-    pub variant: Variant,
+    pub variant: VariantEnum,
     /// Duration in milliseconds
     #[serde(rename = "duration", skip_serializing_if = "Option::is_none")]
     pub duration: Option<f64>,
 }
 
 impl TuiShowToastRequest {
-    pub fn new(message: String, variant: Variant) -> TuiShowToastRequest {
+    pub fn new(message: String, variant: VariantEnum) -> TuiShowToastRequest {
         TuiShowToastRequest {
             title: None,
             message,
@@ -36,7 +36,7 @@ impl TuiShowToastRequest {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Variant {
+pub enum VariantEnum {
     #[serde(rename = "info")]
     Info,
     #[serde(rename = "success")]
@@ -47,8 +47,8 @@ pub enum Variant {
     Error,
 }
 
-impl Default for Variant {
-    fn default() -> Variant {
+impl Default for VariantEnum {
+    fn default() -> VariantEnum {
         Self::Info
     }
 }

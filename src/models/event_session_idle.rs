@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventSessionIdle {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventSessionIdleProperties>,
 }
 
 impl EventSessionIdle {
-    pub fn new(r#type: Type, properties: models::EventSessionIdleProperties) -> EventSessionIdle {
+    pub fn new(r#type: TypeEnum, properties: models::EventSessionIdleProperties) -> EventSessionIdle {
         EventSessionIdle {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventSessionIdle {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "session.idle")]
     SessionIdle,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::SessionIdle
     }
 }

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **command** | **String** |  | 
 **args** | **Vec<String>** |  | 
 **cwd** | **String** |  | 
-**status** | **Status** |  (enum: running, exited) | 
+**status** | **StatusEnum** |  (enum: running, exited) | 
 **pid** | **f64** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

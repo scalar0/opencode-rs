@@ -20,7 +20,7 @@ pub struct StepFinishPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "reason")]
     pub reason: String,
     #[serde(rename = "snapshot", skip_serializing_if = "Option::is_none")]
@@ -32,7 +32,7 @@ pub struct StepFinishPart {
 }
 
 impl StepFinishPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, reason: String, cost: f64, tokens: models::AssistantMessageTokens) -> StepFinishPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, reason: String, cost: f64, tokens: models::AssistantMessageTokens) -> StepFinishPart {
         StepFinishPart {
             id,
             session_id,
@@ -47,13 +47,13 @@ impl StepFinishPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "step-finish")]
     StepFinish,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::StepFinish
     }
 }

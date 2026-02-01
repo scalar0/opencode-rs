@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventLspClientDiagnostics {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventLspClientDiagnosticsProperties>,
 }
 
 impl EventLspClientDiagnostics {
-    pub fn new(r#type: Type, properties: models::EventLspClientDiagnosticsProperties) -> EventLspClientDiagnostics {
+    pub fn new(r#type: TypeEnum, properties: models::EventLspClientDiagnosticsProperties) -> EventLspClientDiagnostics {
         EventLspClientDiagnostics {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventLspClientDiagnostics {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "lsp.client.diagnostics")]
     LspClientDiagnostics,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::LspClientDiagnostics
     }
 }

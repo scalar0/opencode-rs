@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | **Type** |  (enum: wellknown) | 
+**r#type** | **TypeEnum** |  (enum: wellknown) | 
 **key** | **String** |  | 
 **token** | **String** |  | 
 

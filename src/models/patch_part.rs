@@ -20,7 +20,7 @@ pub struct PatchPart {
     #[serde(rename = "messageID")]
     pub message_id: String,
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "hash")]
     pub hash: String,
     #[serde(rename = "files")]
@@ -28,7 +28,7 @@ pub struct PatchPart {
 }
 
 impl PatchPart {
-    pub fn new(id: String, session_id: String, message_id: String, r#type: Type, hash: String, files: Vec<String>) -> PatchPart {
+    pub fn new(id: String, session_id: String, message_id: String, r#type: TypeEnum, hash: String, files: Vec<String>) -> PatchPart {
         PatchPart {
             id,
             session_id,
@@ -41,13 +41,13 @@ impl PatchPart {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "patch")]
     Patch,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Patch
     }
 }

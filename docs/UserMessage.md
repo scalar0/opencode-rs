@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
 **session_id** | **String** |  | 
-**role** | **Role** |  (enum: user) | 
+**role** | **RoleEnum** |  (enum: user) | 
 **time** | [**models::UserMessageTime**](UserMessageTime.md) |  | 
 **summary** | Option<[**models::UserMessageSummary**](UserMessageSummary.md)> |  | [optional]
 **agent** | **String** |  | 

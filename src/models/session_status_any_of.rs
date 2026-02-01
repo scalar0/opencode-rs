@@ -14,11 +14,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SessionStatusAnyOf {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
 }
 
 impl SessionStatusAnyOf {
-    pub fn new(r#type: Type) -> SessionStatusAnyOf {
+    pub fn new(r#type: TypeEnum) -> SessionStatusAnyOf {
         SessionStatusAnyOf {
             r#type,
         }
@@ -26,13 +26,13 @@ impl SessionStatusAnyOf {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "idle")]
     Idle,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::Idle
     }
 }

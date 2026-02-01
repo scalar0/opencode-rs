@@ -14,13 +14,13 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct EventInstallationUpdateAvailable {
     #[serde(rename = "type")]
-    pub r#type: Type,
+    pub r#type: TypeEnum,
     #[serde(rename = "properties")]
     pub properties: Box<models::EventInstallationUpdatedProperties>,
 }
 
 impl EventInstallationUpdateAvailable {
-    pub fn new(r#type: Type, properties: models::EventInstallationUpdatedProperties) -> EventInstallationUpdateAvailable {
+    pub fn new(r#type: TypeEnum, properties: models::EventInstallationUpdatedProperties) -> EventInstallationUpdateAvailable {
         EventInstallationUpdateAvailable {
             r#type,
             properties: Box::new(properties),
@@ -29,13 +29,13 @@ impl EventInstallationUpdateAvailable {
 }
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Type {
+pub enum TypeEnum {
     #[serde(rename = "installation.update-available")]
     InstallationUpdateAvailable,
 }
 
-impl Default for Type {
-    fn default() -> Type {
+impl Default for TypeEnum {
+    fn default() -> TypeEnum {
         Self::InstallationUpdateAvailable
     }
 }
