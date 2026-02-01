@@ -85,12 +85,14 @@ jobs:
         run: cargo build
 
       - name: Create PR
+        id: create_pr
         if: steps.skip.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to commit"
+            echo "merged=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -104,6 +106,7 @@ jobs:
           git commit -m "chore(sdk): regenerate from opencode ${{ steps.tag_vars.outputs.tag }}"
           git push -u origin "$branch"
           pr_url=$(gh pr create --title "chore(sdk): regenerate from opencode ${{ steps.tag_vars.outputs.tag }}" --body "Automated regeneration from opencode ${{ steps.tag_vars.outputs.tag }}." --base "${{ github.ref_name }}")
+          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
           if ! gh pr merge --auto --squash "$pr_url"; then
             mergeable=$(gh pr view "$pr_url" --json mergeable --jq '.mergeable')
             merge_state=$(gh pr view "$pr_url" --json mergeStateStatus --jq '.mergeStateStatus')
@@ -114,3 +117,17 @@ jobs:
               echo "mergeable=$mergeable merge_state=$merge_state"
             fi
           fi
+          merged=$(gh pr view "$pr_url" --json merged --jq '.merged')
+          echo "merged=$merged" >> "$GITHUB_OUTPUT"
+          if [ "$merged" = "true" ]; then
+            gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/$branch"
+          fi
+
+      - name: Publish to crates.io
+        if: steps.skip.outputs.skip != 'true' && steps.create_pr.outputs.merged == 'true'
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          git checkout "${{ github.ref_name }}"
+          git pull --ff-only origin "${{ github.ref_name }}"
+          cargo publish
