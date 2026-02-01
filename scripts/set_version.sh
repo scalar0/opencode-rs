@@ -17,8 +17,11 @@ fi
 # Update only the package version line in Cargo.toml.
 awk -v ver="$version" '
   BEGIN { in_package = 0; updated = 0 }
-  /^[[:space:]]*\\[package\\][[:space:]]*$/ { in_package = 1; print; next }
-  /^[[:space:]]*\\[[^]]+\\][[:space:]]*$/ { in_package = 0; print; next }
+  { sub(/\r$/, "") }
+  /^[[:space:]]*\[package\][[:space:]]*$/ { in_package = 1; print; next }
+  /^[[:space:]]*\[package\][[:space:]]*#/ { in_package = 1; print; next }
+  /^[[:space:]]*\[[^]]+\][[:space:]]*$/ { in_package = 0; print; next }
+  /^[[:space:]]*\[[^]]+\][[:space:]]*#/ { in_package = 0; print; next }
   in_package && /^[[:space:]]*version[[:space:]]*=/ {
     print "version = \"" ver "\""
     updated = 1
