@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**r#type** | **TypeEnum** |  (enum: text) | 
+**r#type** | **TypeEnum** |  (enum: text, binary) | 
 **content** | **String** |  | 
 **diff** | Option<**String**> |  | [optional]
 **patch** | Option<[**models::FileContentPatch**](FileContentPatch.md)> |  | [optional]

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **model** | Option<**String**> |  | [optional]
+**variant** | Option<**String**> | Default model variant for this agent (applies only when using the agent's configured model). | [optional]
 **temperature** | Option<**f64**> |  | [optional]
 **top_p** | Option<**f64**> |  | [optional]
 **prompt** | Option<**String**> |  | [optional]

@@ -33,6 +33,8 @@ pub struct Agent {
     pub permission: Vec<models::PermissionRule>,
     #[serde(rename = "model", skip_serializing_if = "Option::is_none")]
     pub model: Option<Box<models::SessionPromptRequestModel>>,
+    #[serde(rename = "variant", skip_serializing_if = "Option::is_none")]
+    pub variant: Option<String>,
     #[serde(rename = "prompt", skip_serializing_if = "Option::is_none")]
     pub prompt: Option<String>,
     #[serde(rename = "options")]
@@ -54,6 +56,7 @@ impl Agent {
             color: None,
             permission,
             model: None,
+            variant: None,
             prompt: None,
             options,
             steps: None,
