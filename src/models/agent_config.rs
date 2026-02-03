@@ -15,6 +15,9 @@ use serde::{Deserialize, Serialize};
 pub struct AgentConfig {
     #[serde(rename = "model", skip_serializing_if = "Option::is_none")]
     pub model: Option<String>,
+    /// Default model variant for this agent (applies only when using the agent's configured model).
+    #[serde(rename = "variant", skip_serializing_if = "Option::is_none")]
+    pub variant: Option<String>,
     #[serde(rename = "temperature", skip_serializing_if = "Option::is_none")]
     pub temperature: Option<f64>,
     #[serde(rename = "top_p", skip_serializing_if = "Option::is_none")]
@@ -53,6 +56,7 @@ impl AgentConfig {
     pub fn new() -> AgentConfig {
         AgentConfig {
             model: None,
+            variant: None,
             temperature: None,
             top_p: None,
             prompt: None,

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **color** | Option<**String**> |  | [optional]
 **permission** | [**Vec<models::PermissionRule>**](PermissionRule.md) |  | 
 **model** | Option<[**models::SessionPromptRequestModel**](SessionPromptRequestModel.md)> |  | [optional]
+**variant** | Option<**String**> |  | [optional]
 **prompt** | Option<**String**> |  | [optional]
 **options** | **std::collections::HashMap<String, serde_json::Value>** |  | 
 **steps** | Option<**i32**> |  | [optional]

@@ -23,6 +23,9 @@ pub struct ServerConfig {
     /// Enable mDNS service discovery
     #[serde(rename = "mdns", skip_serializing_if = "Option::is_none")]
     pub mdns: Option<bool>,
+    /// Custom domain name for mDNS service (default: opencode.local)
+    #[serde(rename = "mdnsDomain", skip_serializing_if = "Option::is_none")]
+    pub mdns_domain: Option<String>,
     /// Additional domains to allow for CORS
     #[serde(rename = "cors", skip_serializing_if = "Option::is_none")]
     pub cors: Option<Vec<String>>,
@@ -35,6 +38,7 @@ impl ServerConfig {
             port: None,
             hostname: None,
             mdns: None,
+            mdns_domain: None,
             cors: None,
         }
     }

@@ -44,6 +44,8 @@ impl FileContent {
 pub enum TypeEnum {
     #[serde(rename = "text")]
     Text,
+    #[serde(rename = "binary")]
+    Binary,
 }
 
 impl Default for TypeEnum {
