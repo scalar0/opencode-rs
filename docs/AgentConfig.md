@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **mode** | Option<**ModeEnum**> |  (enum: subagent, primary, all) | [optional]
 **hidden** | Option<**bool**> | Hide this subagent from the @ autocomplete menu (default: false, only applies to mode: subagent) | [optional]
 **options** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
-**color** | Option<**String**> | Hex color code for the agent (e.g., #FF5733) | [optional]
+**color** | Option<[**models::AgentConfigColor**](AgentConfigColor.md)> |  | [optional]
 **steps** | Option<**i32**> | Maximum number of agentic iterations before forcing text-only response | [optional]
 **max_steps** | Option<**i32**> | @deprecated Use 'steps' field instead. | [optional]
 **permission** | Option<[**models::PermissionConfig**](PermissionConfig.md)> |  | [optional]

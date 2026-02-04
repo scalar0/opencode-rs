@@ -2,6 +2,8 @@ pub mod agent;
 pub use self::agent::Agent;
 pub mod agent_config;
 pub use self::agent_config::AgentConfig;
+pub mod agent_config_color;
+pub use self::agent_config_color::AgentConfigColor;
 pub mod agent_part;
 pub use self::agent_part::AgentPart;
 pub mod agent_part_input;

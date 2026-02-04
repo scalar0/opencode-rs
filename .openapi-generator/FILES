@@ -4,6 +4,7 @@ Cargo.toml
 README.md
 docs/Agent.md
 docs/AgentConfig.md
+docs/AgentConfigColor.md
 docs/AgentPart.md
 docs/AgentPartInput.md
 docs/AgentPartSource.md
@@ -293,6 +294,7 @@ src/apis/session_api.rs
 src/lib.rs
 src/models/agent.rs
 src/models/agent_config.rs
+src/models/agent_config_color.rs
 src/models/agent_part.rs
 src/models/agent_part_input.rs
 src/models/agent_part_source.rs
