@@ -39,9 +39,8 @@ pub struct AgentConfig {
     pub hidden: Option<bool>,
     #[serde(rename = "options", skip_serializing_if = "Option::is_none")]
     pub options: Option<std::collections::HashMap<String, serde_json::Value>>,
-    /// Hex color code for the agent (e.g., #FF5733)
     #[serde(rename = "color", skip_serializing_if = "Option::is_none")]
-    pub color: Option<String>,
+    pub color: Option<Box<models::AgentConfigColor>>,
     /// Maximum number of agentic iterations before forcing text-only response
     #[serde(rename = "steps", skip_serializing_if = "Option::is_none")]
     pub steps: Option<i32>,
