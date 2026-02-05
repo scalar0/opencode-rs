@@ -117,11 +117,6 @@ jobs:
               echo "mergeable=$mergeable merge_state=$merge_state"
             fi
           fi
-          merged=$(gh pr view "$pr_url" --json merged --jq '.merged')
-          echo "merged=$merged" >> "$GITHUB_OUTPUT"
-          if [ "$merged" = "true" ]; then
-            gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/$branch"
-          fi
 
       - name: Publish to crates.io
         if: steps.skip.outputs.skip != 'true' && steps.create_pr.outputs.merged == 'true'
