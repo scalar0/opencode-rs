@@ -293,6 +293,9 @@ pub struct KeybindsConfig {
     /// Toggle tips on home screen
     #[serde(rename = "tips_toggle", skip_serializing_if = "Option::is_none")]
     pub tips_toggle: Option<String>,
+    /// Toggle thinking blocks visibility
+    #[serde(rename = "display_thinking", skip_serializing_if = "Option::is_none")]
+    pub display_thinking: Option<String>,
 }
 
 impl KeybindsConfig {
@@ -392,6 +395,7 @@ impl KeybindsConfig {
             terminal_suspend: None,
             terminal_title_toggle: None,
             tips_toggle: None,
+            display_thinking: None,
         }
     }
 }
