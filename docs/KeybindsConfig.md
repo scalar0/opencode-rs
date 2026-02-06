@@ -97,6 +97,7 @@ Name | Type | Description | Notes
 **terminal_suspend** | Option<**String**> | Suspend terminal | [optional][default to ctrl+z]
 **terminal_title_toggle** | Option<**String**> | Toggle terminal title | [optional][default to none]
 **tips_toggle** | Option<**String**> | Toggle tips on home screen | [optional][default to <leader>h]
+**display_thinking** | Option<**String**> | Toggle thinking blocks visibility | [optional][default to none]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
