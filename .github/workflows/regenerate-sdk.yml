@@ -119,7 +119,7 @@ jobs:
           fi
 
       - name: Publish to crates.io
-        if: steps.skip.outputs.skip != 'true' && steps.create_pr.outputs.merged == 'true'
+        if: steps.skip.outputs.skip != 'true'
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
         run: |
