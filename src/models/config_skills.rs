@@ -17,6 +17,9 @@ pub struct ConfigSkills {
     /// Additional paths to skill folders
     #[serde(rename = "paths", skip_serializing_if = "Option::is_none")]
     pub paths: Option<Vec<String>>,
+    /// URLs to fetch skills from (e.g., https://example.com/.well-known/skills/)
+    #[serde(rename = "urls", skip_serializing_if = "Option::is_none")]
+    pub urls: Option<Vec<String>>,
 }
 
 impl ConfigSkills {
@@ -24,6 +27,7 @@ impl ConfigSkills {
     pub fn new() -> ConfigSkills {
         ConfigSkills {
             paths: None,
+            urls: None,
         }
     }
 }
