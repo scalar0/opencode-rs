@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **summary** | Option<**bool**> |  | [optional]
 **cost** | **f64** |  | 
 **tokens** | [**models::AssistantMessageTokens**](AssistantMessageTokens.md) |  | 
+**variant** | Option<**String**> |  | [optional]
 **finish** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

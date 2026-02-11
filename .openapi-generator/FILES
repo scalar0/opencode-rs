@@ -45,6 +45,8 @@ docs/ConfigSkills.md
 docs/ConfigTui.md
 docs/ConfigTuiScrollAcceleration.md
 docs/ConfigWatcher.md
+docs/ContextOverflowError.md
+docs/ContextOverflowErrorData.md
 docs/DefaultApi.md
 docs/Event.md
 docs/EventCommandExecuted.md
@@ -335,6 +337,8 @@ src/models/config_skills.rs
 src/models/config_tui.rs
 src/models/config_tui_scroll_acceleration.rs
 src/models/config_watcher.rs
+src/models/context_overflow_error.rs
+src/models/context_overflow_error_data.rs
 src/models/event.rs
 src/models/event_command_executed.rs
 src/models/event_command_executed_properties.rs

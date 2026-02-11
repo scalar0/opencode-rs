@@ -1,11 +1,11 @@
-# ConfigSkills
+# ContextOverflowError
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**paths** | Option<**Vec<String>**> | Additional paths to skill folders | [optional]
-**urls** | Option<**Vec<String>**> | URLs to fetch skills from (e.g., https://example.com/.well-known/skills/) | [optional]
+**name** | **NameEnum** |  (enum: ContextOverflowError) | 
+**data** | [**models::ContextOverflowErrorData**](ContextOverflowErrorData.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

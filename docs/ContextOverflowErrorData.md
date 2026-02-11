@@ -1,11 +1,11 @@
-# ConfigSkills
+# ContextOverflowErrorData
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**paths** | Option<**Vec<String>**> | Additional paths to skill folders | [optional]
-**urls** | Option<**Vec<String>**> | URLs to fetch skills from (e.g., https://example.com/.well-known/skills/) | [optional]
+**message** | **String** |  | 
+**response_body** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
