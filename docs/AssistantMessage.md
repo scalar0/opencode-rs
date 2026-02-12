@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **summary** | Option<**bool**> |  | [optional]
 **cost** | **f64** |  | 
 **tokens** | [**models::AssistantMessageTokens**](AssistantMessageTokens.md) |  | 
+**structured** | Option<**serde_json::Value**> |  | [optional]
 **variant** | Option<**String**> |  | [optional]
 **finish** | Option<**String**> |  | [optional]
 

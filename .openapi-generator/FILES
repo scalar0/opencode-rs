@@ -169,6 +169,9 @@ docs/ModelCost.md
 docs/ModelCostExperimentalOver200K.md
 docs/NotFoundError.md
 docs/OAuth.md
+docs/OutputFormat.md
+docs/OutputFormatJsonSchema.md
+docs/OutputFormatText.md
 docs/Part.md
 docs/PatchPart.md
 docs/Path.md
@@ -253,6 +256,8 @@ docs/SessionUpdateRequestTime.md
 docs/SnapshotPart.md
 docs/StepFinishPart.md
 docs/StepStartPart.md
+docs/StructuredOutputError.md
+docs/StructuredOutputErrorData.md
 docs/SubtaskPart.md
 docs/SubtaskPartInput.md
 docs/Symbol.md
@@ -461,6 +466,9 @@ src/models/model_cost.rs
 src/models/model_cost_experimental_over200_k.rs
 src/models/not_found_error.rs
 src/models/o_auth.rs
+src/models/output_format.rs
+src/models/output_format_json_schema.rs
+src/models/output_format_text.rs
 src/models/part.rs
 src/models/patch_part.rs
 src/models/path.rs
@@ -544,6 +552,8 @@ src/models/session_update_request_time.rs
 src/models/snapshot_part.rs
 src/models/step_finish_part.rs
 src/models/step_start_part.rs
+src/models/structured_output_error.rs
+src/models/structured_output_error_data.rs
 src/models/subtask_part.rs
 src/models/subtask_part_input.rs
 src/models/symbol.rs

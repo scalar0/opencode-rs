@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **agent** | Option<**String**> |  | [optional]
 **no_reply** | Option<**bool**> |  | [optional]
 **tools** | Option<**std::collections::HashMap<String, bool>**> | @deprecated tools and permissions have been merged, you can set permissions on the session itself now | [optional]
+**format** | Option<[**models::OutputFormat**](OutputFormat.md)> |  | [optional]
 **system** | Option<**String**> |  | [optional]
 **variant** | Option<**String**> |  | [optional]
 **parts** | [**Vec<models::SessionPromptRequestPartsInner>**](SessionPromptRequestPartsInner.md) |  | 

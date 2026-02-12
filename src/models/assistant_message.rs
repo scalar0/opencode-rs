@@ -41,6 +41,8 @@ pub struct AssistantMessage {
     pub cost: f64,
     #[serde(rename = "tokens")]
     pub tokens: Box<models::AssistantMessageTokens>,
+    #[serde(rename = "structured", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub structured: Option<Option<serde_json::Value>>,
     #[serde(rename = "variant", skip_serializing_if = "Option::is_none")]
     pub variant: Option<String>,
     #[serde(rename = "finish", skip_serializing_if = "Option::is_none")]
@@ -64,6 +66,7 @@ impl AssistantMessage {
             summary: None,
             cost,
             tokens: Box::new(tokens),
+            structured: None,
             variant: None,
             finish: None,
         }

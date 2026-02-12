@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **session_id** | **String** |  | 
 **role** | **RoleEnum** |  (enum: user) | 
 **time** | [**models::UserMessageTime**](UserMessageTime.md) |  | 
+**format** | Option<[**models::OutputFormat**](OutputFormat.md)> |  | [optional]
 **summary** | Option<[**models::UserMessageSummary**](UserMessageSummary.md)> |  | [optional]
 **agent** | **String** |  | 
 **model** | [**models::SessionPromptRequestModel**](SessionPromptRequestModel.md) |  | 

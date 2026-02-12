@@ -15,12 +15,15 @@ use serde::{Deserialize, Serialize};
 pub struct ProviderList200ResponseAllInnerModelsValueProvider {
     #[serde(rename = "npm")]
     pub npm: String,
+    #[serde(rename = "api")]
+    pub api: String,
 }
 
 impl ProviderList200ResponseAllInnerModelsValueProvider {
-    pub fn new(npm: String) -> ProviderList200ResponseAllInnerModelsValueProvider {
+    pub fn new(npm: String, api: String) -> ProviderList200ResponseAllInnerModelsValueProvider {
         ProviderList200ResponseAllInnerModelsValueProvider {
             npm,
+            api,
         }
     }
 }

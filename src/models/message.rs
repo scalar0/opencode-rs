@@ -21,6 +21,8 @@ pub struct Message {
     pub role: RoleEnum,
     #[serde(rename = "time")]
     pub time: Box<models::AssistantMessageTime>,
+    #[serde(rename = "format", skip_serializing_if = "Option::is_none")]
+    pub format: Option<Box<models::OutputFormat>>,
     #[serde(rename = "summary", skip_serializing_if = "Option::is_none")]
     pub summary: Option<bool>,
     #[serde(rename = "agent")]
@@ -49,6 +51,8 @@ pub struct Message {
     pub cost: f64,
     #[serde(rename = "tokens")]
     pub tokens: Box<models::AssistantMessageTokens>,
+    #[serde(rename = "structured", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub structured: Option<Option<serde_json::Value>>,
     #[serde(rename = "finish", skip_serializing_if = "Option::is_none")]
     pub finish: Option<String>,
 }
@@ -60,6 +64,7 @@ impl Message {
             session_id,
             role,
             time: Box::new(time),
+            format: None,
             summary: None,
             agent,
             model: Box::new(model),
@@ -74,6 +79,7 @@ impl Message {
             path: Box::new(path),
             cost,
             tokens: Box::new(tokens),
+            structured: None,
             finish: None,
         }
     }
