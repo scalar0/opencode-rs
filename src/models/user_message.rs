@@ -21,6 +21,8 @@ pub struct UserMessage {
     pub role: RoleEnum,
     #[serde(rename = "time")]
     pub time: Box<models::UserMessageTime>,
+    #[serde(rename = "format", skip_serializing_if = "Option::is_none")]
+    pub format: Option<Box<models::OutputFormat>>,
     #[serde(rename = "summary", skip_serializing_if = "Option::is_none")]
     pub summary: Option<Box<models::UserMessageSummary>>,
     #[serde(rename = "agent")]
@@ -42,6 +44,7 @@ impl UserMessage {
             session_id,
             role,
             time: Box::new(time),
+            format: None,
             summary: None,
             agent,
             model: Box::new(model),

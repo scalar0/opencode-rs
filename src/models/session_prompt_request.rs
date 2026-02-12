@@ -24,6 +24,8 @@ pub struct SessionPromptRequest {
     /// @deprecated tools and permissions have been merged, you can set permissions on the session itself now
     #[serde(rename = "tools", skip_serializing_if = "Option::is_none")]
     pub tools: Option<std::collections::HashMap<String, bool>>,
+    #[serde(rename = "format", skip_serializing_if = "Option::is_none")]
+    pub format: Option<Box<models::OutputFormat>>,
     #[serde(rename = "system", skip_serializing_if = "Option::is_none")]
     pub system: Option<String>,
     #[serde(rename = "variant", skip_serializing_if = "Option::is_none")]
@@ -40,6 +42,7 @@ impl SessionPromptRequest {
             agent: None,
             no_reply: None,
             tools: None,
+            format: None,
             system: None,
             variant: None,
             parts,

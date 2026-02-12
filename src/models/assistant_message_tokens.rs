@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AssistantMessageTokens {
+    #[serde(rename = "total", skip_serializing_if = "Option::is_none")]
+    pub total: Option<f64>,
     #[serde(rename = "input")]
     pub input: f64,
     #[serde(rename = "output")]
@@ -26,6 +28,7 @@ pub struct AssistantMessageTokens {
 impl AssistantMessageTokens {
     pub fn new(input: f64, output: f64, reasoning: f64, cache: models::AssistantMessageTokensCache) -> AssistantMessageTokens {
         AssistantMessageTokens {
+            total: None,
             input,
             output,
             reasoning,

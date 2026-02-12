@@ -19,6 +19,9 @@ pub struct ConfigCompaction {
     /// Enable pruning of old tool outputs (default: true)
     #[serde(rename = "prune", skip_serializing_if = "Option::is_none")]
     pub prune: Option<bool>,
+    /// Token buffer for compaction. Leaves enough window to avoid overflow during compaction.
+    #[serde(rename = "reserved", skip_serializing_if = "Option::is_none")]
+    pub reserved: Option<i32>,
 }
 
 impl ConfigCompaction {
@@ -26,6 +29,7 @@ impl ConfigCompaction {
         ConfigCompaction {
             auto: None,
             prune: None,
+            reserved: None,
         }
     }
 }

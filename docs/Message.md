@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **session_id** | **String** |  | 
 **role** | **RoleEnum** |  (enum: assistant) | 
 **time** | [**models::AssistantMessageTime**](AssistantMessageTime.md) |  | 
+**format** | Option<[**models::OutputFormat**](OutputFormat.md)> |  | [optional]
 **summary** | Option<**bool**> |  | [optional]
 **agent** | **String** |  | 
 **model** | [**models::SessionPromptRequestModel**](SessionPromptRequestModel.md) |  | 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **path** | [**models::AssistantMessagePath**](AssistantMessagePath.md) |  | 
 **cost** | **f64** |  | 
 **tokens** | [**models::AssistantMessageTokens**](AssistantMessageTokens.md) |  | 
+**structured** | Option<**serde_json::Value**> |  | [optional]
 **finish** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

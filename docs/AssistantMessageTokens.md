@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**total** | Option<**f64**> |  | [optional]
 **input** | **f64** |  | 
 **output** | **f64** |  | 
 **reasoning** | **f64** |  | 
