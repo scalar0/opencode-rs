@@ -13,17 +13,17 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ProviderList200ResponseAllInnerModelsValueProvider {
-    #[serde(rename = "npm")]
-    pub npm: String,
-    #[serde(rename = "api")]
-    pub api: String,
+    #[serde(rename = "npm", skip_serializing_if = "Option::is_none")]
+    pub npm: Option<String>,
+    #[serde(rename = "api", skip_serializing_if = "Option::is_none")]
+    pub api: Option<String>,
 }
 
 impl ProviderList200ResponseAllInnerModelsValueProvider {
-    pub fn new(npm: String, api: String) -> ProviderList200ResponseAllInnerModelsValueProvider {
+    pub fn new() -> ProviderList200ResponseAllInnerModelsValueProvider {
         ProviderList200ResponseAllInnerModelsValueProvider {
-            npm,
-            api,
+            npm: None,
+            api: None,
         }
     }
 }
