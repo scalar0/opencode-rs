@@ -54,6 +54,8 @@ pub enum TypeEnum {
     MessageRemoved,
     #[serde(rename = "message.part.updated")]
     MessagePartUpdated,
+    #[serde(rename = "message.part.delta")]
+    MessagePartDelta,
     #[serde(rename = "message.part.removed")]
     MessagePartRemoved,
     #[serde(rename = "permission.asked")]

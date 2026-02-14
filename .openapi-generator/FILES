@@ -66,6 +66,8 @@ docs/EventMcpBrowserOpenFailed.md
 docs/EventMcpBrowserOpenFailedProperties.md
 docs/EventMcpToolsChanged.md
 docs/EventMcpToolsChangedProperties.md
+docs/EventMessagePartDelta.md
+docs/EventMessagePartDeltaProperties.md
 docs/EventMessagePartRemoved.md
 docs/EventMessagePartRemovedProperties.md
 docs/EventMessagePartUpdated.md
@@ -362,6 +364,8 @@ src/models/event_mcp_browser_open_failed.rs
 src/models/event_mcp_browser_open_failed_properties.rs
 src/models/event_mcp_tools_changed.rs
 src/models/event_mcp_tools_changed_properties.rs
+src/models/event_message_part_delta.rs
+src/models/event_message_part_delta_properties.rs
 src/models/event_message_part_removed.rs
 src/models/event_message_part_removed_properties.rs
 src/models/event_message_part_updated.rs
