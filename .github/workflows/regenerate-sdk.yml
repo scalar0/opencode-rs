@@ -118,11 +118,3 @@ jobs:
             fi
           fi
 
-      - name: Publish to crates.io
-        if: steps.skip.outputs.skip != 'true'
-        env:
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-        run: |
-          git checkout "${{ github.ref_name }}"
-          git pull --ff-only origin "${{ github.ref_name }}"
-          cargo publish
