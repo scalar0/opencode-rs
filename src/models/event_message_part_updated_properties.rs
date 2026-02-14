@@ -15,15 +15,12 @@ use serde::{Deserialize, Serialize};
 pub struct EventMessagePartUpdatedProperties {
     #[serde(rename = "part")]
     pub part: Box<models::Part>,
-    #[serde(rename = "delta", skip_serializing_if = "Option::is_none")]
-    pub delta: Option<String>,
 }
 
 impl EventMessagePartUpdatedProperties {
     pub fn new(part: models::Part) -> EventMessagePartUpdatedProperties {
         EventMessagePartUpdatedProperties {
             part: Box::new(part),
-            delta: None,
         }
     }
 }

@@ -22,18 +22,14 @@ pub struct Todo {
     /// Priority level of the task: high, medium, low
     #[serde(rename = "priority")]
     pub priority: String,
-    /// Unique identifier for the todo item
-    #[serde(rename = "id")]
-    pub id: String,
 }
 
 impl Todo {
-    pub fn new(content: String, status: String, priority: String, id: String) -> Todo {
+    pub fn new(content: String, status: String, priority: String) -> Todo {
         Todo {
             content,
             status,
             priority,
-            id,
         }
     }
 }
