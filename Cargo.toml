@@ -1,6 +1,6 @@
 [package]
 name = "openapi"
-version = "1.2.5"
+version = "1.2.6"
 authors = ["OpenAPI Generator team and contributors"]
 description = "opencode api"
 # Override this license by providing a License Object in the OpenAPI.
