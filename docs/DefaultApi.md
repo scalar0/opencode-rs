@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**config_update**](DefaultApi.md#config_update) | **PATCH** /config | Update configuration
 [**event_subscribe**](DefaultApi.md#event_subscribe) | **GET** /event | Subscribe to events
 [**experimental_resource_list**](DefaultApi.md#experimental_resource_list) | **GET** /experimental/resource | Get MCP resources
+[**experimental_session_list**](DefaultApi.md#experimental_session_list) | **GET** /experimental/session | List sessions
 [**file_list**](DefaultApi.md#file_list) | **GET** /file | List files
 [**file_read**](DefaultApi.md#file_read) | **GET** /file/content | Read file
 [**file_status**](DefaultApi.md#file_status) | **GET** /file/status | Get file status
@@ -423,6 +424,42 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**std::collections::HashMap<String, models::McpResource>**](McpResource.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## experimental_session_list
+
+> Vec<models::GlobalSession> experimental_session_list(directory, roots, start, cursor, search, limit, archived)
+List sessions
+
+Get a list of all OpenCode sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**directory** | Option<**String**> | Filter sessions by project directory |  |
+**roots** | Option<**bool**> | Only return root sessions (no parentID) |  |
+**start** | Option<**f64**> | Filter sessions updated on or after this timestamp (milliseconds since epoch) |  |
+**cursor** | Option<**f64**> | Return sessions updated before this timestamp (milliseconds since epoch) |  |
+**search** | Option<**String**> | Filter sessions by title (case-insensitive) |  |
+**limit** | Option<**f64**> | Maximum number of sessions to return |  |
+**archived** | Option<**bool**> | Include archived sessions (default false) |  |
+
+### Return type
+
+[**Vec<models::GlobalSession>**](GlobalSession.md)
 
 ### Authorization
 

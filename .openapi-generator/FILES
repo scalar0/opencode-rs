@@ -138,6 +138,7 @@ docs/FindText200ResponseInnerSubmatchesInner.md
 docs/FormatterStatus.md
 docs/GlobalEvent.md
 docs/GlobalHealth200Response.md
+docs/GlobalSession.md
 docs/KeybindsConfig.md
 docs/LayoutConfig.md
 docs/LogLevel.md
@@ -188,6 +189,7 @@ docs/PermissionRespondRequest.md
 docs/PermissionRule.md
 docs/PermissionRuleConfig.md
 docs/Project.md
+docs/ProjectSummary.md
 docs/ProjectTime.md
 docs/ProjectUpdateRequest.md
 docs/ProjectUpdateRequestCommands.md
@@ -436,6 +438,7 @@ src/models/find_text_200_response_inner_submatches_inner.rs
 src/models/formatter_status.rs
 src/models/global_event.rs
 src/models/global_health_200_response.rs
+src/models/global_session.rs
 src/models/keybinds_config.rs
 src/models/layout_config.rs
 src/models/log_level.rs
@@ -487,6 +490,7 @@ src/models/permission_respond_request.rs
 src/models/permission_rule.rs
 src/models/permission_rule_config.rs
 src/models/project.rs
+src/models/project_summary.rs
 src/models/project_time.rs
 src/models/project_update_request.rs
 src/models/project_update_request_commands.rs
