@@ -5,10 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dollar_schema** | Option<**String**> | JSON schema reference for configuration validation | [optional]
-**theme** | Option<**String**> | Theme name to use for the interface | [optional]
-**keybinds** | Option<[**models::KeybindsConfig**](KeybindsConfig.md)> |  | [optional]
 **log_level** | Option<[**models::LogLevel**](LogLevel.md)> |  | [optional]
-**tui** | Option<[**models::ConfigTui**](ConfigTui.md)> |  | [optional]
 **server** | Option<[**models::ServerConfig**](ServerConfig.md)> |  | [optional]
 **command** | Option<[**std::collections::HashMap<String, models::ConfigCommandValue>**](ConfigCommandValue.md)> | Command configuration, see https://opencode.ai/docs/commands | [optional]
 **skills** | Option<[**models::ConfigSkills**](ConfigSkills.md)> |  | [optional]

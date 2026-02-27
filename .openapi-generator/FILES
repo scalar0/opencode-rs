@@ -42,8 +42,6 @@ docs/ConfigMcpValueAnyOf.md
 docs/ConfigMode.md
 docs/ConfigProviders200Response.md
 docs/ConfigSkills.md
-docs/ConfigTui.md
-docs/ConfigTuiScrollAcceleration.md
 docs/ConfigWatcher.md
 docs/ContextOverflowError.md
 docs/ContextOverflowErrorData.md
@@ -139,7 +137,6 @@ docs/FormatterStatus.md
 docs/GlobalEvent.md
 docs/GlobalHealth200Response.md
 docs/GlobalSession.md
-docs/KeybindsConfig.md
 docs/LayoutConfig.md
 docs/LogLevel.md
 docs/LspStatus.md
@@ -343,8 +340,6 @@ src/models/config_mcp_value_any_of.rs
 src/models/config_mode.rs
 src/models/config_providers_200_response.rs
 src/models/config_skills.rs
-src/models/config_tui.rs
-src/models/config_tui_scroll_acceleration.rs
 src/models/config_watcher.rs
 src/models/context_overflow_error.rs
 src/models/context_overflow_error_data.rs
@@ -439,7 +434,6 @@ src/models/formatter_status.rs
 src/models/global_event.rs
 src/models/global_health_200_response.rs
 src/models/global_session.rs
-src/models/keybinds_config.rs
 src/models/layout_config.rs
 src/models/log_level.rs
 src/models/lsp_status.rs
