@@ -64,6 +64,7 @@ Method | HTTP request | Description
 [**session_command**](DefaultApi.md#session_command) | **POST** /session/{sessionID}/command | Send command
 [**session_create**](DefaultApi.md#session_create) | **POST** /session | Create session
 [**session_delete**](DefaultApi.md#session_delete) | **DELETE** /session/{sessionID} | Delete session
+[**session_delete_message**](DefaultApi.md#session_delete_message) | **DELETE** /session/{sessionID}/message/{messageID} | Delete message
 [**session_diff**](DefaultApi.md#session_diff) | **GET** /session/{sessionID}/diff | Get message diff
 [**session_fork**](DefaultApi.md#session_fork) | **POST** /session/{sessionID}/fork | Fork session
 [**session_init**](DefaultApi.md#session_init) | **POST** /session/{sessionID}/init | Initialize session
@@ -1931,6 +1932,38 @@ Delete a session and permanently remove all associated data, including messages 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
+**directory** | Option<**String**> |  |  |
+
+### Return type
+
+**bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## session_delete_message
+
+> bool session_delete_message(session_id, message_id, directory)
+Delete message
+
+Permanently delete a specific message (and all of its parts) from a session. This does not revert any file changes that may have been made while processing the message.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**session_id** | **String** | Session ID | [required] |
+**message_id** | **String** | Message ID | [required] |
 **directory** | Option<**String**> |  |  |
 
 ### Return type

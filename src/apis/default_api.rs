@@ -423,6 +423,16 @@ pub struct SessionDeleteParams {
     pub directory: Option<String>
 }
 
+/// struct for passing parameters to the method [`session_delete_message`]
+#[derive(Clone, Debug)]
+pub struct SessionDeleteMessageParams {
+    /// Session ID
+    pub session_id: String,
+    /// Message ID
+    pub message_id: String,
+    pub directory: Option<String>
+}
+
 /// struct for passing parameters to the method [`session_diff`]
 #[derive(Clone, Debug)]
 pub struct SessionDiffParams {
@@ -1157,6 +1167,15 @@ pub enum SessionCreateError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum SessionDeleteError {
+    Status400(models::BadRequestError),
+    Status404(models::NotFoundError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`session_delete_message`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum SessionDeleteMessageError {
     Status400(models::BadRequestError),
     Status404(models::NotFoundError),
     UnknownValue(serde_json::Value),
@@ -3764,6 +3783,44 @@ pub async fn session_delete(configuration: &configuration::Configuration, params
     } else {
         let content = resp.text().await?;
         let entity: Option<SessionDeleteError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Permanently delete a specific message (and all of its parts) from a session. This does not revert any file changes that may have been made while processing the message.
+pub async fn session_delete_message(configuration: &configuration::Configuration, params: SessionDeleteMessageParams) -> Result<bool, Error<SessionDeleteMessageError>> {
+
+    let uri_str = format!("{}/session/{sessionID}/message/{messageID}", configuration.base_path, sessionID=crate::apis::urlencode(params.session_id), messageID=crate::apis::urlencode(params.message_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = params.directory {
+        req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `bool`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `bool`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<SessionDeleteMessageError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

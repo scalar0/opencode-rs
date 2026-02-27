@@ -16,15 +16,8 @@ pub struct Config {
     /// JSON schema reference for configuration validation
     #[serde(rename = "$schema", skip_serializing_if = "Option::is_none")]
     pub dollar_schema: Option<String>,
-    /// Theme name to use for the interface
-    #[serde(rename = "theme", skip_serializing_if = "Option::is_none")]
-    pub theme: Option<String>,
-    #[serde(rename = "keybinds", skip_serializing_if = "Option::is_none")]
-    pub keybinds: Option<Box<models::KeybindsConfig>>,
     #[serde(rename = "logLevel", skip_serializing_if = "Option::is_none")]
     pub log_level: Option<models::LogLevel>,
-    #[serde(rename = "tui", skip_serializing_if = "Option::is_none")]
-    pub tui: Option<Box<models::ConfigTui>>,
     #[serde(rename = "server", skip_serializing_if = "Option::is_none")]
     pub server: Option<Box<models::ServerConfig>>,
     /// Command configuration, see https://opencode.ai/docs/commands
@@ -99,10 +92,7 @@ impl Config {
     pub fn new() -> Config {
         Config {
             dollar_schema: None,
-            theme: None,
-            keybinds: None,
             log_level: None,
-            tui: None,
             server: None,
             command: None,
             skills: None,
