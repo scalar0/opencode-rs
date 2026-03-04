@@ -18,14 +18,16 @@ use super::{Error, configuration, ContentType};
 #[derive(Clone, Debug)]
 pub struct SessionChildrenParams {
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_get`]
 #[derive(Clone, Debug)]
 pub struct SessionGetParams {
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 
@@ -56,6 +58,9 @@ pub async fn session_children(configuration: &configuration::Configuration, para
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -94,6 +99,9 @@ pub async fn session_get(configuration: &configuration::Configuration, params: S
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

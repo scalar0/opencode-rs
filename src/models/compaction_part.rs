@@ -23,6 +23,8 @@ pub struct CompactionPart {
     pub r#type: TypeEnum,
     #[serde(rename = "auto")]
     pub auto: bool,
+    #[serde(rename = "overflow", skip_serializing_if = "Option::is_none")]
+    pub overflow: Option<bool>,
 }
 
 impl CompactionPart {
@@ -33,6 +35,7 @@ impl CompactionPart {
             message_id,
             r#type,
             auto,
+            overflow: None,
         }
     }
 }

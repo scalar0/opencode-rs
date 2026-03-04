@@ -16,11 +16,11 @@ pub struct Event {
     #[serde(rename = "type")]
     pub r#type: TypeEnum,
     #[serde(rename = "properties")]
-    pub properties: Box<models::UnknownErrorData>,
+    pub properties: Box<models::EventPtyDeletedProperties>,
 }
 
 impl Event {
-    pub fn new(r#type: TypeEnum, properties: models::UnknownErrorData) -> Event {
+    pub fn new(r#type: TypeEnum, properties: models::EventPtyDeletedProperties) -> Event {
         Event {
             r#type,
             properties: Box::new(properties),
@@ -104,6 +104,14 @@ pub enum TypeEnum {
     SessionError,
     #[serde(rename = "vcs.branch.updated")]
     VcsBranchUpdated,
+    #[serde(rename = "worktree.ready")]
+    WorktreeReady,
+    #[serde(rename = "worktree.failed")]
+    WorktreeFailed,
+    #[serde(rename = "workspace.ready")]
+    WorkspaceReady,
+    #[serde(rename = "workspace.failed")]
+    WorkspaceFailed,
     #[serde(rename = "pty.created")]
     PtyCreated,
     #[serde(rename = "pty.updated")]
@@ -112,10 +120,6 @@ pub enum TypeEnum {
     PtyExited,
     #[serde(rename = "pty.deleted")]
     PtyDeleted,
-    #[serde(rename = "worktree.ready")]
-    WorktreeReady,
-    #[serde(rename = "worktree.failed")]
-    WorktreeFailed,
 }
 
 impl Default for TypeEnum {

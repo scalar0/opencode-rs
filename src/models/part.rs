@@ -75,6 +75,8 @@ pub struct Part {
     pub error: Box<models::ApiError>,
     #[serde(rename = "auto")]
     pub auto: bool,
+    #[serde(rename = "overflow", skip_serializing_if = "Option::is_none")]
+    pub overflow: Option<bool>,
 }
 
 impl Part {
@@ -111,6 +113,7 @@ impl Part {
             attempt,
             error: Box::new(error),
             auto,
+            overflow: None,
         }
     }
 }

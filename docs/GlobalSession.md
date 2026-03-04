@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | 
 **slug** | **String** |  | 
 **project_id** | **String** |  | 
+**workspace_id** | Option<**String**> |  | [optional]
 **directory** | **String** |  | 
 **parent_id** | Option<**String**> |  | [optional]
 **summary** | Option<[**models::SessionSummary**](SessionSummary.md)> |  | [optional]

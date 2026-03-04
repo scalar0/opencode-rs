@@ -17,20 +17,23 @@ use super::{Error, configuration, ContentType};
 /// struct for passing parameters to the method [`app_agents`]
 #[derive(Clone, Debug)]
 pub struct AppAgentsParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`app_log`]
 #[derive(Clone, Debug)]
 pub struct AppLogParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub app_log_request: Option<models::AppLogRequest>
 }
 
 /// struct for passing parameters to the method [`app_skills`]
 #[derive(Clone, Debug)]
 pub struct AppSkillsParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`auth_remove`]
@@ -49,38 +52,44 @@ pub struct AuthSetParams {
 /// struct for passing parameters to the method [`command_list`]
 #[derive(Clone, Debug)]
 pub struct CommandListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`config_get`]
 #[derive(Clone, Debug)]
 pub struct ConfigGetParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`config_providers`]
 #[derive(Clone, Debug)]
 pub struct ConfigProvidersParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`config_update`]
 #[derive(Clone, Debug)]
 pub struct ConfigUpdateParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub config: Option<models::Config>
 }
 
 /// struct for passing parameters to the method [`event_subscribe`]
 #[derive(Clone, Debug)]
 pub struct EventSubscribeParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`experimental_resource_list`]
 #[derive(Clone, Debug)]
 pub struct ExperimentalResourceListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`experimental_session_list`]
@@ -88,6 +97,7 @@ pub struct ExperimentalResourceListParams {
 pub struct ExperimentalSessionListParams {
     /// Filter sessions by project directory
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     /// Only return root sessions (no parentID)
     pub roots: Option<bool>,
     /// Filter sessions updated on or after this timestamp (milliseconds since epoch)
@@ -102,24 +112,51 @@ pub struct ExperimentalSessionListParams {
     pub archived: Option<bool>
 }
 
+/// struct for passing parameters to the method [`experimental_workspace_create`]
+#[derive(Clone, Debug)]
+pub struct ExperimentalWorkspaceCreateParams {
+    pub id: String,
+    pub directory: Option<String>,
+    pub workspace: Option<String>,
+    pub experimental_workspace_create_request: Option<models::ExperimentalWorkspaceCreateRequest>
+}
+
+/// struct for passing parameters to the method [`experimental_workspace_list`]
+#[derive(Clone, Debug)]
+pub struct ExperimentalWorkspaceListParams {
+    pub directory: Option<String>,
+    pub workspace: Option<String>
+}
+
+/// struct for passing parameters to the method [`experimental_workspace_remove`]
+#[derive(Clone, Debug)]
+pub struct ExperimentalWorkspaceRemoveParams {
+    pub id: String,
+    pub directory: Option<String>,
+    pub workspace: Option<String>
+}
+
 /// struct for passing parameters to the method [`file_list`]
 #[derive(Clone, Debug)]
 pub struct FileListParams {
     pub path: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`file_read`]
 #[derive(Clone, Debug)]
 pub struct FileReadParams {
     pub path: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`file_status`]
 #[derive(Clone, Debug)]
 pub struct FileStatusParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`find_files`]
@@ -127,6 +164,7 @@ pub struct FileStatusParams {
 pub struct FindFilesParams {
     pub query: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub dirs: Option<String>,
     pub r#type: Option<String>,
     pub limit: Option<i32>
@@ -136,20 +174,23 @@ pub struct FindFilesParams {
 #[derive(Clone, Debug)]
 pub struct FindSymbolsParams {
     pub query: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`find_text`]
 #[derive(Clone, Debug)]
 pub struct FindTextParams {
     pub pattern: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`formatter_status`]
 #[derive(Clone, Debug)]
 pub struct FormatterStatusParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`global_config_update`]
@@ -161,19 +202,22 @@ pub struct GlobalConfigUpdateParams {
 /// struct for passing parameters to the method [`instance_dispose`]
 #[derive(Clone, Debug)]
 pub struct InstanceDisposeParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`lsp_status`]
 #[derive(Clone, Debug)]
 pub struct LspStatusParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`mcp_add`]
 #[derive(Clone, Debug)]
 pub struct McpAddParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub mcp_add_request: Option<models::McpAddRequest>
 }
 
@@ -181,7 +225,8 @@ pub struct McpAddParams {
 #[derive(Clone, Debug)]
 pub struct McpAuthAuthenticateParams {
     pub name: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`mcp_auth_callback`]
@@ -189,6 +234,7 @@ pub struct McpAuthAuthenticateParams {
 pub struct McpAuthCallbackParams {
     pub name: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub mcp_auth_callback_request: Option<models::McpAuthCallbackRequest>
 }
 
@@ -196,34 +242,39 @@ pub struct McpAuthCallbackParams {
 #[derive(Clone, Debug)]
 pub struct McpAuthRemoveParams {
     pub name: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`mcp_auth_start`]
 #[derive(Clone, Debug)]
 pub struct McpAuthStartParams {
     pub name: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`mcp_connect`]
 #[derive(Clone, Debug)]
 pub struct McpConnectParams {
     pub name: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`mcp_disconnect`]
 #[derive(Clone, Debug)]
 pub struct McpDisconnectParams {
     pub name: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`mcp_status`]
 #[derive(Clone, Debug)]
 pub struct McpStatusParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`part_delete`]
@@ -235,7 +286,8 @@ pub struct PartDeleteParams {
     pub message_id: String,
     /// Part ID
     pub part_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`part_update`]
@@ -248,19 +300,22 @@ pub struct PartUpdateParams {
     /// Part ID
     pub part_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub part: Option<models::Part>
 }
 
 /// struct for passing parameters to the method [`path_get`]
 #[derive(Clone, Debug)]
 pub struct PathGetParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`permission_list`]
 #[derive(Clone, Debug)]
 pub struct PermissionListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`permission_reply`]
@@ -268,6 +323,7 @@ pub struct PermissionListParams {
 pub struct PermissionReplyParams {
     pub request_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub permission_reply_request: Option<models::PermissionReplyRequest>
 }
 
@@ -277,19 +333,22 @@ pub struct PermissionRespondParams {
     pub session_id: String,
     pub permission_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub permission_respond_request: Option<models::PermissionRespondRequest>
 }
 
 /// struct for passing parameters to the method [`project_current`]
 #[derive(Clone, Debug)]
 pub struct ProjectCurrentParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`project_list`]
 #[derive(Clone, Debug)]
 pub struct ProjectListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`project_update`]
@@ -297,19 +356,22 @@ pub struct ProjectListParams {
 pub struct ProjectUpdateParams {
     pub project_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub project_update_request: Option<models::ProjectUpdateRequest>
 }
 
 /// struct for passing parameters to the method [`provider_auth`]
 #[derive(Clone, Debug)]
 pub struct ProviderAuthParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`provider_list`]
 #[derive(Clone, Debug)]
 pub struct ProviderListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`provider_oauth_authorize`]
@@ -318,6 +380,7 @@ pub struct ProviderOauthAuthorizeParams {
     /// Provider ID
     pub provider_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub provider_oauth_authorize_request: Option<models::ProviderOauthAuthorizeRequest>
 }
 
@@ -327,6 +390,7 @@ pub struct ProviderOauthCallbackParams {
     /// Provider ID
     pub provider_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub provider_oauth_callback_request: Option<models::ProviderOauthCallbackRequest>
 }
 
@@ -334,13 +398,15 @@ pub struct ProviderOauthCallbackParams {
 #[derive(Clone, Debug)]
 pub struct PtyConnectParams {
     pub pty_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`pty_create`]
 #[derive(Clone, Debug)]
 pub struct PtyCreateParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub pty_create_request: Option<models::PtyCreateRequest>
 }
 
@@ -348,20 +414,23 @@ pub struct PtyCreateParams {
 #[derive(Clone, Debug)]
 pub struct PtyGetParams {
     pub pty_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`pty_list`]
 #[derive(Clone, Debug)]
 pub struct PtyListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`pty_remove`]
 #[derive(Clone, Debug)]
 pub struct PtyRemoveParams {
     pub pty_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`pty_update`]
@@ -369,20 +438,23 @@ pub struct PtyRemoveParams {
 pub struct PtyUpdateParams {
     pub pty_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub pty_update_request: Option<models::PtyUpdateRequest>
 }
 
 /// struct for passing parameters to the method [`question_list`]
 #[derive(Clone, Debug)]
 pub struct QuestionListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`question_reject`]
 #[derive(Clone, Debug)]
 pub struct QuestionRejectParams {
     pub request_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`question_reply`]
@@ -390,6 +462,7 @@ pub struct QuestionRejectParams {
 pub struct QuestionReplyParams {
     pub request_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub question_reply_request: Option<models::QuestionReplyRequest>
 }
 
@@ -397,7 +470,8 @@ pub struct QuestionReplyParams {
 #[derive(Clone, Debug)]
 pub struct SessionAbortParams {
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_command`]
@@ -406,6 +480,7 @@ pub struct SessionCommandParams {
     /// Session ID
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_command_request: Option<models::SessionCommandRequest>
 }
 
@@ -413,6 +488,7 @@ pub struct SessionCommandParams {
 #[derive(Clone, Debug)]
 pub struct SessionCreateParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_create_request: Option<models::SessionCreateRequest>
 }
 
@@ -420,7 +496,8 @@ pub struct SessionCreateParams {
 #[derive(Clone, Debug)]
 pub struct SessionDeleteParams {
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_delete_message`]
@@ -430,7 +507,8 @@ pub struct SessionDeleteMessageParams {
     pub session_id: String,
     /// Message ID
     pub message_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_diff`]
@@ -438,6 +516,7 @@ pub struct SessionDeleteMessageParams {
 pub struct SessionDiffParams {
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub message_id: Option<String>
 }
 
@@ -446,6 +525,7 @@ pub struct SessionDiffParams {
 pub struct SessionForkParams {
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_fork_request: Option<models::SessionForkRequest>
 }
 
@@ -455,6 +535,7 @@ pub struct SessionInitParams {
     /// Session ID
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_init_request: Option<models::SessionInitRequest>
 }
 
@@ -463,6 +544,7 @@ pub struct SessionInitParams {
 pub struct SessionListParams {
     /// Filter sessions by project directory
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     /// Only return root sessions (no parentID)
     pub roots: Option<bool>,
     /// Filter sessions updated on or after this timestamp (milliseconds since epoch)
@@ -480,7 +562,8 @@ pub struct SessionMessageParams {
     pub session_id: String,
     /// Message ID
     pub message_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_messages`]
@@ -489,6 +572,7 @@ pub struct SessionMessagesParams {
     /// Session ID
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub limit: Option<f64>
 }
 
@@ -498,6 +582,7 @@ pub struct SessionPromptParams {
     /// Session ID
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_prompt_request: Option<models::SessionPromptRequest>
 }
 
@@ -507,6 +592,7 @@ pub struct SessionPromptAsyncParams {
     /// Session ID
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_prompt_request: Option<models::SessionPromptRequest>
 }
 
@@ -515,6 +601,7 @@ pub struct SessionPromptAsyncParams {
 pub struct SessionRevertParams {
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_revert_request: Option<models::SessionRevertRequest>
 }
 
@@ -522,7 +609,8 @@ pub struct SessionRevertParams {
 #[derive(Clone, Debug)]
 pub struct SessionShareParams {
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_shell`]
@@ -531,13 +619,15 @@ pub struct SessionShellParams {
     /// Session ID
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_shell_request: Option<models::SessionShellRequest>
 }
 
 /// struct for passing parameters to the method [`session_status`]
 #[derive(Clone, Debug)]
 pub struct SessionStatusParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_summarize`]
@@ -546,6 +636,7 @@ pub struct SessionSummarizeParams {
     /// Session ID
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_summarize_request: Option<models::SessionSummarizeRequest>
 }
 
@@ -554,21 +645,24 @@ pub struct SessionSummarizeParams {
 pub struct SessionTodoParams {
     /// Session ID
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_unrevert`]
 #[derive(Clone, Debug)]
 pub struct SessionUnrevertParams {
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_unshare`]
 #[derive(Clone, Debug)]
 pub struct SessionUnshareParams {
     pub session_id: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`session_update`]
@@ -576,13 +670,15 @@ pub struct SessionUnshareParams {
 pub struct SessionUpdateParams {
     pub session_id: String,
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub session_update_request: Option<models::SessionUpdateRequest>
 }
 
 /// struct for passing parameters to the method [`tool_ids`]
 #[derive(Clone, Debug)]
 pub struct ToolIdsParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tool_list`]
@@ -590,32 +686,37 @@ pub struct ToolIdsParams {
 pub struct ToolListParams {
     pub provider: String,
     pub model: String,
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tui_append_prompt`]
 #[derive(Clone, Debug)]
 pub struct TuiAppendPromptParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub find_text200_response_inner_path: Option<models::FindText200ResponseInnerPath>
 }
 
 /// struct for passing parameters to the method [`tui_clear_prompt`]
 #[derive(Clone, Debug)]
 pub struct TuiClearPromptParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tui_control_next`]
 #[derive(Clone, Debug)]
 pub struct TuiControlNextParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tui_control_response`]
 #[derive(Clone, Debug)]
 pub struct TuiControlResponseParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub body: Option<serde_json::Value>
 }
 
@@ -623,37 +724,43 @@ pub struct TuiControlResponseParams {
 #[derive(Clone, Debug)]
 pub struct TuiExecuteCommandParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub tui_execute_command_request: Option<models::TuiExecuteCommandRequest>
 }
 
 /// struct for passing parameters to the method [`tui_open_help`]
 #[derive(Clone, Debug)]
 pub struct TuiOpenHelpParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tui_open_models`]
 #[derive(Clone, Debug)]
 pub struct TuiOpenModelsParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tui_open_sessions`]
 #[derive(Clone, Debug)]
 pub struct TuiOpenSessionsParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tui_open_themes`]
 #[derive(Clone, Debug)]
 pub struct TuiOpenThemesParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`tui_publish`]
 #[derive(Clone, Debug)]
 pub struct TuiPublishParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub tui_publish_request: Option<models::TuiPublishRequest>
 }
 
@@ -661,6 +768,7 @@ pub struct TuiPublishParams {
 #[derive(Clone, Debug)]
 pub struct TuiSelectSessionParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub tui_select_session_request: Option<models::TuiSelectSessionRequest>
 }
 
@@ -668,38 +776,44 @@ pub struct TuiSelectSessionParams {
 #[derive(Clone, Debug)]
 pub struct TuiShowToastParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub tui_show_toast_request: Option<models::TuiShowToastRequest>
 }
 
 /// struct for passing parameters to the method [`tui_submit_prompt`]
 #[derive(Clone, Debug)]
 pub struct TuiSubmitPromptParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`vcs_get`]
 #[derive(Clone, Debug)]
 pub struct VcsGetParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`worktree_create`]
 #[derive(Clone, Debug)]
 pub struct WorktreeCreateParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub worktree_create_input: Option<models::WorktreeCreateInput>
 }
 
 /// struct for passing parameters to the method [`worktree_list`]
 #[derive(Clone, Debug)]
 pub struct WorktreeListParams {
-    pub directory: Option<String>
+    pub directory: Option<String>,
+    pub workspace: Option<String>
 }
 
 /// struct for passing parameters to the method [`worktree_remove`]
 #[derive(Clone, Debug)]
 pub struct WorktreeRemoveParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub worktree_remove_input: Option<models::WorktreeRemoveInput>
 }
 
@@ -707,6 +821,7 @@ pub struct WorktreeRemoveParams {
 #[derive(Clone, Debug)]
 pub struct WorktreeResetParams {
     pub directory: Option<String>,
+    pub workspace: Option<String>,
     pub worktree_reset_input: Option<models::WorktreeResetInput>
 }
 
@@ -796,6 +911,29 @@ pub enum ExperimentalResourceListError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ExperimentalSessionListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`experimental_workspace_create`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ExperimentalWorkspaceCreateError {
+    Status400(models::BadRequestError),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`experimental_workspace_list`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ExperimentalWorkspaceListError {
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`experimental_workspace_remove`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum ExperimentalWorkspaceRemoveError {
+    Status400(models::BadRequestError),
     UnknownValue(serde_json::Value),
 }
 
@@ -1487,6 +1625,9 @@ pub async fn app_agents(configuration: &configuration::Configuration, params: Ap
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1524,6 +1665,9 @@ pub async fn app_log(configuration: &configuration::Configuration, params: AppLo
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -1563,6 +1707,9 @@ pub async fn app_skills(configuration: &configuration::Configuration, params: Ap
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -1673,6 +1820,9 @@ pub async fn command_list(configuration: &configuration::Configuration, params: 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1710,6 +1860,9 @@ pub async fn config_get(configuration: &configuration::Configuration, params: Co
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -1749,6 +1902,9 @@ pub async fn config_providers(configuration: &configuration::Configuration, para
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1786,6 +1942,9 @@ pub async fn config_update(configuration: &configuration::Configuration, params:
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -1826,6 +1985,9 @@ pub async fn event_subscribe(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1864,6 +2026,9 @@ pub async fn experimental_resource_list(configuration: &configuration::Configura
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1901,6 +2066,9 @@ pub async fn experimental_session_list(configuration: &configuration::Configurat
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref param_value) = params.roots {
         req_builder = req_builder.query(&[("roots", &param_value.to_string())]);
@@ -1949,6 +2117,130 @@ pub async fn experimental_session_list(configuration: &configuration::Configurat
     }
 }
 
+/// Create a workspace for the current project.
+pub async fn experimental_workspace_create(configuration: &configuration::Configuration, params: ExperimentalWorkspaceCreateParams) -> Result<models::Workspace, Error<ExperimentalWorkspaceCreateError>> {
+
+    let uri_str = format!("{}/experimental/workspace/{id}", configuration.base_path, id=crate::apis::urlencode(params.id));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref param_value) = params.directory {
+        req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    req_builder = req_builder.json(&params.experimental_workspace_create_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Workspace`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Workspace`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ExperimentalWorkspaceCreateError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// List all workspaces.
+pub async fn experimental_workspace_list(configuration: &configuration::Configuration, params: ExperimentalWorkspaceListParams) -> Result<Vec<models::Workspace>, Error<ExperimentalWorkspaceListError>> {
+
+    let uri_str = format!("{}/experimental/workspace", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = params.directory {
+        req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::Workspace&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::Workspace&gt;`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ExperimentalWorkspaceListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+/// Remove an existing workspace.
+pub async fn experimental_workspace_remove(configuration: &configuration::Configuration, params: ExperimentalWorkspaceRemoveParams) -> Result<models::Workspace, Error<ExperimentalWorkspaceRemoveError>> {
+
+    let uri_str = format!("{}/experimental/workspace/{id}", configuration.base_path, id=crate::apis::urlencode(params.id));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref param_value) = params.directory {
+        req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::Workspace`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::Workspace`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<ExperimentalWorkspaceRemoveError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 /// List files and directories in a specified path.
 pub async fn file_list(configuration: &configuration::Configuration, params: FileListParams) -> Result<Vec<models::FileNode>, Error<FileListError>> {
 
@@ -1957,6 +2249,9 @@ pub async fn file_list(configuration: &configuration::Configuration, params: Fil
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     req_builder = req_builder.query(&[("path", &params.path.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1997,6 +2292,9 @@ pub async fn file_read(configuration: &configuration::Configuration, params: Fil
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     req_builder = req_builder.query(&[("path", &params.path.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2036,6 +2334,9 @@ pub async fn file_status(configuration: &configuration::Configuration, params: F
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2073,6 +2374,9 @@ pub async fn find_files(configuration: &configuration::Configuration, params: Fi
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     req_builder = req_builder.query(&[("query", &params.query.to_string())]);
     if let Some(ref param_value) = params.dirs {
@@ -2122,6 +2426,9 @@ pub async fn find_symbols(configuration: &configuration::Configuration, params: 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     req_builder = req_builder.query(&[("query", &params.query.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2161,6 +2468,9 @@ pub async fn find_text(configuration: &configuration::Configuration, params: Fin
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     req_builder = req_builder.query(&[("pattern", &params.pattern.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2199,6 +2509,9 @@ pub async fn formatter_status(configuration: &configuration::Configuration, para
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2414,6 +2727,9 @@ pub async fn instance_dispose(configuration: &configuration::Configuration, para
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2452,6 +2768,9 @@ pub async fn lsp_status(configuration: &configuration::Configuration, params: Ls
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2489,6 +2808,9 @@ pub async fn mcp_add(configuration: &configuration::Configuration, params: McpAd
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2529,6 +2851,9 @@ pub async fn mcp_auth_authenticate(configuration: &configuration::Configuration,
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2566,6 +2891,9 @@ pub async fn mcp_auth_callback(configuration: &configuration::Configuration, par
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2606,6 +2934,9 @@ pub async fn mcp_auth_remove(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2643,6 +2974,9 @@ pub async fn mcp_auth_start(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2682,6 +3016,9 @@ pub async fn mcp_connect(configuration: &configuration::Configuration, params: M
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2719,6 +3056,9 @@ pub async fn mcp_disconnect(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2758,6 +3098,9 @@ pub async fn mcp_status(configuration: &configuration::Configuration, params: Mc
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2796,6 +3139,9 @@ pub async fn part_delete(configuration: &configuration::Configuration, params: P
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2833,6 +3179,9 @@ pub async fn part_update(configuration: &configuration::Configuration, params: P
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2873,6 +3222,9 @@ pub async fn path_get(configuration: &configuration::Configuration, params: Path
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2911,6 +3263,9 @@ pub async fn permission_list(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -2948,6 +3303,9 @@ pub async fn permission_reply(configuration: &configuration::Configuration, para
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -2989,6 +3347,9 @@ pub async fn permission_respond(configuration: &configuration::Configuration, pa
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3028,6 +3389,9 @@ pub async fn project_current(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3066,6 +3430,9 @@ pub async fn project_list(configuration: &configuration::Configuration, params: 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3103,6 +3470,9 @@ pub async fn project_update(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -3143,6 +3513,9 @@ pub async fn provider_auth(configuration: &configuration::Configuration, params:
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3181,6 +3554,9 @@ pub async fn provider_list(configuration: &configuration::Configuration, params:
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3218,6 +3594,9 @@ pub async fn provider_oauth_authorize(configuration: &configuration::Configurati
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -3258,6 +3637,9 @@ pub async fn provider_oauth_callback(configuration: &configuration::Configuratio
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3297,6 +3679,9 @@ pub async fn pty_connect(configuration: &configuration::Configuration, params: P
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3334,6 +3719,9 @@ pub async fn pty_create(configuration: &configuration::Configuration, params: Pt
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -3374,6 +3762,9 @@ pub async fn pty_get(configuration: &configuration::Configuration, params: PtyGe
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3411,6 +3802,9 @@ pub async fn pty_list(configuration: &configuration::Configuration, params: PtyL
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -3450,6 +3844,9 @@ pub async fn pty_remove(configuration: &configuration::Configuration, params: Pt
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3487,6 +3884,9 @@ pub async fn pty_update(configuration: &configuration::Configuration, params: Pt
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -3527,6 +3927,9 @@ pub async fn question_list(configuration: &configuration::Configuration, params:
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3565,6 +3968,9 @@ pub async fn question_reject(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3602,6 +4008,9 @@ pub async fn question_reply(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -3642,6 +4051,9 @@ pub async fn session_abort(configuration: &configuration::Configuration, params:
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3679,6 +4091,9 @@ pub async fn session_command(configuration: &configuration::Configuration, param
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -3719,6 +4134,9 @@ pub async fn session_create(configuration: &configuration::Configuration, params
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3758,6 +4176,9 @@ pub async fn session_delete(configuration: &configuration::Configuration, params
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3796,6 +4217,9 @@ pub async fn session_delete_message(configuration: &configuration::Configuration
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3833,6 +4257,9 @@ pub async fn session_diff(configuration: &configuration::Configuration, params: 
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref param_value) = params.message_id {
         req_builder = req_builder.query(&[("messageID", &param_value.to_string())]);
@@ -3875,6 +4302,9 @@ pub async fn session_fork(configuration: &configuration::Configuration, params: 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3914,6 +4344,9 @@ pub async fn session_init(configuration: &configuration::Configuration, params: 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -3952,6 +4385,9 @@ pub async fn session_list(configuration: &configuration::Configuration, params: 
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref param_value) = params.roots {
         req_builder = req_builder.query(&[("roots", &param_value.to_string())]);
@@ -4003,6 +4439,9 @@ pub async fn session_message(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4040,6 +4479,9 @@ pub async fn session_messages(configuration: &configuration::Configuration, para
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref param_value) = params.limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
@@ -4082,6 +4524,9 @@ pub async fn session_prompt(configuration: &configuration::Configuration, params
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4121,6 +4566,9 @@ pub async fn session_prompt_async(configuration: &configuration::Configuration, 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4148,6 +4596,9 @@ pub async fn session_revert(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4188,6 +4639,9 @@ pub async fn session_share(configuration: &configuration::Configuration, params:
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4225,6 +4679,9 @@ pub async fn session_shell(configuration: &configuration::Configuration, params:
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4265,6 +4722,9 @@ pub async fn session_status(configuration: &configuration::Configuration, params
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4302,6 +4762,9 @@ pub async fn session_summarize(configuration: &configuration::Configuration, par
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4342,6 +4805,9 @@ pub async fn session_todo(configuration: &configuration::Configuration, params: 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4379,6 +4845,9 @@ pub async fn session_unrevert(configuration: &configuration::Configuration, para
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4418,6 +4887,9 @@ pub async fn session_unshare(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4455,6 +4927,9 @@ pub async fn session_update(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4495,6 +4970,9 @@ pub async fn tool_ids(configuration: &configuration::Configuration, params: Tool
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4532,6 +5010,9 @@ pub async fn tool_list(configuration: &configuration::Configuration, params: Too
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     req_builder = req_builder.query(&[("provider", &params.provider.to_string())]);
     req_builder = req_builder.query(&[("model", &params.model.to_string())]);
@@ -4573,6 +5054,9 @@ pub async fn tui_append_prompt(configuration: &configuration::Configuration, par
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4612,6 +5096,9 @@ pub async fn tui_clear_prompt(configuration: &configuration::Configuration, para
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4650,6 +5137,9 @@ pub async fn tui_control_next(configuration: &configuration::Configuration, para
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4687,6 +5177,9 @@ pub async fn tui_control_response(configuration: &configuration::Configuration, 
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4727,6 +5220,9 @@ pub async fn tui_execute_command(configuration: &configuration::Configuration, p
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4766,6 +5262,9 @@ pub async fn tui_open_help(configuration: &configuration::Configuration, params:
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4803,6 +5302,9 @@ pub async fn tui_open_models(configuration: &configuration::Configuration, param
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4842,6 +5344,9 @@ pub async fn tui_open_sessions(configuration: &configuration::Configuration, par
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4880,6 +5385,9 @@ pub async fn tui_open_themes(configuration: &configuration::Configuration, param
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4917,6 +5425,9 @@ pub async fn tui_publish(configuration: &configuration::Configuration, params: T
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -4957,6 +5468,9 @@ pub async fn tui_select_session(configuration: &configuration::Configuration, pa
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -4995,6 +5509,9 @@ pub async fn tui_show_toast(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -5035,6 +5552,9 @@ pub async fn tui_submit_prompt(configuration: &configuration::Configuration, par
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -5073,6 +5593,9 @@ pub async fn vcs_get(configuration: &configuration::Configuration, params: VcsGe
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -5110,6 +5633,9 @@ pub async fn worktree_create(configuration: &configuration::Configuration, param
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -5150,6 +5676,9 @@ pub async fn worktree_list(configuration: &configuration::Configuration, params:
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
     }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -5187,6 +5716,9 @@ pub async fn worktree_remove(configuration: &configuration::Configuration, param
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -5226,6 +5758,9 @@ pub async fn worktree_reset(configuration: &configuration::Configuration, params
 
     if let Some(ref param_value) = params.directory {
         req_builder = req_builder.query(&[("directory", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = params.workspace {
+        req_builder = req_builder.query(&[("workspace", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
