@@ -16,6 +16,9 @@ Method | HTTP request | Description
 [**event_subscribe**](DefaultApi.md#event_subscribe) | **GET** /event | Subscribe to events
 [**experimental_resource_list**](DefaultApi.md#experimental_resource_list) | **GET** /experimental/resource | Get MCP resources
 [**experimental_session_list**](DefaultApi.md#experimental_session_list) | **GET** /experimental/session | List sessions
+[**experimental_workspace_create**](DefaultApi.md#experimental_workspace_create) | **POST** /experimental/workspace/{id} | Create workspace
+[**experimental_workspace_list**](DefaultApi.md#experimental_workspace_list) | **GET** /experimental/workspace | List workspaces
+[**experimental_workspace_remove**](DefaultApi.md#experimental_workspace_remove) | **DELETE** /experimental/workspace/{id} | Remove workspace
 [**file_list**](DefaultApi.md#file_list) | **GET** /file | List files
 [**file_read**](DefaultApi.md#file_read) | **GET** /file/content | Read file
 [**file_status**](DefaultApi.md#file_status) | **GET** /file/status | Get file status
@@ -107,7 +110,7 @@ Method | HTTP request | Description
 
 ## app_agents
 
-> Vec<models::Agent> app_agents(directory)
+> Vec<models::Agent> app_agents(directory, workspace)
 List agents
 
 Get a list of all available AI agents in the OpenCode system.
@@ -118,6 +121,7 @@ Get a list of all available AI agents in the OpenCode system.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -137,7 +141,7 @@ No authorization required
 
 ## app_log
 
-> bool app_log(directory, app_log_request)
+> bool app_log(directory, workspace, app_log_request)
 Write log
 
 Write a log entry to the server logs with specified level and metadata.
@@ -148,6 +152,7 @@ Write a log entry to the server logs with specified level and metadata.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **app_log_request** | Option<[**AppLogRequest**](AppLogRequest.md)> |  |  |
 
 ### Return type
@@ -168,7 +173,7 @@ No authorization required
 
 ## app_skills
 
-> Vec<models::AppSkills200ResponseInner> app_skills(directory)
+> Vec<models::AppSkills200ResponseInner> app_skills(directory, workspace)
 List skills
 
 Get a list of all available skills in the OpenCode system.
@@ -179,6 +184,7 @@ Get a list of all available skills in the OpenCode system.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -259,7 +265,7 @@ No authorization required
 
 ## command_list
 
-> Vec<models::Command> command_list(directory)
+> Vec<models::Command> command_list(directory, workspace)
 List commands
 
 Get a list of all available commands in the OpenCode system.
@@ -270,6 +276,7 @@ Get a list of all available commands in the OpenCode system.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -289,7 +296,7 @@ No authorization required
 
 ## config_get
 
-> models::Config config_get(directory)
+> models::Config config_get(directory, workspace)
 Get configuration
 
 Retrieve the current OpenCode configuration settings and preferences.
@@ -300,6 +307,7 @@ Retrieve the current OpenCode configuration settings and preferences.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -319,7 +327,7 @@ No authorization required
 
 ## config_providers
 
-> models::ConfigProviders200Response config_providers(directory)
+> models::ConfigProviders200Response config_providers(directory, workspace)
 List config providers
 
 Get a list of all configured AI providers and their default models.
@@ -330,6 +338,7 @@ Get a list of all configured AI providers and their default models.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -349,7 +358,7 @@ No authorization required
 
 ## config_update
 
-> models::Config config_update(directory, config)
+> models::Config config_update(directory, workspace, config)
 Update configuration
 
 Update OpenCode configuration settings and preferences.
@@ -360,6 +369,7 @@ Update OpenCode configuration settings and preferences.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **config** | Option<[**Config**](Config.md)> |  |  |
 
 ### Return type
@@ -380,7 +390,7 @@ No authorization required
 
 ## event_subscribe
 
-> models::Event event_subscribe(directory)
+> models::Event event_subscribe(directory, workspace)
 Subscribe to events
 
 Get events
@@ -391,6 +401,7 @@ Get events
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -410,7 +421,7 @@ No authorization required
 
 ## experimental_resource_list
 
-> std::collections::HashMap<String, models::McpResource> experimental_resource_list(directory)
+> std::collections::HashMap<String, models::McpResource> experimental_resource_list(directory, workspace)
 Get MCP resources
 
 Get all available MCP resources from connected servers. Optionally filter by name.
@@ -421,6 +432,7 @@ Get all available MCP resources from connected servers. Optionally filter by nam
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -440,7 +452,7 @@ No authorization required
 
 ## experimental_session_list
 
-> Vec<models::GlobalSession> experimental_session_list(directory, roots, start, cursor, search, limit, archived)
+> Vec<models::GlobalSession> experimental_session_list(directory, workspace, roots, start, cursor, search, limit, archived)
 List sessions
 
 Get a list of all OpenCode sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.
@@ -451,6 +463,7 @@ Get a list of all OpenCode sessions across projects, sorted by most recently upd
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> | Filter sessions by project directory |  |
+**workspace** | Option<**String**> |  |  |
 **roots** | Option<**bool**> | Only return root sessions (no parentID) |  |
 **start** | Option<**f64**> | Filter sessions updated on or after this timestamp (milliseconds since epoch) |  |
 **cursor** | Option<**f64**> | Return sessions updated before this timestamp (milliseconds since epoch) |  |
@@ -474,9 +487,105 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## experimental_workspace_create
+
+> models::Workspace experimental_workspace_create(id, directory, workspace, experimental_workspace_create_request)
+Create workspace
+
+Create a workspace for the current project.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
+**experimental_workspace_create_request** | Option<[**ExperimentalWorkspaceCreateRequest**](ExperimentalWorkspaceCreateRequest.md)> |  |  |
+
+### Return type
+
+[**models::Workspace**](Workspace.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## experimental_workspace_list
+
+> Vec<models::Workspace> experimental_workspace_list(directory, workspace)
+List workspaces
+
+List all workspaces.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
+
+### Return type
+
+[**Vec<models::Workspace>**](Workspace.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## experimental_workspace_remove
+
+> models::Workspace experimental_workspace_remove(id, directory, workspace)
+Remove workspace
+
+Remove an existing workspace.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **String** |  | [required] |
+**directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
+
+### Return type
+
+[**models::Workspace**](Workspace.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## file_list
 
-> Vec<models::FileNode> file_list(path, directory)
+> Vec<models::FileNode> file_list(path, directory, workspace)
 List files
 
 List files and directories in a specified path.
@@ -488,6 +597,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **path** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -507,7 +617,7 @@ No authorization required
 
 ## file_read
 
-> models::FileContent file_read(path, directory)
+> models::FileContent file_read(path, directory, workspace)
 Read file
 
 Read the content of a specified file.
@@ -519,6 +629,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **path** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -538,7 +649,7 @@ No authorization required
 
 ## file_status
 
-> Vec<models::File> file_status(directory)
+> Vec<models::File> file_status(directory, workspace)
 Get file status
 
 Get the git status of all files in the project.
@@ -549,6 +660,7 @@ Get the git status of all files in the project.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -568,7 +680,7 @@ No authorization required
 
 ## find_files
 
-> Vec<String> find_files(query, directory, dirs, r#type, limit)
+> Vec<String> find_files(query, directory, workspace, dirs, r#type, limit)
 Find files
 
 Search for files or directories by name or pattern in the project directory.
@@ -580,6 +692,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **query** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **dirs** | Option<**String**> |  |  |
 **r#type** | Option<**String**> |  |  |
 **limit** | Option<**i32**> |  |  |
@@ -602,7 +715,7 @@ No authorization required
 
 ## find_symbols
 
-> Vec<models::Symbol> find_symbols(query, directory)
+> Vec<models::Symbol> find_symbols(query, directory, workspace)
 Find symbols
 
 Search for workspace symbols like functions, classes, and variables using LSP.
@@ -614,6 +727,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **query** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -633,7 +747,7 @@ No authorization required
 
 ## find_text
 
-> Vec<models::FindText200ResponseInner> find_text(pattern, directory)
+> Vec<models::FindText200ResponseInner> find_text(pattern, directory, workspace)
 Find text
 
 Search for text patterns across files in the project using ripgrep.
@@ -645,6 +759,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **pattern** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -664,7 +779,7 @@ No authorization required
 
 ## formatter_status
 
-> Vec<models::FormatterStatus> formatter_status(directory)
+> Vec<models::FormatterStatus> formatter_status(directory, workspace)
 Get formatter status
 
 Get formatter status
@@ -675,6 +790,7 @@ Get formatter status
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -832,7 +948,7 @@ No authorization required
 
 ## instance_dispose
 
-> bool instance_dispose(directory)
+> bool instance_dispose(directory, workspace)
 Dispose instance
 
 Clean up and dispose the current OpenCode instance, releasing all resources.
@@ -843,6 +959,7 @@ Clean up and dispose the current OpenCode instance, releasing all resources.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -862,7 +979,7 @@ No authorization required
 
 ## lsp_status
 
-> Vec<models::LspStatus> lsp_status(directory)
+> Vec<models::LspStatus> lsp_status(directory, workspace)
 Get LSP status
 
 Get LSP server status
@@ -873,6 +990,7 @@ Get LSP server status
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -892,7 +1010,7 @@ No authorization required
 
 ## mcp_add
 
-> std::collections::HashMap<String, models::McpStatus> mcp_add(directory, mcp_add_request)
+> std::collections::HashMap<String, models::McpStatus> mcp_add(directory, workspace, mcp_add_request)
 Add MCP server
 
 Dynamically add a new Model Context Protocol (MCP) server to the system.
@@ -903,6 +1021,7 @@ Dynamically add a new Model Context Protocol (MCP) server to the system.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **mcp_add_request** | Option<[**McpAddRequest**](McpAddRequest.md)> |  |  |
 
 ### Return type
@@ -923,7 +1042,7 @@ No authorization required
 
 ## mcp_auth_authenticate
 
-> models::McpStatus mcp_auth_authenticate(name, directory)
+> models::McpStatus mcp_auth_authenticate(name, directory, workspace)
 Authenticate MCP OAuth
 
 Start OAuth flow and wait for callback (opens browser)
@@ -935,6 +1054,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **name** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -954,7 +1074,7 @@ No authorization required
 
 ## mcp_auth_callback
 
-> models::McpStatus mcp_auth_callback(name, directory, mcp_auth_callback_request)
+> models::McpStatus mcp_auth_callback(name, directory, workspace, mcp_auth_callback_request)
 Complete MCP OAuth
 
 Complete OAuth authentication for a Model Context Protocol (MCP) server using the authorization code.
@@ -966,6 +1086,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **name** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **mcp_auth_callback_request** | Option<[**McpAuthCallbackRequest**](McpAuthCallbackRequest.md)> |  |  |
 
 ### Return type
@@ -986,7 +1107,7 @@ No authorization required
 
 ## mcp_auth_remove
 
-> models::McpAuthRemove200Response mcp_auth_remove(name, directory)
+> models::McpAuthRemove200Response mcp_auth_remove(name, directory, workspace)
 Remove MCP OAuth
 
 Remove OAuth credentials for an MCP server
@@ -998,6 +1119,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **name** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1017,7 +1139,7 @@ No authorization required
 
 ## mcp_auth_start
 
-> models::McpAuthStart200Response mcp_auth_start(name, directory)
+> models::McpAuthStart200Response mcp_auth_start(name, directory, workspace)
 Start MCP OAuth
 
 Start OAuth authentication flow for a Model Context Protocol (MCP) server.
@@ -1029,6 +1151,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **name** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1048,7 +1171,7 @@ No authorization required
 
 ## mcp_connect
 
-> bool mcp_connect(name, directory)
+> bool mcp_connect(name, directory, workspace)
 
 
 Connect an MCP server
@@ -1060,6 +1183,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **name** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1079,7 +1203,7 @@ No authorization required
 
 ## mcp_disconnect
 
-> bool mcp_disconnect(name, directory)
+> bool mcp_disconnect(name, directory, workspace)
 
 
 Disconnect an MCP server
@@ -1091,6 +1215,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **name** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1110,7 +1235,7 @@ No authorization required
 
 ## mcp_status
 
-> std::collections::HashMap<String, models::McpStatus> mcp_status(directory)
+> std::collections::HashMap<String, models::McpStatus> mcp_status(directory, workspace)
 Get MCP status
 
 Get the status of all Model Context Protocol (MCP) servers.
@@ -1121,6 +1246,7 @@ Get the status of all Model Context Protocol (MCP) servers.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1140,7 +1266,7 @@ No authorization required
 
 ## part_delete
 
-> bool part_delete(session_id, message_id, part_id, directory)
+> bool part_delete(session_id, message_id, part_id, directory, workspace)
 
 
 Delete a part from a message
@@ -1154,6 +1280,7 @@ Name | Type | Description  | Required | Notes
 **message_id** | **String** | Message ID | [required] |
 **part_id** | **String** | Part ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1173,7 +1300,7 @@ No authorization required
 
 ## part_update
 
-> models::Part part_update(session_id, message_id, part_id, directory, part)
+> models::Part part_update(session_id, message_id, part_id, directory, workspace, part)
 
 
 Update a part in a message
@@ -1187,6 +1314,7 @@ Name | Type | Description  | Required | Notes
 **message_id** | **String** | Message ID | [required] |
 **part_id** | **String** | Part ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **part** | Option<[**Part**](Part.md)> |  |  |
 
 ### Return type
@@ -1207,7 +1335,7 @@ No authorization required
 
 ## path_get
 
-> models::Path path_get(directory)
+> models::Path path_get(directory, workspace)
 Get paths
 
 Retrieve the current working directory and related path information for the OpenCode instance.
@@ -1218,6 +1346,7 @@ Retrieve the current working directory and related path information for the Open
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1237,7 +1366,7 @@ No authorization required
 
 ## permission_list
 
-> Vec<models::PermissionRequest> permission_list(directory)
+> Vec<models::PermissionRequest> permission_list(directory, workspace)
 List pending permissions
 
 Get all pending permission requests across all sessions.
@@ -1248,6 +1377,7 @@ Get all pending permission requests across all sessions.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1267,7 +1397,7 @@ No authorization required
 
 ## permission_reply
 
-> bool permission_reply(request_id, directory, permission_reply_request)
+> bool permission_reply(request_id, directory, workspace, permission_reply_request)
 Respond to permission request
 
 Approve or deny a permission request from the AI assistant.
@@ -1279,6 +1409,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **request_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **permission_reply_request** | Option<[**PermissionReplyRequest**](PermissionReplyRequest.md)> |  |  |
 
 ### Return type
@@ -1299,7 +1430,7 @@ No authorization required
 
 ## permission_respond
 
-> bool permission_respond(session_id, permission_id, directory, permission_respond_request)
+> bool permission_respond(session_id, permission_id, directory, workspace, permission_respond_request)
 Respond to permission
 
 Approve or deny a permission request from the AI assistant.
@@ -1312,6 +1443,7 @@ Name | Type | Description  | Required | Notes
 **session_id** | **String** |  | [required] |
 **permission_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **permission_respond_request** | Option<[**PermissionRespondRequest**](PermissionRespondRequest.md)> |  |  |
 
 ### Return type
@@ -1332,7 +1464,7 @@ No authorization required
 
 ## project_current
 
-> models::Project project_current(directory)
+> models::Project project_current(directory, workspace)
 Get current project
 
 Retrieve the currently active project that OpenCode is working with.
@@ -1343,6 +1475,7 @@ Retrieve the currently active project that OpenCode is working with.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1362,7 +1495,7 @@ No authorization required
 
 ## project_list
 
-> Vec<models::Project> project_list(directory)
+> Vec<models::Project> project_list(directory, workspace)
 List all projects
 
 Get a list of projects that have been opened with OpenCode.
@@ -1373,6 +1506,7 @@ Get a list of projects that have been opened with OpenCode.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1392,7 +1526,7 @@ No authorization required
 
 ## project_update
 
-> models::Project project_update(project_id, directory, project_update_request)
+> models::Project project_update(project_id, directory, workspace, project_update_request)
 Update project
 
 Update project properties such as name, icon, and commands.
@@ -1404,6 +1538,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **project_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **project_update_request** | Option<[**ProjectUpdateRequest**](ProjectUpdateRequest.md)> |  |  |
 
 ### Return type
@@ -1424,7 +1559,7 @@ No authorization required
 
 ## provider_auth
 
-> std::collections::HashMap<String, Vec<models::ProviderAuthMethod>> provider_auth(directory)
+> std::collections::HashMap<String, Vec<models::ProviderAuthMethod>> provider_auth(directory, workspace)
 Get provider auth methods
 
 Retrieve available authentication methods for all AI providers.
@@ -1435,6 +1570,7 @@ Retrieve available authentication methods for all AI providers.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1454,7 +1590,7 @@ No authorization required
 
 ## provider_list
 
-> models::ProviderList200Response provider_list(directory)
+> models::ProviderList200Response provider_list(directory, workspace)
 List providers
 
 Get a list of all available AI providers, including both available and connected ones.
@@ -1465,6 +1601,7 @@ Get a list of all available AI providers, including both available and connected
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1484,7 +1621,7 @@ No authorization required
 
 ## provider_oauth_authorize
 
-> models::ProviderAuthAuthorization provider_oauth_authorize(provider_id, directory, provider_oauth_authorize_request)
+> models::ProviderAuthAuthorization provider_oauth_authorize(provider_id, directory, workspace, provider_oauth_authorize_request)
 OAuth authorize
 
 Initiate OAuth authorization for a specific AI provider to get an authorization URL.
@@ -1496,6 +1633,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **provider_id** | **String** | Provider ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **provider_oauth_authorize_request** | Option<[**ProviderOauthAuthorizeRequest**](ProviderOauthAuthorizeRequest.md)> |  |  |
 
 ### Return type
@@ -1516,7 +1654,7 @@ No authorization required
 
 ## provider_oauth_callback
 
-> bool provider_oauth_callback(provider_id, directory, provider_oauth_callback_request)
+> bool provider_oauth_callback(provider_id, directory, workspace, provider_oauth_callback_request)
 OAuth callback
 
 Handle the OAuth callback from a provider after user authorization.
@@ -1528,6 +1666,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **provider_id** | **String** | Provider ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **provider_oauth_callback_request** | Option<[**ProviderOauthCallbackRequest**](ProviderOauthCallbackRequest.md)> |  |  |
 
 ### Return type
@@ -1548,7 +1687,7 @@ No authorization required
 
 ## pty_connect
 
-> bool pty_connect(pty_id, directory)
+> bool pty_connect(pty_id, directory, workspace)
 Connect to PTY session
 
 Establish a WebSocket connection to interact with a pseudo-terminal (PTY) session in real-time.
@@ -1560,6 +1699,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **pty_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1579,7 +1719,7 @@ No authorization required
 
 ## pty_create
 
-> models::Pty pty_create(directory, pty_create_request)
+> models::Pty pty_create(directory, workspace, pty_create_request)
 Create PTY session
 
 Create a new pseudo-terminal (PTY) session for running shell commands and processes.
@@ -1590,6 +1730,7 @@ Create a new pseudo-terminal (PTY) session for running shell commands and proces
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **pty_create_request** | Option<[**PtyCreateRequest**](PtyCreateRequest.md)> |  |  |
 
 ### Return type
@@ -1610,7 +1751,7 @@ No authorization required
 
 ## pty_get
 
-> models::Pty pty_get(pty_id, directory)
+> models::Pty pty_get(pty_id, directory, workspace)
 Get PTY session
 
 Retrieve detailed information about a specific pseudo-terminal (PTY) session.
@@ -1622,6 +1763,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **pty_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1641,7 +1783,7 @@ No authorization required
 
 ## pty_list
 
-> Vec<models::Pty> pty_list(directory)
+> Vec<models::Pty> pty_list(directory, workspace)
 List PTY sessions
 
 Get a list of all active pseudo-terminal (PTY) sessions managed by OpenCode.
@@ -1652,6 +1794,7 @@ Get a list of all active pseudo-terminal (PTY) sessions managed by OpenCode.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1671,7 +1814,7 @@ No authorization required
 
 ## pty_remove
 
-> bool pty_remove(pty_id, directory)
+> bool pty_remove(pty_id, directory, workspace)
 Remove PTY session
 
 Remove and terminate a specific pseudo-terminal (PTY) session.
@@ -1683,6 +1826,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **pty_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1702,7 +1846,7 @@ No authorization required
 
 ## pty_update
 
-> models::Pty pty_update(pty_id, directory, pty_update_request)
+> models::Pty pty_update(pty_id, directory, workspace, pty_update_request)
 Update PTY session
 
 Update properties of an existing pseudo-terminal (PTY) session.
@@ -1714,6 +1858,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **pty_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **pty_update_request** | Option<[**PtyUpdateRequest**](PtyUpdateRequest.md)> |  |  |
 
 ### Return type
@@ -1734,7 +1879,7 @@ No authorization required
 
 ## question_list
 
-> Vec<models::QuestionRequest> question_list(directory)
+> Vec<models::QuestionRequest> question_list(directory, workspace)
 List pending questions
 
 Get all pending question requests across all sessions.
@@ -1745,6 +1890,7 @@ Get all pending question requests across all sessions.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1764,7 +1910,7 @@ No authorization required
 
 ## question_reject
 
-> bool question_reject(request_id, directory)
+> bool question_reject(request_id, directory, workspace)
 Reject question request
 
 Reject a question request from the AI assistant.
@@ -1776,6 +1922,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **request_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1795,7 +1942,7 @@ No authorization required
 
 ## question_reply
 
-> bool question_reply(request_id, directory, question_reply_request)
+> bool question_reply(request_id, directory, workspace, question_reply_request)
 Reply to question request
 
 Provide answers to a question request from the AI assistant.
@@ -1807,6 +1954,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **request_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **question_reply_request** | Option<[**QuestionReplyRequest**](QuestionReplyRequest.md)> |  |  |
 
 ### Return type
@@ -1827,7 +1975,7 @@ No authorization required
 
 ## session_abort
 
-> bool session_abort(session_id, directory)
+> bool session_abort(session_id, directory, workspace)
 Abort session
 
 Abort an active session and stop any ongoing AI processing or command execution.
@@ -1839,6 +1987,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1858,7 +2007,7 @@ No authorization required
 
 ## session_command
 
-> models::SessionPrompt200Response session_command(session_id, directory, session_command_request)
+> models::SessionPrompt200Response session_command(session_id, directory, workspace, session_command_request)
 Send command
 
 Send a new command to a session for execution by the AI assistant.
@@ -1870,6 +2019,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_command_request** | Option<[**SessionCommandRequest**](SessionCommandRequest.md)> |  |  |
 
 ### Return type
@@ -1890,7 +2040,7 @@ No authorization required
 
 ## session_create
 
-> models::Session session_create(directory, session_create_request)
+> models::Session session_create(directory, workspace, session_create_request)
 Create session
 
 Create a new OpenCode session for interacting with AI assistants and managing conversations.
@@ -1901,6 +2051,7 @@ Create a new OpenCode session for interacting with AI assistants and managing co
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_create_request** | Option<[**SessionCreateRequest**](SessionCreateRequest.md)> |  |  |
 
 ### Return type
@@ -1921,7 +2072,7 @@ No authorization required
 
 ## session_delete
 
-> bool session_delete(session_id, directory)
+> bool session_delete(session_id, directory, workspace)
 Delete session
 
 Delete a session and permanently remove all associated data, including messages and history.
@@ -1933,6 +2084,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1952,7 +2104,7 @@ No authorization required
 
 ## session_delete_message
 
-> bool session_delete_message(session_id, message_id, directory)
+> bool session_delete_message(session_id, message_id, directory, workspace)
 Delete message
 
 Permanently delete a specific message (and all of its parts) from a session. This does not revert any file changes that may have been made while processing the message.
@@ -1965,6 +2117,7 @@ Name | Type | Description  | Required | Notes
 **session_id** | **String** | Session ID | [required] |
 **message_id** | **String** | Message ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -1984,7 +2137,7 @@ No authorization required
 
 ## session_diff
 
-> Vec<models::FileDiff> session_diff(session_id, directory, message_id)
+> Vec<models::FileDiff> session_diff(session_id, directory, workspace, message_id)
 Get message diff
 
 Get the file changes (diff) that resulted from a specific user message in the session.
@@ -1996,6 +2149,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **message_id** | Option<**String**> |  |  |
 
 ### Return type
@@ -2016,7 +2170,7 @@ No authorization required
 
 ## session_fork
 
-> models::Session session_fork(session_id, directory, session_fork_request)
+> models::Session session_fork(session_id, directory, workspace, session_fork_request)
 Fork session
 
 Create a new session by forking an existing session at a specific message point.
@@ -2028,6 +2182,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_fork_request** | Option<[**SessionForkRequest**](SessionForkRequest.md)> |  |  |
 
 ### Return type
@@ -2048,7 +2203,7 @@ No authorization required
 
 ## session_init
 
-> bool session_init(session_id, directory, session_init_request)
+> bool session_init(session_id, directory, workspace, session_init_request)
 Initialize session
 
 Analyze the current application and create an AGENTS.md file with project-specific agent configurations.
@@ -2060,6 +2215,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_init_request** | Option<[**SessionInitRequest**](SessionInitRequest.md)> |  |  |
 
 ### Return type
@@ -2080,7 +2236,7 @@ No authorization required
 
 ## session_list
 
-> Vec<models::Session> session_list(directory, roots, start, search, limit)
+> Vec<models::Session> session_list(directory, workspace, roots, start, search, limit)
 List sessions
 
 Get a list of all OpenCode sessions, sorted by most recently updated.
@@ -2091,6 +2247,7 @@ Get a list of all OpenCode sessions, sorted by most recently updated.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> | Filter sessions by project directory |  |
+**workspace** | Option<**String**> |  |  |
 **roots** | Option<**bool**> | Only return root sessions (no parentID) |  |
 **start** | Option<**f64**> | Filter sessions updated on or after this timestamp (milliseconds since epoch) |  |
 **search** | Option<**String**> | Filter sessions by title (case-insensitive) |  |
@@ -2114,7 +2271,7 @@ No authorization required
 
 ## session_message
 
-> models::SessionMessages200ResponseInner session_message(session_id, message_id, directory)
+> models::SessionMessages200ResponseInner session_message(session_id, message_id, directory, workspace)
 Get message
 
 Retrieve a specific message from a session by its message ID.
@@ -2127,6 +2284,7 @@ Name | Type | Description  | Required | Notes
 **session_id** | **String** | Session ID | [required] |
 **message_id** | **String** | Message ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2146,7 +2304,7 @@ No authorization required
 
 ## session_messages
 
-> Vec<models::SessionMessages200ResponseInner> session_messages(session_id, directory, limit)
+> Vec<models::SessionMessages200ResponseInner> session_messages(session_id, directory, workspace, limit)
 Get session messages
 
 Retrieve all messages in a session, including user prompts and AI responses.
@@ -2158,6 +2316,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **limit** | Option<**f64**> |  |  |
 
 ### Return type
@@ -2178,7 +2337,7 @@ No authorization required
 
 ## session_prompt
 
-> models::SessionPrompt200Response session_prompt(session_id, directory, session_prompt_request)
+> models::SessionPrompt200Response session_prompt(session_id, directory, workspace, session_prompt_request)
 Send message
 
 Create and send a new message to a session, streaming the AI response.
@@ -2190,6 +2349,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_prompt_request** | Option<[**SessionPromptRequest**](SessionPromptRequest.md)> |  |  |
 
 ### Return type
@@ -2210,7 +2370,7 @@ No authorization required
 
 ## session_prompt_async
 
-> session_prompt_async(session_id, directory, session_prompt_request)
+> session_prompt_async(session_id, directory, workspace, session_prompt_request)
 Send async message
 
 Create and send a new message to a session asynchronously, starting the session if needed and returning immediately.
@@ -2222,6 +2382,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_prompt_request** | Option<[**SessionPromptRequest**](SessionPromptRequest.md)> |  |  |
 
 ### Return type
@@ -2242,7 +2403,7 @@ No authorization required
 
 ## session_revert
 
-> models::Session session_revert(session_id, directory, session_revert_request)
+> models::Session session_revert(session_id, directory, workspace, session_revert_request)
 Revert message
 
 Revert a specific message in a session, undoing its effects and restoring the previous state.
@@ -2254,6 +2415,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_revert_request** | Option<[**SessionRevertRequest**](SessionRevertRequest.md)> |  |  |
 
 ### Return type
@@ -2274,7 +2436,7 @@ No authorization required
 
 ## session_share
 
-> models::Session session_share(session_id, directory)
+> models::Session session_share(session_id, directory, workspace)
 Share session
 
 Create a shareable link for a session, allowing others to view the conversation.
@@ -2286,6 +2448,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2305,7 +2468,7 @@ No authorization required
 
 ## session_shell
 
-> models::AssistantMessage session_shell(session_id, directory, session_shell_request)
+> models::AssistantMessage session_shell(session_id, directory, workspace, session_shell_request)
 Run shell command
 
 Execute a shell command within the session context and return the AI's response.
@@ -2317,6 +2480,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_shell_request** | Option<[**SessionShellRequest**](SessionShellRequest.md)> |  |  |
 
 ### Return type
@@ -2337,7 +2501,7 @@ No authorization required
 
 ## session_status
 
-> std::collections::HashMap<String, models::SessionStatus> session_status(directory)
+> std::collections::HashMap<String, models::SessionStatus> session_status(directory, workspace)
 Get session status
 
 Retrieve the current status of all sessions, including active, idle, and completed states.
@@ -2348,6 +2512,7 @@ Retrieve the current status of all sessions, including active, idle, and complet
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2367,7 +2532,7 @@ No authorization required
 
 ## session_summarize
 
-> bool session_summarize(session_id, directory, session_summarize_request)
+> bool session_summarize(session_id, directory, workspace, session_summarize_request)
 Summarize session
 
 Generate a concise summary of the session using AI compaction to preserve key information.
@@ -2379,6 +2544,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_summarize_request** | Option<[**SessionSummarizeRequest**](SessionSummarizeRequest.md)> |  |  |
 
 ### Return type
@@ -2399,7 +2565,7 @@ No authorization required
 
 ## session_todo
 
-> Vec<models::Todo> session_todo(session_id, directory)
+> Vec<models::Todo> session_todo(session_id, directory, workspace)
 Get session todos
 
 Retrieve the todo list associated with a specific session, showing tasks and action items.
@@ -2411,6 +2577,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** | Session ID | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2430,7 +2597,7 @@ No authorization required
 
 ## session_unrevert
 
-> models::Session session_unrevert(session_id, directory)
+> models::Session session_unrevert(session_id, directory, workspace)
 Restore reverted messages
 
 Restore all previously reverted messages in a session.
@@ -2442,6 +2609,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2461,7 +2629,7 @@ No authorization required
 
 ## session_unshare
 
-> models::Session session_unshare(session_id, directory)
+> models::Session session_unshare(session_id, directory, workspace)
 Unshare session
 
 Remove the shareable link for a session, making it private again.
@@ -2473,6 +2641,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2492,7 +2661,7 @@ No authorization required
 
 ## session_update
 
-> models::Session session_update(session_id, directory, session_update_request)
+> models::Session session_update(session_id, directory, workspace, session_update_request)
 Update session
 
 Update properties of an existing session, such as title or other metadata.
@@ -2504,6 +2673,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **session_update_request** | Option<[**SessionUpdateRequest**](SessionUpdateRequest.md)> |  |  |
 
 ### Return type
@@ -2524,7 +2694,7 @@ No authorization required
 
 ## tool_ids
 
-> Vec<String> tool_ids(directory)
+> Vec<String> tool_ids(directory, workspace)
 List tool IDs
 
 Get a list of all available tool IDs, including both built-in tools and dynamically registered tools.
@@ -2535,6 +2705,7 @@ Get a list of all available tool IDs, including both built-in tools and dynamica
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2554,7 +2725,7 @@ No authorization required
 
 ## tool_list
 
-> Vec<models::ToolListItem> tool_list(provider, model, directory)
+> Vec<models::ToolListItem> tool_list(provider, model, directory, workspace)
 List tools
 
 Get a list of available tools with their JSON schema parameters for a specific provider and model combination.
@@ -2567,6 +2738,7 @@ Name | Type | Description  | Required | Notes
 **provider** | **String** |  | [required] |
 **model** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2586,7 +2758,7 @@ No authorization required
 
 ## tui_append_prompt
 
-> bool tui_append_prompt(directory, find_text200_response_inner_path)
+> bool tui_append_prompt(directory, workspace, find_text200_response_inner_path)
 Append TUI prompt
 
 Append prompt to the TUI
@@ -2597,6 +2769,7 @@ Append prompt to the TUI
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **find_text200_response_inner_path** | Option<[**FindText200ResponseInnerPath**](FindText200ResponseInnerPath.md)> |  |  |
 
 ### Return type
@@ -2617,7 +2790,7 @@ No authorization required
 
 ## tui_clear_prompt
 
-> bool tui_clear_prompt(directory)
+> bool tui_clear_prompt(directory, workspace)
 Clear TUI prompt
 
 Clear the prompt
@@ -2628,6 +2801,7 @@ Clear the prompt
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2647,7 +2821,7 @@ No authorization required
 
 ## tui_control_next
 
-> models::TuiControlNext200Response tui_control_next(directory)
+> models::TuiControlNext200Response tui_control_next(directory, workspace)
 Get next TUI request
 
 Retrieve the next TUI (Terminal User Interface) request from the queue for processing.
@@ -2658,6 +2832,7 @@ Retrieve the next TUI (Terminal User Interface) request from the queue for proce
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2677,7 +2852,7 @@ No authorization required
 
 ## tui_control_response
 
-> bool tui_control_response(directory, body)
+> bool tui_control_response(directory, workspace, body)
 Submit TUI response
 
 Submit a response to the TUI request queue to complete a pending request.
@@ -2688,6 +2863,7 @@ Submit a response to the TUI request queue to complete a pending request.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **body** | Option<**serde_json::Value**> |  |  |
 
 ### Return type
@@ -2708,7 +2884,7 @@ No authorization required
 
 ## tui_execute_command
 
-> bool tui_execute_command(directory, tui_execute_command_request)
+> bool tui_execute_command(directory, workspace, tui_execute_command_request)
 Execute TUI command
 
 Execute a TUI command (e.g. agent_cycle)
@@ -2719,6 +2895,7 @@ Execute a TUI command (e.g. agent_cycle)
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **tui_execute_command_request** | Option<[**TuiExecuteCommandRequest**](TuiExecuteCommandRequest.md)> |  |  |
 
 ### Return type
@@ -2739,7 +2916,7 @@ No authorization required
 
 ## tui_open_help
 
-> bool tui_open_help(directory)
+> bool tui_open_help(directory, workspace)
 Open help dialog
 
 Open the help dialog in the TUI to display user assistance information.
@@ -2750,6 +2927,7 @@ Open the help dialog in the TUI to display user assistance information.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2769,7 +2947,7 @@ No authorization required
 
 ## tui_open_models
 
-> bool tui_open_models(directory)
+> bool tui_open_models(directory, workspace)
 Open models dialog
 
 Open the model dialog
@@ -2780,6 +2958,7 @@ Open the model dialog
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2799,7 +2978,7 @@ No authorization required
 
 ## tui_open_sessions
 
-> bool tui_open_sessions(directory)
+> bool tui_open_sessions(directory, workspace)
 Open sessions dialog
 
 Open the session dialog
@@ -2810,6 +2989,7 @@ Open the session dialog
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2829,7 +3009,7 @@ No authorization required
 
 ## tui_open_themes
 
-> bool tui_open_themes(directory)
+> bool tui_open_themes(directory, workspace)
 Open themes dialog
 
 Open the theme dialog
@@ -2840,6 +3020,7 @@ Open the theme dialog
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2859,7 +3040,7 @@ No authorization required
 
 ## tui_publish
 
-> bool tui_publish(directory, tui_publish_request)
+> bool tui_publish(directory, workspace, tui_publish_request)
 Publish TUI event
 
 Publish a TUI event
@@ -2870,6 +3051,7 @@ Publish a TUI event
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **tui_publish_request** | Option<[**TuiPublishRequest**](TuiPublishRequest.md)> |  |  |
 
 ### Return type
@@ -2890,7 +3072,7 @@ No authorization required
 
 ## tui_select_session
 
-> bool tui_select_session(directory, tui_select_session_request)
+> bool tui_select_session(directory, workspace, tui_select_session_request)
 Select session
 
 Navigate the TUI to display the specified session.
@@ -2901,6 +3083,7 @@ Navigate the TUI to display the specified session.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **tui_select_session_request** | Option<[**TuiSelectSessionRequest**](TuiSelectSessionRequest.md)> |  |  |
 
 ### Return type
@@ -2921,7 +3104,7 @@ No authorization required
 
 ## tui_show_toast
 
-> bool tui_show_toast(directory, tui_show_toast_request)
+> bool tui_show_toast(directory, workspace, tui_show_toast_request)
 Show TUI toast
 
 Show a toast notification in the TUI
@@ -2932,6 +3115,7 @@ Show a toast notification in the TUI
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **tui_show_toast_request** | Option<[**TuiShowToastRequest**](TuiShowToastRequest.md)> |  |  |
 
 ### Return type
@@ -2952,7 +3136,7 @@ No authorization required
 
 ## tui_submit_prompt
 
-> bool tui_submit_prompt(directory)
+> bool tui_submit_prompt(directory, workspace)
 Submit TUI prompt
 
 Submit the prompt
@@ -2963,6 +3147,7 @@ Submit the prompt
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -2982,7 +3167,7 @@ No authorization required
 
 ## vcs_get
 
-> models::VcsInfo vcs_get(directory)
+> models::VcsInfo vcs_get(directory, workspace)
 Get VCS info
 
 Retrieve version control system (VCS) information for the current project, such as git branch.
@@ -2993,6 +3178,7 @@ Retrieve version control system (VCS) information for the current project, such 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -3012,7 +3198,7 @@ No authorization required
 
 ## worktree_create
 
-> models::Worktree worktree_create(directory, worktree_create_input)
+> models::Worktree worktree_create(directory, workspace, worktree_create_input)
 Create worktree
 
 Create a new git worktree for the current project and run any configured startup scripts.
@@ -3023,6 +3209,7 @@ Create a new git worktree for the current project and run any configured startup
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **worktree_create_input** | Option<[**WorktreeCreateInput**](WorktreeCreateInput.md)> |  |  |
 
 ### Return type
@@ -3043,7 +3230,7 @@ No authorization required
 
 ## worktree_list
 
-> Vec<String> worktree_list(directory)
+> Vec<String> worktree_list(directory, workspace)
 List worktrees
 
 List all sandbox worktrees for the current project.
@@ -3054,6 +3241,7 @@ List all sandbox worktrees for the current project.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -3073,7 +3261,7 @@ No authorization required
 
 ## worktree_remove
 
-> bool worktree_remove(directory, worktree_remove_input)
+> bool worktree_remove(directory, workspace, worktree_remove_input)
 Remove worktree
 
 Remove a git worktree and delete its branch.
@@ -3084,6 +3272,7 @@ Remove a git worktree and delete its branch.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **worktree_remove_input** | Option<[**WorktreeRemoveInput**](WorktreeRemoveInput.md)> |  |  |
 
 ### Return type
@@ -3104,7 +3293,7 @@ No authorization required
 
 ## worktree_reset
 
-> bool worktree_reset(directory, worktree_reset_input)
+> bool worktree_reset(directory, workspace, worktree_reset_input)
 Reset worktree
 
 Reset a worktree branch to the primary default branch.
@@ -3115,6 +3304,7 @@ Reset a worktree branch to the primary default branch.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 **worktree_reset_input** | Option<[**WorktreeResetInput**](WorktreeResetInput.md)> |  |  |
 
 ### Return type

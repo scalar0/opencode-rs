@@ -1,6 +1,6 @@
 {
   "packageName": "openapi",
-  "packageVersion": "1.2.15",
+  "packageVersion": "1.2.16",
   "apiNameSuffix": "Api",
   "enumNameSuffix": "Enum",
   "modelPropertyNaming": "original",

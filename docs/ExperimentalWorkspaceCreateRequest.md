@@ -1,15 +1,11 @@
-# CompactionPart
+# ExperimentalWorkspaceCreateRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
-**session_id** | **String** |  | 
-**message_id** | **String** |  | 
-**r#type** | **TypeEnum** |  (enum: compaction) | 
-**auto** | **bool** |  | 
-**overflow** | Option<**bool**> |  | [optional]
+**branch** | Option<**String**> |  | 
+**config** | [**models::ExperimentalWorkspaceCreateRequestConfig**](ExperimentalWorkspaceCreateRequestConfig.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -116,9 +116,14 @@ docs/EventTuiSessionSelect.md
 docs/EventTuiToastShow.md
 docs/EventVcsBranchUpdated.md
 docs/EventVcsBranchUpdatedProperties.md
+docs/EventWorkspaceFailed.md
+docs/EventWorkspaceReady.md
+docs/EventWorkspaceReadyProperties.md
 docs/EventWorktreeFailed.md
 docs/EventWorktreeReady.md
 docs/EventWorktreeReadyProperties.md
+docs/ExperimentalWorkspaceCreateRequest.md
+docs/ExperimentalWorkspaceCreateRequestConfig.md
 docs/File.md
 docs/FileContent.md
 docs/FileContentPatch.md
@@ -290,6 +295,7 @@ docs/UserMessageSummary.md
 docs/UserMessageTime.md
 docs/VcsInfo.md
 docs/WellKnownAuth.md
+docs/Workspace.md
 docs/Worktree.md
 docs/WorktreeCreateInput.md
 docs/WorktreeRemoveInput.md
@@ -413,9 +419,14 @@ src/models/event_tui_session_select.rs
 src/models/event_tui_toast_show.rs
 src/models/event_vcs_branch_updated.rs
 src/models/event_vcs_branch_updated_properties.rs
+src/models/event_workspace_failed.rs
+src/models/event_workspace_ready.rs
+src/models/event_workspace_ready_properties.rs
 src/models/event_worktree_failed.rs
 src/models/event_worktree_ready.rs
 src/models/event_worktree_ready_properties.rs
+src/models/experimental_workspace_create_request.rs
+src/models/experimental_workspace_create_request_config.rs
 src/models/file.rs
 src/models/file_content.rs
 src/models/file_content_patch.rs
@@ -587,6 +598,7 @@ src/models/user_message_summary.rs
 src/models/user_message_time.rs
 src/models/vcs_info.rs
 src/models/well_known_auth.rs
+src/models/workspace.rs
 src/models/worktree.rs
 src/models/worktree_create_input.rs
 src/models/worktree_remove_input.rs

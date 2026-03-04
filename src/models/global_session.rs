@@ -19,6 +19,8 @@ pub struct GlobalSession {
     pub slug: String,
     #[serde(rename = "projectID")]
     pub project_id: String,
+    #[serde(rename = "workspaceID", skip_serializing_if = "Option::is_none")]
+    pub workspace_id: Option<String>,
     #[serde(rename = "directory")]
     pub directory: String,
     #[serde(rename = "parentID", skip_serializing_if = "Option::is_none")]
@@ -47,6 +49,7 @@ impl GlobalSession {
             id,
             slug,
             project_id,
+            workspace_id: None,
             directory,
             parent_id: None,
             summary: None,

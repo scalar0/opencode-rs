@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## session_children
 
-> Vec<models::Session> session_children(session_id, directory)
+> Vec<models::Session> session_children(session_id, directory, workspace)
 Get session children
 
 Retrieve all child sessions that were forked from the specified parent session.
@@ -23,6 +23,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
@@ -42,7 +43,7 @@ No authorization required
 
 ## session_get
 
-> models::Session session_get(session_id, directory)
+> models::Session session_get(session_id, directory, workspace)
 Get session
 
 Retrieve detailed information about a specific OpenCode session.
@@ -54,6 +55,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **session_id** | **String** |  | [required] |
 **directory** | Option<**String**> |  |  |
+**workspace** | Option<**String**> |  |  |
 
 ### Return type
 
